@@ -1,5 +1,6 @@
 import { getDb } from '@/app/lib/db';
 import { Book } from '@/app/lib/types';
+import { BookNotFoundError, InvalidParamsError } from './book.errors';
 
 type BookDBResult = {
   id: number;
@@ -27,5 +28,6 @@ export const getRandomBook = async (): Promise<Book> => {
      LIMIT 1`
   );
 
+  if (result.rows.length <= 0) throw new BookNotFoundError();
   return mapToBook(result.rows[0]);
 };
