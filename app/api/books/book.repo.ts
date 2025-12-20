@@ -1,8 +1,8 @@
 import { getDb } from '@/app/lib/db';
 import { Book } from '@/app/lib/types';
-import { BookNotFoundError, InvalidParamsError } from './book.errors';
+import { BookNotFoundError } from './book.errors';
 
-type BookDBResult = {
+type BookDBRow = {
   id: number;
   title: string;
   author: string;
@@ -10,13 +10,13 @@ type BookDBResult = {
   cover_url: string;
 };
 
-const mapToBook = (bookDBResult: BookDBResult): Book => {
+const toBook = (row: BookDBRow): Book => {
   return {
-    id: bookDBResult.id.toString(),
-    title: bookDBResult.title,
-    author: bookDBResult.author,
-    country: bookDBResult.country,
-    coverUrl: bookDBResult.cover_url
+    id: row.id.toString(),
+    title: row.title,
+    author: row.author,
+    country: row.country,
+    coverUrl: row.cover_url
   }
 }
 
@@ -29,5 +29,5 @@ export const getRandomBook = async (): Promise<Book> => {
   );
 
   if (result.rows.length <= 0) throw new BookNotFoundError();
-  return mapToBook(result.rows[0]);
+  return toBook(result.rows[0]);
 };
