@@ -1,32 +1,40 @@
-import { beforeEach, describe, expect, it, MockedFunction, vi } from "vitest";
+import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('./location.repo', () => ({
-  getLocations: vi.fn(),
-  getLocationByCode: vi.fn()
+  getAllLocations: vi.fn(),
+  getLocationByCode: vi.fn(),
+  getPopulatedLocations: vi.fn()
 }));
 import * as locationService from './location.service';
 import { exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getLocations, getLocationByCode } from "./location.repo";
-import type * as LocationRepo from "./location.repo"
+import { getAllLocations, getLocationByCode, getPopulatedLocations } from "./location.repo";
+import type * as LocationRepo from "./location.repo";
 
-const mockedRepoGetLocations =
-  getLocations as MockedFunction<
+const mockedRepoGetAllLocations =
+  getAllLocations as MockedFunction<
     typeof LocationRepo.getLocations
   >;
 
-  const mockedRepoGetLocationByCode =
-    getLocationByCode as MockedFunction<
-      typeof LocationRepo.getLocationByCode
-    >;
+const mockedRepoGetPopulatedLocations =
+  getPopulatedLocations as MockedFunction<
+    typeof LocationRepo.getPopulatedLocations
+  >;
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
+const mockedRepoGetLocationByCode =
+  getLocationByCode as MockedFunction<
+    typeof LocationRepo.getLocationByCode
+  >;
 
 describe('getLocations', async () => {
   it('gets all locations from repo', async () => {
-    const locations = [ exampleCountry, exampleState ];
-    mockedRepoGetLocations.mockResolvedValue(locations);
-    expect(await locationService.getLocations()).toEqual(locations);
+    const locations = [exampleCountry, exampleState];
+    mockedRepoGetAllLocations.mockResolvedValue(locations);
+    expect(await locationService.getLocations(false)).toEqual(locations);
+  });
+
+  it('gets all populated locations from repo', async () => {
+    const locations = [exampleCountry];
+    mockedRepoGetPopulatedLocations.mockResolvedValue(locations);
+    expect(await locationService.getLocations(true)).toEqual(locations);
   });
 });
 

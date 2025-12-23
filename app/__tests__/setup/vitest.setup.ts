@@ -1,4 +1,4 @@
-import { beforeAll, afterAll, beforeEach } from 'vitest';
+import { beforeAll, afterAll, beforeEach, vi } from 'vitest';
 import { clearDatabase, startTestDb, stopTestDb } from './testDB.setup';
 
 beforeAll(async () => {
@@ -11,4 +11,5 @@ afterAll(async () => {
 
 beforeEach(async () => {
   await clearDatabase();
+  vi.resetAllMocks();
 });

@@ -13,10 +13,6 @@ const mockedBookControllerGetRandomBookByLocation =
     typeof BookController.getRandomBookByLocationCode
   >;
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('/api/books/random', async () => {
   it('gets a random book', async () => {
     mockedBookControllerGetRandomBookByLocation.mockResolvedValue(exampleBook);

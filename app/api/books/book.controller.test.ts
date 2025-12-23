@@ -22,10 +22,6 @@ const mockedLocationControllerGetLocationByCode =
     typeof LocationController.getLocationByCode
   >;
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('getRandomBookByLocationCode', async () => {
   it('gets random book from service', async () => {
     mockedLocationControllerGetLocationByCode.mockResolvedValue(exampleCountry);

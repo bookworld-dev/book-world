@@ -18,15 +18,19 @@ const mockedServiceGetLocationByCode =
     typeof LocationService.getLocationByCode
   >;
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('getLocations', async () => {
   it('gets all locations from service', async () => {
     const locations = [ exampleCountry, exampleState ];
     mockedServiceGetLocations.mockResolvedValue(locations);
-    expect(await locationController.getLocations()).toEqual(locations);
+    expect(await locationController.getLocations(null)).toEqual(locations);
+    expect(mockedServiceGetLocations).toHaveBeenCalledWith(false);
+  });
+
+  it('gets all populated locations from service', async () => {
+    const locations = [ exampleCountry, exampleState ];
+    mockedServiceGetLocations.mockResolvedValue(locations);
+    expect(await locationController.getLocations('true')).toEqual(locations);
+    expect(mockedServiceGetLocations).toHaveBeenCalledWith(true);
   });
 });
 

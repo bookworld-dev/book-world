@@ -12,10 +12,6 @@ const mockedRepoGetRandomBook =
     typeof BookRepo.getRandomBookByLocation
   >;
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('getRandomBookByLocation', async () => {
   it('gets random book from service', async () => {
     mockedRepoGetRandomBook.mockResolvedValue(exampleBook);

@@ -1,6 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import * as locationController from './location.controller';
 
-export async function GET() {
-  return NextResponse.json(await locationController.getLocations());
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const populated = searchParams.get('populated')
+  return NextResponse.json(await locationController.getLocations(populated!));
 }
