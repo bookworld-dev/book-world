@@ -1,14 +1,14 @@
-import { exampleCountry, exampleState } from '@/app/__tests__/fixtures';
-import { insertLocation } from '@/app/__tests__/helpers';
+import { exampleCountryReq, exampleStateReq } from '@/app/__tests__/fixtures';
 import { describe, expect, it } from 'vitest';
 import { GET } from './route';
+import { insertLocation } from '@/app/__tests__/helpers';
 
 describe('GET /locations', async () => {
   it('gets all locations', async () => {
-    await insertLocation(exampleCountry);
-    await insertLocation(exampleState);
+    const country = await insertLocation(exampleCountryReq, null);
+    const state = await insertLocation(exampleStateReq, country.id);
     const res = await (await GET()).json();
-    expect(res).toContainEqual(exampleCountry);
-    expect(res).toContainEqual(exampleState);
+    expect(res).toContainEqual(country);
+    expect(res).toContainEqual(state);
   });
 });

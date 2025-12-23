@@ -1,12 +1,11 @@
 import { getDb } from '@/app/lib/db';
-import { Book } from '@/app/lib/types';
+import { Book, Location } from '@/app/lib/types';
 import { BookNotFoundError } from './book.errors';
 
 type BookDBRow = {
   id: number;
   title: string;
   author: string;
-  country: string;
   cover_url: string;
 };
 
@@ -15,17 +14,20 @@ const toBook = (row: BookDBRow): Book => {
     id: row.id.toString(),
     title: row.title,
     author: row.author,
-    country: row.country,
     coverUrl: row.cover_url
   }
 }
 
-export const getRandomBook = async (): Promise<Book> => {
+export const getRandomBookByLocation = async (location: Location): Promise<Book> => {
   const result = await getDb().query(
-    `SELECT id, title, author, country, cover_url
-     FROM books
-     ORDER BY random()
-     LIMIT 1`
+    `
+    SELECT b.id, b.title, b.author, b.cover_url
+    FROM books b
+    JOIN book_locations bl ON bl.book_id = b.id
+    WHERE bl.location_id = $1
+    ORDER BY RANDOM()
+    LIMIT 1;
+    `, [location.id]
   );
 
   if (result.rows.length <= 0) throw new BookNotFoundError();

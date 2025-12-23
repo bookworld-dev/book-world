@@ -1,24 +1,24 @@
 import { beforeEach, describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('./book.repo', () => ({
-  getRandomBook: vi.fn(),
+  getRandomBookByLocation: vi.fn(),
 }));
 import * as bookService from './book.service';
-import { exampleBook } from "../../__tests__/fixtures";
-import { getRandomBook } from "./book.repo";
+import { exampleBook, exampleCountry } from "../../__tests__/fixtures";
+import { getRandomBookByLocation } from "./book.repo";
 import type * as BookRepo from "./book.repo"
 
 const mockedRepoGetRandomBook =
-  getRandomBook as MockedFunction<
-    typeof BookRepo.getRandomBook
+  getRandomBookByLocation as MockedFunction<
+    typeof BookRepo.getRandomBookByLocation
   >;
 
 beforeEach(() => {
   vi.clearAllMocks();
 });
 
-describe('getRandomBook', async () => {
+describe('getRandomBookByLocation', async () => {
   it('gets random book from service', async () => {
     mockedRepoGetRandomBook.mockResolvedValue(exampleBook);
-    expect(await bookService.getRandomBook()).toEqual(exampleBook);
+    expect(await bookService.getRandomBookByLocation(exampleCountry.code)).toEqual(exampleBook);
   });
 });

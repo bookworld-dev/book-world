@@ -1,17 +1,20 @@
-export type Book = {
-  id: string;
+type UUIDPrimaryKey = { id: string; }
+
+export type BookRequest = {
   title: string;
   author: string;
-  country: string;
   coverUrl: string;
-};
+}
+
+export type Book = BookRequest & UUIDPrimaryKey
 
 export type LocationLevel = 'country' | 'state' | 'region';
 
-export type Location = {
-  id: string;
+export type LocationRequest = {
   level: LocationLevel;
   code: string;
   name: string;
   parentId: string | null;
 }
+
+export type Location = NewLocation & UUIDPrimaryKey

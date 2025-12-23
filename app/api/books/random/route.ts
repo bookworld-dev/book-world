@@ -1,10 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import * as bookController from '../book.controller';
 import { BookNotFoundError } from '../book.errors';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const book = await bookController.getRandomBook();
+    const { searchParams } = new URL(request.url);
+    const location = searchParams.get('location')
+    const book = await bookController.getRandomBookByLocationCode(location!);
     return NextResponse.json(book);
   } catch (err) {
     if (err instanceof BookNotFoundError) {

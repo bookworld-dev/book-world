@@ -1,15 +1,16 @@
 import { describe, it, expect, vi, beforeEach, MockedFunction } from 'vitest';
 vi.mock('../book.controller', () => ({
-  getRandomBook: vi.fn(),
+  getRandomBookByLocationCode: vi.fn(),
 }));
 import * as bookRoutes from './route';
-import { getRandomBook } from '../book.controller';
+import { getRandomBookByLocationCode } from '../book.controller';
 import type * as BookController from '../book.controller';
-import { exampleBook } from '../../../__tests__/fixtures';
+import { exampleBook, exampleCountry } from '../../../__tests__/fixtures';
+import { NextRequest } from 'next/server';
 
-const mockedControllerGetRandomBook =
-  getRandomBook as MockedFunction<
-    typeof BookController.getRandomBook
+const mockedBookControllerGetRandomBookByLocation =
+  getRandomBookByLocationCode as MockedFunction<
+    typeof BookController.getRandomBookByLocationCode
   >;
 
 beforeEach(() => {
@@ -18,8 +19,8 @@ beforeEach(() => {
 
 describe('/api/books/random', async () => {
   it('gets a random book', async () => {
-    mockedControllerGetRandomBook.mockResolvedValue(exampleBook);
-    const res = await bookRoutes.GET();
+    mockedBookControllerGetRandomBookByLocation.mockResolvedValue(exampleBook);
+    const res = await bookRoutes.GET(new NextRequest(`http://localhost/api/books/random?country=${exampleCountry.code}`));
     expect(await res.json()).toEqual(exampleBook);
   });
 });

@@ -1,10 +1,10 @@
 "use client"
 import { useEffect } from "react";
-import { getRandomBook } from "./lib/book.api";
+import { getRandomBookByLocation } from "./lib/book.api";
 
 export default function BookWorld() {
   const getBookData = async () => {
-    const data = await getRandomBook('NL');
+    const data = await getRandomBookByLocation('NL');
     console.log(data);
   }
 

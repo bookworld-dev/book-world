@@ -1,15 +1,21 @@
 import { beforeEach, describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('./location.service', () => ({
   getLocations: vi.fn(),
+  getLocationByCode: vi.fn()
 }));
 import * as locationController from './location.controller';
 import { exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getLocations } from "./location.service";
+import { getLocations, getLocationByCode } from "./location.service";
 import type * as LocationService from "./location.service"
 
 const mockedServiceGetLocations =
   getLocations as MockedFunction<
     typeof LocationService.getLocations
+  >;
+
+const mockedServiceGetLocationByCode =
+  getLocationByCode as MockedFunction<
+    typeof LocationService.getLocationByCode
   >;
 
 beforeEach(() => {
@@ -21,5 +27,12 @@ describe('getLocations', async () => {
     const locations = [ exampleCountry, exampleState ];
     mockedServiceGetLocations.mockResolvedValue(locations);
     expect(await locationController.getLocations()).toEqual(locations);
+  });
+});
+
+describe('getLocationByCode', async () => {
+  it('gets location by given code', async () => {
+    mockedServiceGetLocationByCode.mockResolvedValue(exampleCountry);
+    expect(await locationController.getLocationByCode(exampleCountry.code)).toEqual(exampleCountry);
   });
 });

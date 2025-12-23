@@ -21,7 +21,7 @@ export const startTestDb = async () => {
   });
 
   const migration = fs.readFileSync(
-    path.resolve(__dirname, '../../../migrations/001_create_books.sql'),
+    path.resolve(__dirname, '../../../migrations/001_create_tables.sql'),
     'utf-8'
   );
 
@@ -45,6 +45,13 @@ export const clearDatabase = async () => {
     RESTART IDENTITY
     CASCADE
   `);
+
+  await pool.query(`
+    TRUNCATE TABLE
+      locations
+    RESTART IDENTITY
+    CASCADE
+  `);
 }
 
-export const getTestPool = () => pool;
+export const getTestPool = (): Pool => pool;

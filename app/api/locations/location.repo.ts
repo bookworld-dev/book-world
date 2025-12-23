@@ -1,5 +1,6 @@
 import { getDb } from "@/app/lib/db";
 import { Location, LocationLevel } from "@/app/lib/types";
+import { LocationNotFoundError } from "./location.errors";
 
 type LocationDBRow = {
   id: number;
@@ -21,11 +22,24 @@ const toLocation = (row: LocationDBRow): Location => {
   }
 }
 
-export const getLocations = async(): Promise<Location[]> => {
+export const getLocations = async (): Promise<Location[]> => {
   const result = await getDb().query(
     `SELECT id, level, code, name, parent_id
      FROM locations`
   );
 
   return result.rows.map(toLocation);
+}
+
+export const getLocationByCode = async (code: string): Promise<Location> => {
+  const result = await getDb().query(
+    `
+    SELECT id, level, code, name, parent_id
+     FROM locations
+     WHERE code = $1
+    `, [code]
+  );
+
+  if (result.rows.length <= 0) throw new LocationNotFoundError();
+  return toLocation(result.rows[0]);
 }
