@@ -33,3 +33,16 @@ export const getRandomBookByLocation = async (location: Location): Promise<Book>
   if (result.rows.length <= 0) throw new BookNotFoundError();
   return toBook(result.rows[0]);
 };
+
+export const getBooksByLocation = async (location: Location): Promise<Book[]> => {
+  const result = await getDb().query(
+    `
+    SELECT b.id, b.title, b.author, b.cover_url
+    FROM books b
+    JOIN book_locations bl ON bl.book_id = b.id
+    WHERE bl.location_id = $1;
+    `, [location.id]
+  );
+
+  return result.rows.map(toBook);
+};

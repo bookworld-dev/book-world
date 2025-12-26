@@ -33,19 +33,6 @@ export const getAllLocations = async (): Promise<Location[]> => {
   return result.rows.map(toLocation);
 }
 
-export const getLocationByCode = async (code: string): Promise<Location> => {
-  const result = await getDb().query(
-    `
-    SELECT id, level, code, name, parent_id
-     FROM locations
-     WHERE code = $1
-    `, [code]
-  );
-
-  if (result.rows.length <= 0) throw new LocationNotFoundError();
-  return toLocation(result.rows[0]);
-}
-
 export const getPopulatedLocations = async (): Promise<Location[]> => {
   const result = await getDb().query(
     `
@@ -60,4 +47,30 @@ export const getPopulatedLocations = async (): Promise<Location[]> => {
   );
 
   return result.rows.map(toLocation);
+}
+
+export const getLocationByCode = async (code: string): Promise<Location> => {
+  const result = await getDb().query(
+    `
+    SELECT id, level, code, name, parent_id
+     FROM locations
+     WHERE code = $1
+    `, [code]
+  );
+
+  if (result.rows.length <= 0) throw new LocationNotFoundError();
+  return toLocation(result.rows[0]);
+}
+
+export const getLocationById = async (id: string): Promise<Location> => {
+  const result = await getDb().query(
+    `
+    SELECT id, level, code, name, parent_id
+     FROM locations
+     WHERE id = $1
+    `, [id]
+  );
+
+  if (result.rows.length <= 0) throw new LocationNotFoundError();
+  return toLocation(result.rows[0]);
 }
