@@ -8,11 +8,16 @@ let container: StartedPostgreSqlContainer;
 let pool: Pool;
 
 export const startTestDb = async () => {
-  container = await new PostgreSqlContainer('postgres:16-alpine')
-    .withDatabase('book_world_test')
-    .withUsername('test')
-    .withPassword('test')
-    .start();
+  try {
+    container = await new PostgreSqlContainer('postgres:16-alpine')
+      .withDatabase('book_world_test')
+      .withUsername('test')
+      .withPassword('test')
+      .start();
+  } catch (e) {
+    if (e instanceof Error && e.message.includes('Could not find a working container runtime strategy'))
+      throw new Error('Docker not running')
+  }
 
   process.env.DATABASE_URL = container.getConnectionUri();
 
