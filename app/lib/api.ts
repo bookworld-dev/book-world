@@ -1,4 +1,4 @@
-export async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
+export const apiFetch = async <T>(path: string, options?: RequestInit): Promise<T> => {
   const res = await fetch(path, {
     ...options,
     headers: {

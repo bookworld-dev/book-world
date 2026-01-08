@@ -6,6 +6,12 @@ export type BookRequest = {
   coverUrl: string;
 }
 
+export type BookAPIRequest = {
+  title: string;
+  author: string;
+  cover: File;
+}
+
 export type Book = BookRequest & UUIDPrimaryKey
 
 export type LocationLevel = 'country' | 'state' | 'region';
@@ -17,4 +23,4 @@ export type LocationRequest = {
   parentId: string | null;
 }
 
-export type Location = NewLocation & UUIDPrimaryKey
+export type Location = LocationRequest & UUIDPrimaryKey

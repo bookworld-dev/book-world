@@ -1,9 +1,19 @@
-import { Book, BookRequest, Location, LocationRequest } from "../lib/types";
+import { Book, BookAPIRequest, BookRequest, Location, LocationRequest } from "../lib/types";
 
 export const exampleBookReq: BookRequest = {
   author: 'Jack Kerouac',
   title: 'Big Sur',
   coverUrl: 'coverArt_1.jpeg'
+}
+
+export const exampleBookAPIReq: BookAPIRequest = {
+  author: exampleBookReq.author,
+  title: exampleBookReq.title,
+  cover: new File(
+    ['image bytes'],
+    'cover.jpg',
+    { type: 'image/jpeg' }
+  )
 }
 
 export const exampleBook: Book = {

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import * as bookController from '../book.controller';
 import { BookNotFoundError } from '../book.errors';
 
-export async function GET(request: NextRequest) {
+export const GET = async (request: NextRequest): Promise<NextResponse> => {
   try {
     const { searchParams } = new URL(request.url);
     const location = searchParams.get('location')

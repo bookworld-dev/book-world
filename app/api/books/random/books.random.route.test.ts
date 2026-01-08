@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, MockedFunction } from 'vitest';
+import { describe, it, expect, vi, MockedFunction } from 'vitest';
 vi.mock('../book.controller', () => ({
   getRandomBookByLocationCode: vi.fn(),
 }));

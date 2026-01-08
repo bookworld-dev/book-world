@@ -1,5 +1,5 @@
 import { getDb } from '@/app/lib/db';
-import { Book, Location } from '@/app/lib/types';
+import { Book, BookRequest, Location } from '@/app/lib/types';
 import { BookNotFoundError } from './book.errors';
 
 type BookDBRow = {
@@ -46,3 +46,15 @@ export const getBooksByLocation = async (location: Location): Promise<Book[]> =>
 
   return result.rows.map(toBook);
 };
+
+export const createBook = async (bookReq: BookRequest): Promise<Book> => {
+  const result = await getDb().query(
+    `
+    INSERT INTO books (title, author, cover_url)
+    VALUES ($1, $2, $3)
+    RETURNING *
+    `, [bookReq.title, bookReq.author, bookReq.coverUrl]
+  );
+
+  return toBook(result.rows[0]);
+}

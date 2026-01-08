@@ -7,10 +7,10 @@ type Params = {
   };
 };
 
-export async function GET(
+export const GET = async (
   _req: NextRequest,
   { params }: Params
-) {
+) => {
   const books = await bookController.getBooksByLocationId(params.locationId);
 
   return NextResponse.json(books);

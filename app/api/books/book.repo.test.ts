@@ -39,3 +39,14 @@ describe('getBooksByLocation', async () => {
     expect(await bookRepo.getBooksByLocation(state)).to.be.empty;
   });
 });
+
+describe('createBook', async () => {
+  it('creates a book in the database', async () => {
+    const createdBook = await bookRepo.createBook(exampleBookReq);
+
+    expect(createdBook.id).not.toEqual(undefined);
+    expect(createdBook.title).toEqual(exampleBookReq.title);
+    expect(createdBook.author).toEqual(exampleBookReq.author);
+    expect(createdBook.coverUrl).toEqual(exampleBookReq.coverUrl);
+  });
+});
