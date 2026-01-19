@@ -50,3 +50,10 @@ describe('createBook', async () => {
     expect(createdBook.coverUrl).toEqual(exampleBookReq.coverUrl);
   });
 });
+
+describe('getBookById', async () => {
+  it('gets a book from the database by ID', async () => {
+    const book = await insertBook(exampleBookReq);
+    expect(await bookRepo.getBookById(book.id)).toEqual(book);
+  });
+});

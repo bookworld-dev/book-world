@@ -12,3 +12,7 @@ export const getBooksByLocation = async (location: Location): Promise<Book[]> =>
 export const createBook = async (bookReq: BookRequest): Promise<Book> => {
   return bookRepo.createBook(bookReq);
 }
+
+export const getBookById = async (id: string): Promise<Book> => {
+  return await bookRepo.getBookById(id);
+}

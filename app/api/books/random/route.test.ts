@@ -13,7 +13,7 @@ const mockedBookControllerGetRandomBookByLocation =
     typeof BookController.getRandomBookByLocationCode
   >;
 
-describe('/api/books/random', async () => {
+describe('GET /api/books/random', async () => {
   it('gets a random book', async () => {
     mockedBookControllerGetRandomBookByLocation.mockResolvedValue(exampleBook);
     const res = await bookRoutes.GET(new NextRequest(`http://localhost/api/books/random?country=${exampleCountry.code}`));

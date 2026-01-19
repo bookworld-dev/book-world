@@ -1,4 +1,4 @@
-import { Book, BookRequest, Location, NewLocation } from "../lib/types";
+import { Book, BookRequest, Location, LocationRequest } from "../lib/types";
 import { getTestPool } from "./setup/testDB.setup";
 
 export const insertBook = async (bookReq: BookRequest): Promise<Book> => {
@@ -20,7 +20,7 @@ export const insertBook = async (bookReq: BookRequest): Promise<Book> => {
   return { id: result.rows[0].id, ... bookReq }
 };
 
-export const insertLocation = async (locationReq: NewLocation, parentId: string | null): Promise<Location> => {
+export const insertLocation = async (locationReq: LocationRequest, parentId: string | null): Promise<Location> => {
   const pool = getTestPool();
 
   const result = await pool.query(

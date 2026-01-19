@@ -5,6 +5,7 @@ import { insertBook, insertBookLocation, insertLocation } from '../../__tests__/
 import { NextRequest } from 'next/server';
 import { POST } from './route';
 import { title } from 'process';
+import { DELETE, GET as GET_BOOK } from './[bookId]/route';
 
 describe('GET /api/books/random', async () => {
   it('gets a random book for given location', async () => {
@@ -46,8 +47,30 @@ describe('POST /api/books', async () => {
   });
 });
 
-describe('DELETE /api/books/:bookId', async () => {
-  it('deletes a book', async () => {
+describe('GET /api/books/:bookId', async () => {
+  it('gets a book', async () => {
+        const exampleBook = await insertBook(exampleBookReq);
+        const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+        const reqParams = {params: { bookId: exampleBook.id }};
+        const req = new NextRequest(reqURL);
+        const res = await GET_BOOK(req, reqParams);
 
+        expect(res.status).to.equal(200);
+        const json = await res.json();
+        expect(json.id).toEqual(exampleBook.id);
+        expect(json.title).toEqual(exampleBook.title);
+        expect(json.author).toEqual(exampleBook.author);
+        expect(json.coverUrl).toEqual(exampleBook.coverUrl);
   });
 });
+
+// describe('DELETE /api/books/:bookId', async () => {
+//   it('deletes a book', async () => {
+//     const exampleBook = await insertBook(exampleBookReq);
+//     const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+//     const reqParams = {params: { bookId: exampleBook.id }};
+//     const req = new NextRequest(reqURL);
+//     const res = await DELETE(req, reqParams);
+//     expect(res.status).toEqual(204);
+//   });
+// });

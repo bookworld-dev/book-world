@@ -58,3 +58,17 @@ export const createBook = async (bookReq: BookRequest): Promise<Book> => {
 
   return toBook(result.rows[0]);
 }
+
+export const getBookById = async (id: string): Promise<Book> => {
+  const result = await getDb().query(
+    `
+      SELECT id, title, author, cover_url
+      FROM books
+      WHERE id = $1
+      LIMIT 1;
+    `, [id]
+  );
+
+  if (result.rows.length <= 0) throw new BookNotFoundError();
+  return toBook(result.rows[0]);
+}
