@@ -64,13 +64,16 @@ describe('GET /api/books/:bookId', async () => {
   });
 });
 
-// describe('DELETE /api/books/:bookId', async () => {
-//   it('deletes a book', async () => {
-//     const exampleBook = await insertBook(exampleBookReq);
-//     const reqURL = `http://localhost/api/books/${exampleBook.id}`;
-//     const reqParams = {params: { bookId: exampleBook.id }};
-//     const req = new NextRequest(reqURL);
-//     const res = await DELETE(req, reqParams);
-//     expect(res.status).toEqual(204);
-//   });
-// });
+describe('DELETE /api/books/:bookId', async () => {
+  it('deletes a book', async () => {
+    const exampleBook = await insertBook(exampleBookReq);
+    const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+    const reqParams = {params: { bookId: exampleBook.id }};
+    const req = new NextRequest(reqURL);
+    const res = await DELETE(req, reqParams);
+    expect(res.status).toEqual(204);
+
+    const get = await GET_BOOK(req, reqParams);
+    expect(get.status).toEqual(404);
+  });
+});

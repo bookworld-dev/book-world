@@ -23,3 +23,7 @@ export const createBook = async (bookAPIReq: BookAPIRequest): Promise<Book> => {
 export const getBookById = async (id: string): Promise<Book> => {
   return await bookService.getBookById(id);
 }
+
+export const deleteBookById = async (id: string) => {
+  return await bookService.deleteBookById(id);
+}

@@ -60,15 +60,25 @@ export const createBook = async (bookReq: BookRequest): Promise<Book> => {
 }
 
 export const getBookById = async (id: string): Promise<Book> => {
-  const result = await getDb().query(
-    `
-      SELECT id, title, author, cover_url
-      FROM books
-      WHERE id = $1
-      LIMIT 1;
-    `, [id]
-  );
+  try {
+    const result = await getDb().query(
+      `
+        SELECT id, title, author, cover_url
+        FROM books
+        WHERE id = $1
+        LIMIT 1;
+      `, [id]
+    );
+    return toBook(result.rows[0]);
+  } catch (e) {
+    throw new BookNotFoundError();
+  }
+}
 
-  if (result.rows.length <= 0) throw new BookNotFoundError();
-  return toBook(result.rows[0]);
+export const deleteBookById = async (id: string) => {
+  await getDb().query(
+    `
+    DELETE FROM books WHERE id = $1;
+    `, [id]
+  )
 }

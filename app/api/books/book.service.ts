@@ -16,3 +16,7 @@ export const createBook = async (bookReq: BookRequest): Promise<Book> => {
 export const getBookById = async (id: string): Promise<Book> => {
   return await bookRepo.getBookById(id);
 }
+
+export const deleteBookById = async (id: string) => {
+  return await bookRepo.deleteBookById(id);
+}

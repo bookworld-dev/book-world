@@ -57,3 +57,11 @@ describe('getBookById', async () => {
     expect(await bookRepo.getBookById(book.id)).toEqual(book);
   });
 });
+
+describe('deleteBookById', async () => {
+  it('deletes the book from the database', async () => {
+    const book = await insertBook(exampleBookReq);
+    await bookRepo.deleteBookById(book.id);
+    await expect(bookRepo.getBookById(book.id)).rejects.toBeInstanceOf(BookNotFoundError);
+  });
+});
