@@ -2,11 +2,12 @@ import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('./location.service', () => ({
   getLocations: vi.fn(),
   getLocationByCode: vi.fn(),
-  getLocationById: vi.fn()
+  getLocationById: vi.fn(),
+  getLocationsByBookId: vi.fn()
 }));
 import * as locationController from './location.controller';
-import { exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getLocations, getLocationByCode, getLocationById } from "./location.service";
+import { exampleBook, exampleCountry, exampleState } from "../../__tests__/fixtures";
+import { getLocations, getLocationByCode, getLocationById, getLocationsByBookId } from "./location.service";
 import type * as LocationService from "./location.service"
 
 const mockedServiceGetLocations =
@@ -22,6 +23,11 @@ const mockedServiceGetLocationByCode =
 const mockedServiceGetLocationById =
   getLocationById as MockedFunction<
     typeof LocationService.getLocationById
+  >;
+
+const mockedServiceGetLocationsByBookId =
+  getLocationsByBookId as MockedFunction<
+    typeof LocationService.getLocationsByBookId
   >;
 
 describe('getLocations', async () => {
@@ -51,5 +57,13 @@ describe('getLocationById', async () => {
   it('gets location by given ID', async () => {
     mockedServiceGetLocationById.mockResolvedValue(exampleCountry);
     expect(await locationController.getLocationById(exampleCountry.id)).toEqual(exampleCountry);
+  });
+});
+
+describe('getLocationsByBookId', async () => {
+  it('gets locations by given book ID', async () => {
+    const locations = [ exampleCountry, exampleState ];
+    mockedServiceGetLocationsByBookId.mockResolvedValue(locations);
+    expect(await locationController.getLocationsByBookId(exampleBook.id)).toEqual(locations);
   });
 });

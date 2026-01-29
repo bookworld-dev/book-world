@@ -8,9 +8,13 @@ export const getLocations = async (populated: boolean): Promise<Location[]> => {
 }
 
 export const getLocationByCode = async (code: string): Promise<Location> => {
-  return locationRepo.getLocationByCode(code);
+  return await locationRepo.getLocationByCode(code);
 }
 
 export const getLocationById = async (id: string): Promise<Location> => {
-  return locationRepo.getLocationById(id);
+  return await locationRepo.getLocationById(id);
+}
+
+export const getLocationsByBookId = async (bookId: string): Promise<Location[]> => {
+  return await locationRepo.getLocationsByBookId(bookId);
 }

@@ -74,3 +74,15 @@ export const getLocationById = async (id: string): Promise<Location> => {
   if (result.rows.length <= 0) throw new LocationNotFoundError();
   return toLocation(result.rows[0]);
 }
+
+export const getLocationsByBookId = async (bookId: string): Promise<Location[]> => {
+  const result = await getDb().query(
+    `
+    SELECT l.id, l.level, l.code, l.name, l.parent_id
+    FROM locations l
+    JOIN book_locations bl ON l.id = bl.location_id
+    WHERE bl.book_id = $1;
+    `, [ bookId ]
+  )
+  return result.rows.map(toLocation);
+}

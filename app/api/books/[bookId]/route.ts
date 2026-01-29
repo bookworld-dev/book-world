@@ -9,7 +9,6 @@ export const DELETE = async (_req: NextRequest, { params }: PromisedBookParams) 
   return new Response(null, { status: 204 });
 };
 
-
 export const GET = async (_req: NextRequest, { params }: PromisedBookParams) => {
   try {
     const { bookId } = await params;

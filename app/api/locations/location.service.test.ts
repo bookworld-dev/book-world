@@ -3,11 +3,12 @@ vi.mock('./location.repo', () => ({
   getAllLocations: vi.fn(),
   getPopulatedLocations: vi.fn(),
   getLocationByCode: vi.fn(),
-  getLocationById: vi.fn()
+  getLocationById: vi.fn(),
+  getLocationsByBookId: vi.fn()
 }));
 import * as locationService from './location.service';
-import { exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getAllLocations, getLocationByCode, getPopulatedLocations } from "./location.repo";
+import { exampleBook, exampleCountry, exampleState } from "../../__tests__/fixtures";
+import { getAllLocations, getLocationByCode, getPopulatedLocations, getLocationsByBookId } from "./location.repo";
 import type * as LocationRepo from "./location.repo";
 import { getLocationById } from "./location.repo";
 
@@ -26,11 +27,14 @@ const mockedRepoGetLocationByCode =
     typeof LocationRepo.getLocationByCode
   >;
 
-
-
 const mockedRepoGetLocationById =
   getLocationById as MockedFunction<
     typeof LocationRepo.getLocationById
+  >;
+
+const mockedRepoGetLocationsByBookId =
+  getLocationsByBookId as MockedFunction<
+    typeof LocationRepo.getLocationsByBookId
   >;
 
 describe('getLocations', async () => {
@@ -54,9 +58,17 @@ describe('getLocationByCode', async () => {
   });
 });
 
-describe('getLocaionById', async () => {
+describe('getLocationById', async () => {
   it('gets location by id from repo', async () => {
     mockedRepoGetLocationById.mockResolvedValue(exampleCountry);
     expect(await locationService.getLocationById(exampleCountry.id)).toEqual(exampleCountry);
+  });
+});
+
+describe('getLocationsByBookId', async () => {
+  it('gets locations by given book ID from location repo', async () => {
+    const locations = [exampleCountry, exampleState];
+    mockedRepoGetLocationsByBookId.mockResolvedValue(locations);
+    expect(await locationService.getLocationsByBookId(exampleBook.id)).toEqual(locations);
   });
 });

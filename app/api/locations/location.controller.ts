@@ -13,3 +13,7 @@ export const getLocationByCode = async (code: string): Promise<Location> => {
 export const getLocationById = async (id: string): Promise<Location> => {
   return locationService.getLocationById(id);
 }
+
+export const getLocationsByBookId = async (bookId: string): Promise<Location[]> => {
+  return await locationService.getLocationsByBookId(bookId);
+}

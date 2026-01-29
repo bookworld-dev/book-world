@@ -54,3 +54,16 @@ describe('getLocationById', async () => {
     await expect(locationRepo.getLocationById(randomUUID())).rejects.toBeInstanceOf(LocationNotFoundError);
   });
 });
+
+describe('getLocationsByBookId', async () => {
+  it('gets all locations by book id from database', async () => {
+    const country = await insertLocation(exampleCountryReq, null);
+    const state = await insertLocation(exampleStateReq, country.id);
+    const book = await insertBook(exampleBookReq);
+    await insertBookLocation(book, country);
+    await insertBookLocation(book, state);
+
+    const locations = await locationRepo.getLocationsByBookId(book.id);
+    expect(locations).toEqual([ country, state ]);
+  });
+});
