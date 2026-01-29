@@ -24,3 +24,19 @@ export type LocationRequest = {
 }
 
 export type Location = LocationRequest & UUIDPrimaryKey
+
+type BookParams = {
+  bookId: string;
+};
+
+export type PromisedBookParams = {
+  params: Promise<BookParams>;
+};
+
+type LocationParams = {
+  locationId: string;
+};
+
+export type PromisedLocationParams = {
+  params: Promise<LocationParams>;
+};

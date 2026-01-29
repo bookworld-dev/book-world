@@ -4,8 +4,8 @@ import { GET } from './random/route';
 import { insertBook, insertBookLocation, insertLocation } from '../../__tests__/helpers';
 import { NextRequest } from 'next/server';
 import { POST } from './route';
-import { title } from 'process';
 import { DELETE, GET as GET_BOOK } from './[bookId]/route';
+import { POST as POST_BOOK_LOCATION } from './[bookId]/locations/route';
 
 describe('GET /api/books/random', async () => {
   it('gets a random book for given location', async () => {
@@ -38,29 +38,29 @@ describe('POST /api/books', async () => {
       body: formData,
     });
     const res = await POST(req);
-    
+
     const json = await res.json();
-    expect(json.id).not.toEqual(undefined)
+    expect(json.id).not.toEqual(undefined);
     expect(json.author).toEqual(exampleBookReq.author);
     expect(json.title).toEqual(exampleBookReq.title);
-    expect(json.coverUrl).not.toEqual(undefined)
+    expect(json.coverUrl).not.toEqual(undefined);
   });
 });
 
 describe('GET /api/books/:bookId', async () => {
   it('gets a book', async () => {
-        const exampleBook = await insertBook(exampleBookReq);
-        const reqURL = `http://localhost/api/books/${exampleBook.id}`;
-        const reqParams = {params: { bookId: exampleBook.id }};
-        const req = new NextRequest(reqURL);
-        const res = await GET_BOOK(req, reqParams);
+    const exampleBook = await insertBook(exampleBookReq);
+    const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
+    const req = new NextRequest(reqURL);
+    const res = await GET_BOOK(req, reqParams);
 
-        expect(res.status).to.equal(200);
-        const json = await res.json();
-        expect(json.id).toEqual(exampleBook.id);
-        expect(json.title).toEqual(exampleBook.title);
-        expect(json.author).toEqual(exampleBook.author);
-        expect(json.coverUrl).toEqual(exampleBook.coverUrl);
+    expect(res.status).to.equal(200);
+    const json = await res.json();
+    expect(json.id).toEqual(exampleBook.id);
+    expect(json.title).toEqual(exampleBook.title);
+    expect(json.author).toEqual(exampleBook.author);
+    expect(json.coverUrl).toEqual(exampleBook.coverUrl);
   });
 });
 
@@ -68,12 +68,30 @@ describe('DELETE /api/books/:bookId', async () => {
   it('deletes a book', async () => {
     const exampleBook = await insertBook(exampleBookReq);
     const reqURL = `http://localhost/api/books/${exampleBook.id}`;
-    const reqParams = {params: { bookId: exampleBook.id }};
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
     const req = new NextRequest(reqURL);
     const res = await DELETE(req, reqParams);
     expect(res.status).toEqual(204);
 
     const get = await GET_BOOK(req, reqParams);
     expect(get.status).toEqual(404);
+  });
+});
+
+describe('POST /api/books/:bookId/locations', async () => {
+  it('adds a location to book', async () => {
+    const exampleBook = await insertBook(exampleBookReq);
+    const exampleCountry = await insertLocation(exampleCountryReq, null);
+    const formData = new FormData();
+    formData.append('locationId', exampleCountry.id);
+    const reqURL = `http://localhost/api/books/${exampleBook.id}/locations`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
+    const req = new NextRequest(reqURL, {
+      method: 'POST',
+      body: formData
+    });
+    const res = await POST_BOOK_LOCATION(req, reqParams);
+    expect(res.status).toEqual(201);
+    expect(await res.json()).toEqual({ bookId: exampleBook.id, locationId: exampleCountry.id });
   });
 });

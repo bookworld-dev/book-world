@@ -37,7 +37,7 @@ describe('GET /locations/:locationId/books', async () => {
     await insertBookLocation(book, country);
 
     const reqURL = `http://localhost/api/locations/${country.id}/books`;
-    const reqParams = {params: { locationId: country.id }};
+    const reqParams = {params: Promise.resolve({ locationId: country.id })};
     const req = await locationBooksRoutes.GET(new NextRequest(reqURL), reqParams);
     const res = await req.json();
     expect(res).toEqual([book]);

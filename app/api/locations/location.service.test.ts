@@ -13,7 +13,7 @@ import { getLocationById } from "./location.repo";
 
 const mockedRepoGetAllLocations =
   getAllLocations as MockedFunction<
-    typeof LocationRepo.getLocations
+    typeof LocationRepo.getAllLocations
   >;
 
 const mockedRepoGetPopulatedLocations =

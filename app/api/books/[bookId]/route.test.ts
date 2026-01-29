@@ -23,7 +23,7 @@ describe('GET api/books/:bookId', async () => {
   it('gets book by ID from the controller', async () => {
     mockedBookControllerGetBookById.mockResolvedValue(exampleBook);
     const reqURL = `http://localhost/api/books/${exampleBook.id}`;
-    const reqParams = { params: { bookId: exampleBook.id } };
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
     const req = new NextRequest(reqURL);
     const res = await GET(req, reqParams);
 
@@ -39,7 +39,7 @@ describe('GET api/books/:bookId', async () => {
 describe('DELETE api/books/:bookId', async () => {
   it('deletes book by ID with the controller', async () => {
     const reqURL = `http://localhost/api/books/${exampleBook.id}`;
-    const reqParams = { params: { bookId: exampleBook.id } };
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
     const req = new NextRequest(reqURL);
     const res = await DELETE(req, reqParams);
     expect(res.status).toEqual(204);

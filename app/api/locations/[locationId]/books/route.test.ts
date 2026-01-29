@@ -18,7 +18,7 @@ describe('/api/locations/:locationId/books', async () => {
     const books = [exampleBook];
     mockedControllerGetBooksByLocationId.mockResolvedValue(books);
     const reqURL = `http://localhost/api/locations/${exampleCountry.id}/books`;
-    const reqParams = {params: { locationId: exampleCountry.id }};
+    const reqParams = {params: Promise.resolve({ locationId: exampleCountry.id })};
     const req = await GET(new NextRequest(reqURL), reqParams);
     expect(await req.json()).toEqual(books);
   });
