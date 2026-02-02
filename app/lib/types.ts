@@ -40,3 +40,8 @@ type LocationParams = {
 export type PromisedLocationParams = {
   params: Promise<LocationParams>;
 };
+
+export type BookLocation = {
+  bookId: string;
+  locationId: string;
+}

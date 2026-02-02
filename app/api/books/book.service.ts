@@ -1,4 +1,4 @@
-import { Book, BookRequest, Location } from "@/app/lib/types";
+import { Book, BookLocation, BookRequest, Location } from "@/app/lib/types";
 import * as bookRepo from './book.repo';
 
 export const getRandomBookByLocation = async (location: Location): Promise<Book> => {
@@ -19,4 +19,8 @@ export const getBookById = async (id: string): Promise<Book> => {
 
 export const deleteBookById = async (id: string) => {
   return await bookRepo.deleteBookById(id);
+}
+
+export const createBookLocation = async (bookLocation: BookLocation) => {
+  await bookRepo.createBookLocation(bookLocation);
 }

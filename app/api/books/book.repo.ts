@@ -1,5 +1,5 @@
 import { getDb } from '@/app/lib/db';
-import { Book, BookRequest, Location } from '@/app/lib/types';
+import { Book, BookLocation, BookRequest, Location } from '@/app/lib/types';
 import { BookNotFoundError } from './book.errors';
 
 type BookDBRow = {
@@ -81,4 +81,13 @@ export const deleteBookById = async (id: string) => {
     DELETE FROM books WHERE id = $1;
     `, [id]
   )
+}
+
+export const createBookLocation = async (bookLocation: BookLocation) => {
+  await getDb().query(
+    `
+    INSERT INTO book_locations (book_id, location_id)
+    VALUES ($1,$2);
+    `, [ bookLocation.bookId, bookLocation.locationId ]
+  );
 }

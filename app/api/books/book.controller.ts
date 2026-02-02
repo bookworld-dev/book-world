@@ -1,4 +1,4 @@
-import { Book, BookAPIRequest } from "@/app/lib/types";
+import { Book, BookAPIRequest, BookLocation } from "@/app/lib/types";
 import * as bookService from "./book.service";
 import * as locationController from "../locations/location.controller";
 
@@ -26,4 +26,8 @@ export const getBookById = async (id: string): Promise<Book> => {
 
 export const deleteBookById = async (id: string) => {
   return await bookService.deleteBookById(id);
+}
+
+export const createBookLocation = async (bookLocation: BookLocation) => {
+  await bookService.createBookLocation(bookLocation);
 }
