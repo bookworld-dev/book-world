@@ -1,18 +1,25 @@
 "use client"
-import { useEffect } from "react";
-import { getRandomBookByLocation } from "./lib/book.api";
+import { useEffect, useState } from "react";
+import { getLocations } from "./lib/location.api";
+import { Location } from "./lib/types";
 
-export default function BookWorld() {
-  const getBookData = async () => {
-    const data = await getRandomBookByLocation('NL');
-    console.log(data);
+const BookWorld = () => {
+  const [ populatedLocations, setPopulatedLocations ] = useState<Location[]>([]);
+  const getPopulatedLocations = async () => {
+    const data = await getLocations(true);
+    setPopulatedLocations(data);
   }
 
   useEffect(() => {
-    getBookData()
+    getPopulatedLocations()
   }, [])
 
   return (
-    <p>book world</p>
+    <>
+      <p>active location codes:</p>
+      <p>{populatedLocations.map(location => location.code).join(', ')}</p>
+    </>
   );
 }
+
+export default BookWorld;
