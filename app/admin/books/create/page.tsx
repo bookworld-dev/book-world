@@ -1,5 +1,6 @@
 "use client";
 import { createBook } from "@/app/lib/book.api";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 type NewBook = {
@@ -37,12 +38,16 @@ const CreateBookForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     if (!newBook.cover) return;
     const formData = new FormData();
     formData.append('title', newBook.title);
     formData.append('author', newBook.author);
     formData.append('cover', newBook.cover);
-    createBook(formData);
+    
+    createBook(formData).then(book => {
+      redirect(`/admin/books/${book.id}`);
+    });
   }
 
   return (
