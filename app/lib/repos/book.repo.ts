@@ -1,6 +1,6 @@
 import { getDb } from '@/app/lib/db';
 import { Book, BookLocation, BookRequest, Location } from '@/app/lib/types';
-import { BookNotFoundError } from './book.errors';
+import { BookNotFoundError } from '../errors/book.errors';
 
 type BookDBRow = {
   id: number;

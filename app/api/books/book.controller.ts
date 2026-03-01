@@ -1,5 +1,5 @@
 import { Book, BookAPIRequest, BookLocation } from "@/app/lib/types";
-import * as bookService from "./book.service";
+import * as bookService from "../../lib/services/book.service";
 import * as locationController from "../locations/location.controller";
 
 export const getRandomBookByLocationCode = async (locationCode: string): Promise<Book> => {

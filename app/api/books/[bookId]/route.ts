@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as bookController from '../book.controller';
-import { BookNotFoundError } from "../book.errors";
+import { BookNotFoundError } from "../../../lib/errors/book.errors";
 import { PromisedBookParams } from "@/app/lib/types";
 
 export const GET = async (_req: NextRequest, { params }: PromisedBookParams) => {

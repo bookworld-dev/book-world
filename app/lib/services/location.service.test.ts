@@ -1,5 +1,5 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
-vi.mock('./location.repo', () => ({
+vi.mock('../repos/location.repo', () => ({
   getAllLocations: vi.fn(),
   getPopulatedLocations: vi.fn(),
   getLocationByCode: vi.fn(),
@@ -8,9 +8,9 @@ vi.mock('./location.repo', () => ({
 }));
 import * as locationService from './location.service';
 import { exampleBook, exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getAllLocations, getLocationByCode, getPopulatedLocations, getLocationsByBookId } from "./location.repo";
-import type * as LocationRepo from "./location.repo";
-import { getLocationById } from "./location.repo";
+import { getAllLocations, getLocationByCode, getPopulatedLocations, getLocationsByBookId } from "../repos/location.repo";
+import type * as LocationRepo from "../repos/location.repo";
+import { getLocationById } from "../repos/location.repo";
 
 const mockedRepoGetAllLocations =
   getAllLocations as MockedFunction<

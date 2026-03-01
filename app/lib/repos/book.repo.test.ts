@@ -2,7 +2,7 @@ import { exampleBookReq, exampleBookReq2, exampleCountry, exampleCountryReq, exa
 import { insertBook, insertBookLocation, insertLocation } from "@/app/__tests__/helpers";
 import { describe, expect, it } from "vitest";
 import * as bookRepo from './book.repo';
-import { BookNotFoundError } from "./book.errors";
+import { BookNotFoundError } from "../errors/book.errors";
 
 describe('getRandomBookByLocation', async () => {
   it('gets a random book for the location', async () => {

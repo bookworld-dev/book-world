@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import * as locationRepo from './location.repo';
 import { insertBook, insertBookLocation, insertLocation } from "@/app/__tests__/helpers";
 import { exampleBookReq, exampleBookReq2, exampleCountryReq, exampleCountryReq2, exampleStateReq } from "@/app/__tests__/fixtures";
-import { LocationNotFoundError } from "./location.errors";
+import { LocationNotFoundError } from "../errors/location.errors";
 import { randomUUID } from "crypto";
 
 describe('getAllLocations', async () => {

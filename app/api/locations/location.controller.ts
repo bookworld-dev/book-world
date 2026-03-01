@@ -1,5 +1,5 @@
 import { Location } from "@/app/lib/types";
-import * as locationService from './location.service';
+import * as locationService from '../../lib/services/location.service';
 
 export const getLocations = async (populatedQueryParam: string|null): Promise<Location[]> => {
   const populated = populatedQueryParam === 'true';

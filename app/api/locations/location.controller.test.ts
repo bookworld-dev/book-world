@@ -1,5 +1,5 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
-vi.mock('./location.service', () => ({
+vi.mock('../../lib/services/location.service', () => ({
   getLocations: vi.fn(),
   getLocationByCode: vi.fn(),
   getLocationById: vi.fn(),
@@ -7,8 +7,8 @@ vi.mock('./location.service', () => ({
 }));
 import * as locationController from './location.controller';
 import { exampleBook, exampleCountry, exampleState } from "../../__tests__/fixtures";
-import { getLocations, getLocationByCode, getLocationById, getLocationsByBookId } from "./location.service";
-import type * as LocationService from "./location.service"
+import { getLocations, getLocationByCode, getLocationById, getLocationsByBookId } from "../../lib/services/location.service";
+import type * as LocationService from "../../lib/services/location.service"
 
 const mockedServiceGetLocations =
   getLocations as MockedFunction<

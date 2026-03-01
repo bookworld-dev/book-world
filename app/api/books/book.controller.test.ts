@@ -1,5 +1,5 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
-vi.mock('./book.service', () => ({
+vi.mock('../../lib/services/book.service', () => ({
   getRandomBookByLocation: vi.fn(),
   getBooksByLocation: vi.fn(),
   createBook: vi.fn(),
@@ -13,8 +13,8 @@ vi.mock('../locations/location.controller', () => ({
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation } from "./book.service";
-import * as BookService from "./book.service";
+import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation } from "../../lib/services/book.service";
+import * as BookService from "../../lib/services/book.service";
 import { getLocationByCode, getLocationById } from "../locations/location.controller";
 import type * as LocationController from "../locations/location.controller";
 

@@ -1,5 +1,5 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
-vi.mock('./book.repo', () => ({
+vi.mock('../repos/book.repo', () => ({
   getRandomBookByLocation: vi.fn(),
   getBooksByLocation: vi.fn(),
   createBook: vi.fn(),
@@ -7,10 +7,10 @@ vi.mock('./book.repo', () => ({
   deleteBookById: vi.fn(),
   createBookLocation: vi.fn()
 }));
-import * as bookService from './book.service';
+import * as bookService from '../services/book.service';
 import { exampleBook, exampleBookReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation } from "./book.repo";
-import * as BookRepo from "./book.repo";
+import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation } from "../repos/book.repo";
+import * as BookRepo from "../repos/book.repo";
 
 const mockedRepoGetRandomBook =
   getRandomBookByLocation as MockedFunction<

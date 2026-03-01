@@ -1,5 +1,5 @@
 import { Location } from "@/app/lib/types";
-import * as locationRepo from './location.repo';
+import * as locationRepo from '../repos/location.repo';
 
 export const getLocations = async (populated: boolean): Promise<Location[]> => {
   return populated ?

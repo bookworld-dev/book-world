@@ -1,5 +1,8 @@
 import { getBookById } from "@/app/api/books/book.controller";
-import { getLocationsByBookId } from "@/app/api/locations/location.controller";
+import { getLocations, getLocationsByBookId } from "@/app/api/locations/location.controller";
+import BookInfo from "./components/BookInfo";
+import BookLocations from "./components/BookLocations";
+import CreateBookLocation from "./components/CreateBookLocation";
 
 type BookPageProps = {
   params: Promise<{
@@ -10,12 +13,14 @@ type BookPageProps = {
 const BookPage = async ({ params }: BookPageProps) => {
   const { bookId } = await params;
   const book = await getBookById(bookId);
-  const locations = await getLocationsByBookId(book.id);
+  const bookLocations = await getLocationsByBookId(book.id);
+  const allLocations = await getLocations(null);
 
   return (
     <main>
-      <h1>Book {JSON.stringify(book)}</h1>
-      <h1>Book locations {JSON.stringify(locations)}</h1>
+      <BookInfo book={book} />
+      <BookLocations locations={bookLocations} />
+      <CreateBookLocation book={book} locations={allLocations} />
     </main>
   );
 };

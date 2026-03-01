@@ -1,5 +1,5 @@
 "use client";
-import { createBook } from "@/app/lib/book.api";
+import { createBook } from "@/app/lib/api/book.api";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
@@ -40,12 +40,8 @@ const CreateBookForm = () => {
     e.preventDefault();
     
     if (!newBook.cover) return;
-    const formData = new FormData();
-    formData.append('title', newBook.title);
-    formData.append('author', newBook.author);
-    formData.append('cover', newBook.cover);
     
-    createBook(formData).then(book => {
+    createBook(newBook).then(book => {
       redirect(`/admin/books/${book.id}`);
     });
   }
