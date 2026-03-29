@@ -2,6 +2,7 @@
 import { createBookLocation } from "@/app/lib/api/book.api";
 import { Book, Location, LocationLevel } from "@/app/lib/types";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type CreateBookLocationProps = {
   locations: Location[];
@@ -10,6 +11,7 @@ type CreateBookLocationProps = {
 }
 
 const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
+  const router = useRouter();
   const [ level, setLevel ] = useState<LocationLevel>('country');
   const [ parentId, setParentId ] = useState<string>();
   const [ locationId, setLocationId ] = useState<string>();
@@ -24,6 +26,7 @@ const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
     if (validLocation()) {
       const bookLocation = { bookId: book.id, locationId: locationId! };
       createBookLocation(bookLocation).then(() => {
+        router.refresh();
       });
     }
   }

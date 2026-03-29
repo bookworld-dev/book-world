@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getLocations } from "./lib/location.api";
 import { Location } from "./lib/types";
+import { getLocations } from "./lib/api/location.api";
 
 const BookWorld = () => {
   const [populatedLocations, setPopulatedLocations] = useState<Location[]>([]);
