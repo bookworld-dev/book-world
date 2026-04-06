@@ -1,4 +1,4 @@
-import { BookLocation, PromisedBookParams } from "@/app/lib/types";
+import { PromisedBookParams } from "@/app/lib/types";
 import { NextRequest, NextResponse } from "next/server";
 import { getLocationsByBookId } from "@/app/api/locations/location.controller";
 import { createBookLocation } from "../../book.controller";
@@ -18,7 +18,6 @@ const validateLocationId = (formData: FormData): string => {
 export const POST = async (request: NextRequest, { params }: PromisedBookParams) => {
   const locationId = validateLocationId(await request.formData());
   const { bookId } = await params;
-  const bookLocation = { bookId, locationId };
-  await createBookLocation(bookLocation);
-  return NextResponse.json(bookLocation, { status: 201 });
+  await createBookLocation(bookId, locationId);
+  return NextResponse.json({ bookId, locationId }, { status: 201 });
 }

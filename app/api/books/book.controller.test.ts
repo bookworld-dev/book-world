@@ -105,7 +105,7 @@ describe('deleteBookById', async () => {
 describe('createBookLocation', async () => {
   it('creates book location with the service', async () => {
     const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
-    await bookController.createBookLocation(bookLocation);
+    await bookController.createBookLocation(exampleBook.id, exampleCountry.id);
     expect(mockedServiceCreateBookLocation).toHaveBeenCalledWith(bookLocation);
   });
 });
@@ -113,7 +113,7 @@ describe('createBookLocation', async () => {
 describe('deleteBookLocation', async () => {
   it('deletes book location with the service', async () => {
     const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
-    await bookController.deleteBookLocation(bookLocation);
+    await bookController.deleteBookLocation(exampleBook.id, exampleCountry.id);
     expect(mockedServiceDeleteBookLocation).toHaveBeenCalledWith(bookLocation);
   });
 });

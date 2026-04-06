@@ -50,6 +50,6 @@ describe('POST /locations/:locationId/books', async () => {
     expect(res.status).toEqual(201);
     const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
     expect(await res.json()).toEqual(bookLocation);
-    expect(mockedBookControllerCreateBookLocation).toHaveBeenCalledWith(bookLocation);
+    expect(mockedBookControllerCreateBookLocation).toHaveBeenCalledWith(exampleBook.id, exampleCountry.id);
   });
 });

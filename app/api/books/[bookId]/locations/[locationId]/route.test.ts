@@ -20,9 +20,6 @@ describe('DELETE /api/books/:bookId/locations/:locationId', async () => {
     const req = new NextRequest(reqURL, { method: 'DELETE' });
     const res = await bookLocationRoute.DELETE(req, reqParams);
     expect(res.status).toEqual(204);
-    expect(mockedBookControllerDeleteBookLocation).toHaveBeenCalledWith({
-      bookId: exampleBook.id,
-      locationId: exampleCountry.id
-    });
+    expect(mockedBookControllerDeleteBookLocation).toHaveBeenCalledWith(exampleBook.id, exampleCountry.id);
   });
 });

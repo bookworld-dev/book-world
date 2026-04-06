@@ -4,6 +4,6 @@ import { deleteBookLocation } from "../../../book.controller";
 
 export const DELETE = async (_req: NextRequest, { params }: PromisedBookLocationParams) => {
   const { bookId, locationId } = await params;
-  await deleteBookLocation({ bookId, locationId });
+  await deleteBookLocation(bookId, locationId);
   return new NextResponse(null, { status: 204 });
 }

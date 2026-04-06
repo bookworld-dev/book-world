@@ -1,4 +1,4 @@
-import { Book, BookAPIRequest, BookLocation } from "@/app/lib/types";
+import { Book, BookAPIRequest } from "@/app/lib/types";
 import * as bookService from "../../lib/services/book.service";
 import * as locationController from "../locations/location.controller";
 
@@ -10,13 +10,13 @@ export const getBooksByLocationId = async (locationId: string): Promise<Book[]> 
   return await bookService.getBooksByLocation(await locationController.getLocationById(locationId));
 }
 
-const uploadCover = (bookAPIReq: BookAPIRequest): string => {
+const uploadCover = (_cover: File): string => {
   return "";
 }
 
 export const createBook = async (bookAPIReq: BookAPIRequest): Promise<Book> => {
-  const { author, title } = bookAPIReq;
-  const coverUrl = uploadCover(bookAPIReq);
+  const { author, title, cover } = bookAPIReq;
+  const coverUrl = uploadCover(cover);
   return await bookService.createBook({ author, title, coverUrl });
 }
 
@@ -28,10 +28,10 @@ export const deleteBookById = async (id: string) => {
   return await bookService.deleteBookById(id);
 }
 
-export const createBookLocation = async (bookLocation: BookLocation) => {
-  await bookService.createBookLocation(bookLocation);
+export const createBookLocation = async (bookId: string, locationId: string) => {
+  await bookService.createBookLocation({ bookId, locationId });
 }
 
-export const deleteBookLocation = async (bookLocation: BookLocation) => {
-  await bookService.deleteBookLocation(bookLocation);
+export const deleteBookLocation = async (bookId: string, locationId: string) => {
+  await bookService.deleteBookLocation({ bookId, locationId });
 }
