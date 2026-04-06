@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 type CreateBookLocationProps = {
   locations: Location[];
   book: Book;
-  refetch: () => {}
 }
 
 const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
@@ -21,12 +20,19 @@ const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
       (locationId && parentId);
   }
 
+  const resetBookLocationForm = () => {
+    setLevel('country');
+    setParentId(undefined);
+    setLocationId(undefined);
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validLocation()) {
       const bookLocation = { bookId: book.id, locationId: locationId! };
       createBookLocation(bookLocation).then(() => {
         router.refresh();
+        resetBookLocationForm();
       });
     }
   }
