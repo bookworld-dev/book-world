@@ -71,7 +71,19 @@ describe('createBookLocation', async () => {
     const book = await insertBook(exampleBookReq);
     const location = await insertLocation(exampleCountryReq, null);
     await bookRepo.createBookLocation({ bookId: book.id, locationId: location.id });
-  
+
     expect(await bookRepo.getBooksByLocation(location)).toEqual([ book ]);
+  });
+});
+
+describe('deleteBookLocation', async () => {
+  it('deletes the book location from the database', async () => {
+    const book = await insertBook(exampleBookReq);
+    const location = await insertLocation(exampleCountryReq, null);
+    await insertBookLocation(book, location);
+
+    await bookRepo.deleteBookLocation({ bookId: book.id, locationId: location.id });
+
+    expect(await bookRepo.getBooksByLocation(location)).toEqual([]);
   });
 });

@@ -41,6 +41,15 @@ export type PromisedLocationParams = {
   params: Promise<LocationParams>;
 };
 
+type BookLocationParams = {
+  bookId: string;
+  locationId: string;
+};
+
+export type PromisedBookLocationParams = {
+  params: Promise<BookLocationParams>;
+};
+
 export type BookLocation = {
   bookId: string;
   locationId: string;

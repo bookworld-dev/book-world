@@ -6,6 +6,7 @@ import { NextRequest } from 'next/server';
 import { POST as POST_BOOK } from './route';
 import { DELETE as DELETE_BOOK, GET as GET_BOOK } from './[bookId]/route';
 import { GET as GET_BOOK_LOCATIONS, POST as POST_BOOK_LOCATION } from './[bookId]/locations/route';
+import { DELETE as DELETE_BOOK_LOCATION } from './[bookId]/locations/[locationId]/route';
 
 describe('GET /api/books/random', async () => {
   it('gets a random book for given location', async () => {
@@ -115,3 +116,22 @@ describe('POST /api/books/:bookId/locations', async () => {
     expect(await getRes.json()).toEqual([exampleCountry]);
   });
 });
+
+describe('DELETE /api/books/:bookId/locations/:locationId', async () => {
+  it('removes a location from a book', async () => {
+    const exampleBook = await insertBook(exampleBookReq);
+    const exampleCountry = await insertLocation(exampleCountryReq, null);
+    await insertBookLocation(exampleBook, exampleCountry);
+
+    const reqURL = `http://localhost/api/books/${exampleBook.id}/locations/${exampleCountry.id}`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id, locationId: exampleCountry.id }) };
+    const req = new NextRequest(reqURL, { method: 'DELETE' });
+    const res = await DELETE_BOOK_LOCATION(req, reqParams);
+    expect(res.status).toEqual(204);
+
+    const getReq = new NextRequest(`http://localhost/api/books/${exampleBook.id}/locations`);
+    const getRes = await GET_BOOK_LOCATIONS(getReq, { params: Promise.resolve({ bookId: exampleBook.id }) });
+    expect(await getRes.json()).toEqual([]);
+  });
+});
+

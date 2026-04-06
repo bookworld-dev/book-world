@@ -91,3 +91,12 @@ export const createBookLocation = async (bookLocation: BookLocation) => {
     `, [ bookLocation.bookId, bookLocation.locationId ]
   );
 }
+
+export const deleteBookLocation = async (bookLocation: BookLocation) => {
+  await getDb().query(
+    `
+    DELETE FROM book_locations
+    WHERE book_id = $1 AND location_id = $2;
+    `, [ bookLocation.bookId, bookLocation.locationId ]
+  );
+}

@@ -31,3 +31,7 @@ export const deleteBookById = async (id: string) => {
 export const createBookLocation = async (bookLocation: BookLocation) => {
   await bookService.createBookLocation(bookLocation);
 }
+
+export const deleteBookLocation = async (bookLocation: BookLocation) => {
+  await bookService.deleteBookLocation(bookLocation);
+}

@@ -5,7 +5,8 @@ vi.mock('../../lib/services/book.service', () => ({
   createBook: vi.fn(),
   getBookById: vi.fn(),
   deleteBookById: vi.fn(),
-  createBookLocation: vi.fn()
+  createBookLocation: vi.fn(),
+  deleteBookLocation: vi.fn()
 }));
 vi.mock('../locations/location.controller', () => ({
   getLocationByCode: vi.fn(),
@@ -13,7 +14,7 @@ vi.mock('../locations/location.controller', () => ({
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation } from "../../lib/services/book.service";
+import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
 import * as BookService from "../../lib/services/book.service";
 import { getLocationByCode, getLocationById } from "../locations/location.controller";
 import type * as LocationController from "../locations/location.controller";
@@ -46,6 +47,11 @@ const mockedServiceDeleteBookById =
 const mockedServiceCreateBookLocation =
   createBookLocation as MockedFunction<
     typeof BookService.createBookLocation
+  >;
+
+const mockedServiceDeleteBookLocation =
+  deleteBookLocation as MockedFunction<
+    typeof BookService.deleteBookLocation
   >;
 
 const mockedLocationControllerGetLocationByCode =
@@ -101,5 +107,13 @@ describe('createBookLocation', async () => {
     const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
     await bookController.createBookLocation(bookLocation);
     expect(mockedServiceCreateBookLocation).toHaveBeenCalledWith(bookLocation);
+  });
+});
+
+describe('deleteBookLocation', async () => {
+  it('deletes book location with the service', async () => {
+    const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
+    await bookController.deleteBookLocation(bookLocation);
+    expect(mockedServiceDeleteBookLocation).toHaveBeenCalledWith(bookLocation);
   });
 });
