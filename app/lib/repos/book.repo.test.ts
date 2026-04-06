@@ -1,4 +1,4 @@
-import { exampleBookReq, exampleBookReq2, exampleCountry, exampleCountryReq, exampleCountryReq2, exampleState, exampleStateReq } from "@/app/__tests__/fixtures";
+import { exampleBookReq, exampleBookReq2, exampleCountryReq, exampleCountryReq2, exampleStateReq } from "@/app/__tests__/fixtures";
 import { insertBook, insertBookLocation, insertLocation } from "@/app/__tests__/helpers";
 import { describe, expect, it } from "vitest";
 import * as bookRepo from './book.repo';
@@ -25,7 +25,7 @@ describe('getRandomBookByLocation', async () => {
   });
 });
 
-describe('getBooksByLocation', async () => {
+describe('getBooksByLocationId', async () => {
   it('gets all books for location from database', async () => {
     const book1 = await insertBook(exampleBookReq);
     const book2 = await insertBook(exampleBookReq2);
@@ -34,9 +34,9 @@ describe('getBooksByLocation', async () => {
     await insertBookLocation(book1, country);
     await insertBookLocation(book2, country);
 
-    expect(await bookRepo.getBooksByLocation(country)).toContainEqual(book1);
-    expect(await bookRepo.getBooksByLocation(country)).toContainEqual(book2);
-    expect(await bookRepo.getBooksByLocation(state)).to.be.empty;
+    expect(await bookRepo.getBooksByLocationId(country.id)).toContainEqual(book1);
+    expect(await bookRepo.getBooksByLocationId(country.id)).toContainEqual(book2);
+    expect(await bookRepo.getBooksByLocationId(state.id)).to.be.empty;
   });
 });
 
@@ -72,7 +72,7 @@ describe('createBookLocation', async () => {
     const location = await insertLocation(exampleCountryReq, null);
     await bookRepo.createBookLocation({ bookId: book.id, locationId: location.id });
 
-    expect(await bookRepo.getBooksByLocation(location)).toEqual([ book ]);
+    expect(await bookRepo.getBooksByLocationId(location.id)).toEqual([ book ]);
   });
 });
 
@@ -84,6 +84,6 @@ describe('deleteBookLocation', async () => {
 
     await bookRepo.deleteBookLocation({ bookId: book.id, locationId: location.id });
 
-    expect(await bookRepo.getBooksByLocation(location)).toEqual([]);
+    expect(await bookRepo.getBooksByLocationId(location.id)).toEqual([]);
   });
 });

@@ -7,7 +7,7 @@ export const getRandomBookByLocationCode = async (locationCode: string): Promise
 }
 
 export const getBooksByLocationId = async (locationId: string): Promise<Book[]> => {
-  return await bookService.getBooksByLocation(await locationController.getLocationById(locationId));
+  return await bookService.getBooksByLocationId(locationId);
 }
 
 const uploadCover = (_cover: File): string => {

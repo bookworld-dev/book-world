@@ -34,14 +34,14 @@ export const getRandomBookByLocation = async (location: Location): Promise<Book>
   return toBook(result.rows[0]);
 };
 
-export const getBooksByLocation = async (location: Location): Promise<Book[]> => {
+export const getBooksByLocationId = async (locationId: string): Promise<Book[]> => {
   const result = await getDb().query(
     `
     SELECT b.id, b.title, b.author, b.cover_url
     FROM books b
     JOIN book_locations bl ON bl.book_id = b.id
     WHERE bl.location_id = $1;
-    `, [location.id]
+    `, [locationId]
   );
 
   return result.rows.map(toBook);

@@ -5,8 +5,8 @@ export const getRandomBookByLocation = async (location: Location): Promise<Book>
   return bookRepo.getRandomBookByLocation(location);
 }
 
-export const getBooksByLocation = async (location: Location): Promise<Book[]> => {
-  return bookRepo.getBooksByLocation(location);
+export const getBooksByLocationId = async (locationId: string): Promise<Book[]> => {
+  return bookRepo.getBooksByLocationId(locationId);
 }
 
 export const createBook = async (bookReq: BookRequest): Promise<Book> => {

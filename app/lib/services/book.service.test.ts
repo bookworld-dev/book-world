@@ -1,7 +1,7 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('../repos/book.repo', () => ({
   getRandomBookByLocation: vi.fn(),
-  getBooksByLocation: vi.fn(),
+  getBooksByLocationId: vi.fn(),
   createBook: vi.fn(),
   getBookById: vi.fn(),
   deleteBookById: vi.fn(),
@@ -10,7 +10,7 @@ vi.mock('../repos/book.repo', () => ({
 }));
 import * as bookService from '../services/book.service';
 import { exampleBook, exampleBookReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../repos/book.repo";
+import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../repos/book.repo";
 import * as BookRepo from "../repos/book.repo";
 
 const mockedRepoGetRandomBook =
@@ -18,9 +18,9 @@ const mockedRepoGetRandomBook =
     typeof BookRepo.getRandomBookByLocation
   >;
 
-const mockedRepoGetBooksByLocation =
-  getBooksByLocation as MockedFunction<
-    typeof BookRepo.getBooksByLocation
+const mockedRepoGetBooksByLocationId =
+  getBooksByLocationId as MockedFunction<
+    typeof BookRepo.getBooksByLocationId
   >;
 
 const mockedRepoCreateBook =
@@ -55,11 +55,11 @@ describe('getRandomBookByLocation', async () => {
   });
 });
 
-describe('getBooksByLocation', async () => {
+describe('getBooksByLocationId', async () => {
   it('gets all books for location', async () => {
     const books = [exampleBook];
-    mockedRepoGetBooksByLocation.mockResolvedValue(books);
-    expect(await bookService.getBooksByLocation(exampleCountry)).toEqual(books);
+    mockedRepoGetBooksByLocationId.mockResolvedValue(books);
+    expect(await bookService.getBooksByLocationId(exampleCountry.id)).toEqual(books);
   });
 });
 

@@ -1,7 +1,7 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('../../lib/services/book.service', () => ({
   getRandomBookByLocation: vi.fn(),
-  getBooksByLocation: vi.fn(),
+  getBooksByLocationId: vi.fn(),
   createBook: vi.fn(),
   getBookById: vi.fn(),
   deleteBookById: vi.fn(),
@@ -10,13 +10,12 @@ vi.mock('../../lib/services/book.service', () => ({
 }));
 vi.mock('../locations/location.controller', () => ({
   getLocationByCode: vi.fn(),
-  getLocationById: vi.fn(),
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocation, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
+import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
 import * as BookService from "../../lib/services/book.service";
-import { getLocationByCode, getLocationById } from "../locations/location.controller";
+import { getLocationByCode } from "../locations/location.controller";
 import type * as LocationController from "../locations/location.controller";
 
 const mockedServiceGetRandomBook =
@@ -24,9 +23,9 @@ const mockedServiceGetRandomBook =
     typeof BookService.getRandomBookByLocation
   >;
 
-const mockedServiceGetBooksByLocation =
-  getBooksByLocation as MockedFunction<
-    typeof BookService.getBooksByLocation
+const mockedServiceGetBooksByLocationId =
+  getBooksByLocationId as MockedFunction<
+    typeof BookService.getBooksByLocationId
   >;
 
 const mockedServiceCreateBook =
@@ -59,11 +58,6 @@ const mockedLocationControllerGetLocationByCode =
     typeof LocationController.getLocationByCode
   >;
 
-const mockedLocationControllerGetLocationById =
-  getLocationById as MockedFunction<
-    typeof LocationController.getLocationById
-  >;
-
 describe('getRandomBookByLocationCode', async () => {
   it('gets random book from service', async () => {
     mockedLocationControllerGetLocationByCode.mockResolvedValue(exampleCountry);
@@ -72,11 +66,10 @@ describe('getRandomBookByLocationCode', async () => {
   });
 });
 
-describe('getBooksByLocation', async () => {
+describe('getBooksByLocationId', async () => {
   it('gets all books for given location', async () => {
     const books = [exampleBook];
-    mockedLocationControllerGetLocationById.mockResolvedValue(exampleCountry);
-    mockedServiceGetBooksByLocation.mockResolvedValue(books);
+    mockedServiceGetBooksByLocationId.mockResolvedValue(books);
     expect(await bookController.getBooksByLocationId(exampleCountry.id)).toEqual(books);
   });
 });
