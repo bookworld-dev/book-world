@@ -6,10 +6,6 @@ export const getLocations = async (populatedQueryParam: string|null): Promise<Lo
   return locationService.getLocations(populated);
 }
 
-export const getLocationByCode = async (code: string): Promise<Location> => {
-  return locationService.getLocationByCode(code);
-}
-
 export const getLocationById = async (id: string): Promise<Location> => {
   return locationService.getLocationById(id);
 }

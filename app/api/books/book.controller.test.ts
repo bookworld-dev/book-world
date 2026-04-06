@@ -1,6 +1,6 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('../../lib/services/book.service', () => ({
-  getRandomBookByLocation: vi.fn(),
+  getRandomBookByLocationCode: vi.fn(),
   getBooksByLocationId: vi.fn(),
   createBook: vi.fn(),
   getBookById: vi.fn(),
@@ -13,14 +13,12 @@ vi.mock('../locations/location.controller', () => ({
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
+import { getRandomBookByLocationCode, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
 import * as BookService from "../../lib/services/book.service";
-import { getLocationByCode } from "../locations/location.controller";
-import type * as LocationController from "../locations/location.controller";
 
-const mockedServiceGetRandomBook =
-  getRandomBookByLocation as MockedFunction<
-    typeof BookService.getRandomBookByLocation
+const mockedServiceGetRandomBookByLocationCode =
+  getRandomBookByLocationCode as MockedFunction<
+    typeof BookService.getRandomBookByLocationCode
   >;
 
 const mockedServiceGetBooksByLocationId =
@@ -53,15 +51,9 @@ const mockedServiceDeleteBookLocation =
     typeof BookService.deleteBookLocation
   >;
 
-const mockedLocationControllerGetLocationByCode =
-  getLocationByCode as MockedFunction<
-    typeof LocationController.getLocationByCode
-  >;
-
 describe('getRandomBookByLocationCode', async () => {
   it('gets random book from service', async () => {
-    mockedLocationControllerGetLocationByCode.mockResolvedValue(exampleCountry);
-    mockedServiceGetRandomBook.mockResolvedValue(exampleBook);
+    mockedServiceGetRandomBookByLocationCode.mockResolvedValue(exampleBook);
     expect(await bookController.getRandomBookByLocationCode(exampleCountry.code)).toEqual(exampleBook);
   });
 });

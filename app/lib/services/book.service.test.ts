@@ -8,10 +8,15 @@ vi.mock('../repos/book.repo', () => ({
   createBookLocation: vi.fn(),
   deleteBookLocation: vi.fn()
 }));
+vi.mock('./location.service', () => ({
+  getLocationByCode: vi.fn()
+}));
 import * as bookService from '../services/book.service';
 import { exampleBook, exampleBookReq, exampleCountry } from "../../__tests__/fixtures";
 import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../repos/book.repo";
 import * as BookRepo from "../repos/book.repo";
+import { getLocationByCode } from "./location.service";
+import * as LocationService from "./location.service";
 
 const mockedRepoGetRandomBook =
   getRandomBookByLocation as MockedFunction<
@@ -48,10 +53,16 @@ const mockedRepoDeleteBookLocation =
     typeof BookRepo.deleteBookLocation
   >;
 
+const mockedLocationServiceGetLocationByCode =
+  getLocationByCode as MockedFunction<
+    typeof LocationService.getLocationByCode
+  >;
+
 describe('getRandomBookByLocation', async () => {
   it('gets random book from service', async () => {
     mockedRepoGetRandomBook.mockResolvedValue(exampleBook);
-    expect(await bookService.getRandomBookByLocation(exampleCountry)).toEqual(exampleBook);
+    expect(await bookService.getRandomBookByLocationCode(exampleCountry.code)).toEqual(exampleBook);
+    expect(mockedLocationServiceGetLocationByCode).toHaveBeenCalledWith(exampleCountry.code);
   });
 });
 

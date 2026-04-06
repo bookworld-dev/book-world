@@ -1,7 +1,9 @@
-import { Book, BookLocation, BookRequest, Location } from "@/app/lib/types";
+import { Book, BookLocation, BookRequest } from "@/app/lib/types";
 import * as bookRepo from '../repos/book.repo';
+import * as locationService from './location.service';
 
-export const getRandomBookByLocation = async (location: Location): Promise<Book> => {
+export const getRandomBookByLocationCode = async (locationCode: string): Promise<Book> => {
+  const location = await locationService.getLocationByCode(locationCode);
   return bookRepo.getRandomBookByLocation(location);
 }
 
