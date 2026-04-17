@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { exampleBookReq, exampleCountryReq, exampleStateReq } from '../../__tests__/fixtures';
+import { exampleBookReq, exampleBookReq2, exampleCountryReq, exampleStateReq } from '../../__tests__/fixtures';
 import { GET } from './random/route';
 import { insertBook, insertBookLocation, insertLocation } from '../../__tests__/helpers';
 import { NextRequest } from 'next/server';
-import { POST as POST_BOOK } from './route';
+import { POST as POST_BOOK, GET as QUERY_BOOK } from './route';
 import { DELETE as DELETE_BOOK, GET as GET_BOOK } from './[bookId]/route';
 import { GET as GET_BOOK_LOCATIONS, POST as POST_BOOK_LOCATION } from './[bookId]/locations/route';
 import { DELETE as DELETE_BOOK_LOCATION } from './[bookId]/locations/[locationId]/route';
@@ -132,6 +132,31 @@ describe('DELETE /api/books/:bookId/locations/:locationId', async () => {
     const getReq = new NextRequest(`http://localhost/api/books/${exampleBook.id}/locations`);
     const getRes = await GET_BOOK_LOCATIONS(getReq, { params: Promise.resolve({ bookId: exampleBook.id }) });
     expect(await getRes.json()).toEqual([]);
+  });
+});
+
+describe('GET /api/books', async () => {
+  it('searches for book titles and authors based on query', async () => {
+    const exampleBook = await insertBook({
+      ...exampleBookReq,
+      title: "Query Book Title"
+    });
+    const exampleBook2 = await insertBook({
+      ...exampleBookReq2,
+      author: "John Smith"
+    });
+
+    let reqURL = `http://localhost/api/books?q=query`;
+    let req = new NextRequest(reqURL);
+    let res = await QUERY_BOOK(req);
+    expect(res.status).toEqual(200);
+    expect(await res.json()).toEqual([exampleBook]);
+
+    reqURL = `http://localhost/api/books?q=John`;
+    req = new NextRequest(reqURL);
+    res = await QUERY_BOOK(req);
+    expect(res.status).toEqual(200);
+    expect(await res.json()).toEqual([exampleBook2]);
   });
 });
 

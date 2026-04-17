@@ -29,3 +29,10 @@ export const POST = async (request: NextRequest) => {
     );
   }
 }
+
+export const GET = async (request: NextRequest) => {
+  const { searchParams } = new URL(request.url);
+  const query = searchParams.get('q');
+  if (!query) return NextResponse.json([], {status: 200});
+  return NextResponse.json(await bookController.queryBooks(query));
+}

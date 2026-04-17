@@ -6,14 +6,15 @@ vi.mock('../../lib/services/book.service', () => ({
   getBookById: vi.fn(),
   deleteBookById: vi.fn(),
   createBookLocation: vi.fn(),
-  deleteBookLocation: vi.fn()
+  deleteBookLocation: vi.fn(),
+  queryBooks: vi.fn()
 }));
 vi.mock('../locations/location.controller', () => ({
   getLocationByCode: vi.fn(),
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocationCode, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation } from "../../lib/services/book.service";
+import { getRandomBookByLocationCode, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation, queryBooks } from "../../lib/services/book.service";
 import * as BookService from "../../lib/services/book.service";
 
 const mockedServiceGetRandomBookByLocationCode =
@@ -49,6 +50,11 @@ const mockedServiceCreateBookLocation =
 const mockedServiceDeleteBookLocation =
   deleteBookLocation as MockedFunction<
     typeof BookService.deleteBookLocation
+  >;
+
+const mockedServiceQueryBooks =
+  queryBooks as MockedFunction<
+    typeof BookService.queryBooks
   >;
 
 describe('getRandomBookByLocationCode', async () => {
@@ -100,5 +106,14 @@ describe('deleteBookLocation', async () => {
     const bookLocation = { bookId: exampleBook.id, locationId: exampleCountry.id };
     await bookController.deleteBookLocation(exampleBook.id, exampleCountry.id);
     expect(mockedServiceDeleteBookLocation).toHaveBeenCalledWith(bookLocation);
+  });
+});
+
+describe('queryBooks', async () => {
+  it('queries books with the service', async () => {
+    const books = [exampleBook];
+    mockedServiceQueryBooks.mockResolvedValue(books);
+    const query = "query";
+    expect(await bookController.queryBooks(query)).toEqual(books);
   });
 });

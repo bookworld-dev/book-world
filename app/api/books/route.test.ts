@@ -1,16 +1,22 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('./book.controller', () => ({
   createBook: vi.fn(),
+  queryBooks: vi.fn()
 }));
-import { exampleBook, exampleBookAPIReq, exampleBookReq } from "@/app/__tests__/fixtures";
+import { exampleBook, exampleBookAPIReq } from "@/app/__tests__/fixtures";
 import { NextRequest } from "next/server";
-import { POST } from "./route";
-import { createBook } from "./book.controller";
+import { POST, GET } from "./route";
+import { createBook, queryBooks } from "./book.controller";
 import type * as BookController from './book.controller';
 
 const mockedBookControllerCreateBook =
   createBook as MockedFunction<
     typeof BookController.createBook
+  >;
+
+const mockedBookControllerQueryBook =
+  queryBooks as MockedFunction<
+    typeof BookController.queryBooks
   >;
 
 describe('POST /api/books', async () => {
@@ -32,5 +38,25 @@ describe('POST /api/books', async () => {
     expect(json.author).toEqual(exampleBook.author);
     expect(json.title).toEqual(exampleBook.title);
     expect(json.coverUrl).toEqual(exampleBook.coverUrl);
+  });
+});
+
+describe('GET /api/books', async () => {
+  it('searches for books based on query', async () => {
+    mockedBookControllerQueryBook.mockResolvedValue([exampleBook]);
+
+    let reqURL = `http://localhost/api/books?q=query`;
+    let req = new NextRequest(reqURL);
+    let res = await GET(req);
+    expect(res.status).toEqual(200);
+    expect(await res.json()).toEqual([exampleBook]);
+  });
+
+  it('returns an empty list if query is missing', async () => {
+    let reqURL = `http://localhost/api/books`;
+    let req = new NextRequest(reqURL);
+    let res = await GET(req);
+    expect(res.status).toEqual(200);
+    expect(await res.json()).toEqual([]);
   });
 });

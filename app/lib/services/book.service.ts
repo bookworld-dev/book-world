@@ -30,3 +30,7 @@ export const createBookLocation = async (bookLocation: BookLocation) => {
 export const deleteBookLocation = async (bookLocation: BookLocation) => {
   await bookRepo.deleteBookLocation(bookLocation);
 }
+
+export const queryBooks = async (query: string): Promise<Book[]> => {
+  return bookRepo.queryBooks(query);
+}

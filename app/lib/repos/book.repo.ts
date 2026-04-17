@@ -100,3 +100,17 @@ export const deleteBookLocation = async (bookLocation: BookLocation) => {
     `, [ bookLocation.bookId, bookLocation.locationId ]
   );
 }
+
+export const queryBooks = async (query: string): Promise<Book[]> => {
+  const result = await getDb().query(
+    `
+    SELECT id, title, author, cover_url
+    FROM books
+    WHERE title ILIKE $1 OR author ILIKE $1
+    ORDER BY title
+    LIMIT 50;
+    `, [`%${query}%`]
+  );
+
+  return result.rows.map(toBook);
+}
