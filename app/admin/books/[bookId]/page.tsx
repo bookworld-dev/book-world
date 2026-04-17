@@ -19,7 +19,7 @@ const BookPage = async ({ params }: BookPageProps) => {
   return (
     <main>
       <BookInfo book={book} />
-      <BookLocations locations={bookLocations} />
+      <BookLocations bookId={book.id} locations={bookLocations} />
       <CreateBookLocation book={book} locations={allLocations} />
     </main>
   );

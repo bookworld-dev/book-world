@@ -1,22 +1,32 @@
+import { deleteBookLocation } from "@/app/api/books/book.controller";
 import { Location } from "@/app/lib/types";
+import { revalidatePath } from "next/cache";
 
 type BookLocationsProps = {
-  locations: Location[]
+  bookId: string;
+  locations: Location[];
 }
 
-const BookLocations = ({locations}: BookLocationsProps) => {
-  const displayLocation = (location: Location) => {
-    return <li key={location.code}>{location.name} ({location.code})</li>
-  }
+const BookLocations = ({ bookId, locations }: BookLocationsProps) => {
+  const deleteLocation = async (locationId: string) => {
+    "use server";
+    await deleteBookLocation(bookId, locationId);
+    revalidatePath(`/admin/books/${bookId}`);
+  };
 
   return (
     <div>
       <p>Locations:</p>
-      {
-        locations.map(displayLocation)
-      }
+      {locations.map((location) => (
+        <div key={location.code}>
+          {location.name} ({location.code})
+          <form action={deleteLocation.bind(null, location.id)}>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
 export default BookLocations
