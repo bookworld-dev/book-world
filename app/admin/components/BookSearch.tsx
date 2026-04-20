@@ -23,7 +23,7 @@ const BookSearch = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Title"
+          placeholder="Search by title or author"
           value={query}
           onChange={handleQueryChange}
           aria-label="book-query"
