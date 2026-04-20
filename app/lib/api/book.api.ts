@@ -5,6 +5,10 @@ export const getRandomBookByLocation = async (location: string): Promise<Book> =
   return apiFetch<Book>(`/api/books/random?location=${location}`);
 };
 
+export const searchBooks = async (query: string): Promise<Book[]> => {
+  return apiFetch<Book[]>(`/api/books?q=${query}`);
+};
+
 export const createBook = async (book: BookAPIRequest): Promise<Book> => {
   const formData = new FormData();
   formData.append('title', book.title);
