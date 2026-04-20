@@ -1,3 +1,12 @@
+export const apiDelete = async (path: string): Promise<void> => {
+  const res = await fetch(path, { method: 'DELETE' });
+
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => ({}));
+    throw new Error(errorBody?.message || 'API request failed');
+  }
+}
+
 export const apiFetch = async <T>(path: string, options?: RequestInit): Promise<T> => {
   const res = await fetch(path, {
     ...options,

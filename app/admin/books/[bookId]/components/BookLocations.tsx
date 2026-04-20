@@ -1,6 +1,7 @@
-import { deleteBookLocation } from "@/app/api/books/book.controller";
+"use client";
+import { deleteBookLocation } from "@/app/lib/api/book.api";
 import { Location } from "@/app/lib/types";
-import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 type BookLocationsProps = {
   bookId: string;
@@ -8,23 +9,28 @@ type BookLocationsProps = {
 }
 
 const BookLocations = ({ bookId, locations }: BookLocationsProps) => {
-  const deleteLocation = async (locationId: string) => {
-    "use server";
-    await deleteBookLocation(bookId, locationId);
-    revalidatePath(`/admin/books/${bookId}`);
-  };
+  const router = useRouter();
+  const deleteLocation = (locationId: string) => {
+    deleteBookLocation(bookId, locationId)
+      .then(() => router.refresh())
+  }
+
+  const handleDeleteClick = (locationId: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    deleteLocation(locationId);
+  }
 
   return (
     <div>
       <p>Locations:</p>
-      {locations.map((location) => (
-        <div key={location.code}>
-          {location.name} ({location.code})
-          <form action={deleteLocation.bind(null, location.id)}>
-            <button type="submit">Delete</button>
-          </form>
-        </div>
-      ))}
+      <ul>
+        {locations.map((location) => (
+          <li key={location.code}>
+            {location.name} ({location.code}) |
+            &nbsp;<a href="" onClick={handleDeleteClick(location.id)}>delete</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

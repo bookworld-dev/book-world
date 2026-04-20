@@ -1,6 +1,7 @@
 "use client"
 import { searchBooks } from "@/app/lib/api/book.api";
 import { Book } from "@/app/lib/types";
+import Link from "next/link";
 import { useState } from "react";
 
 const BookSearch = () => {
@@ -33,9 +34,9 @@ const BookSearch = () => {
       {
         bookResults.map(bookResult => 
           <li key={bookResult.id}>
-            <a href={`/admin/books/${bookResult.id}`}>
+            <Link href={`/admin/books/${bookResult.id}`}>
               <span className="book-title">{bookResult.title}</span> by <span className="book-author">{bookResult.author}</span>
-            </a>
+            </Link>
           </li>
         )
       }

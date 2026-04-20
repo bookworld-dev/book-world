@@ -1,6 +1,7 @@
 import { getBooksByLocationId } from "@/app/api/books/book.controller";
 import { getLocationById } from "@/app/api/locations/location.controller";
 import { Book } from "@/app/lib/types";
+import Link from "next/link";
 
 type LocationPageProps = {
   params: Promise<{
@@ -19,7 +20,7 @@ const LocationPage = async ({ params }: LocationPageProps) => {
       <ul>
         {books.map((book: Book) => (
           <li key={book.id}>
-            <a href=""><span className="book-title">{book.title}</span> by <span className="book-author">{book.author}</span></a>
+            <Link href={`/admin/books/${book.id}`}><span className="book-title">{book.title}</span> by <span className="book-author">{book.author}</span></Link>
           </li>
         ))}
       </ul>

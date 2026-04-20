@@ -1,4 +1,4 @@
-import { apiFetch } from './api';
+import { apiDelete, apiFetch } from './api';
 import { Book, BookAPIRequest, BookLocation } from '../types';
 
 export const getRandomBookByLocation = async (location: string): Promise<Book> => {
@@ -22,4 +22,8 @@ export const createBookLocation = async (bookLocation: BookLocation): Promise<Bo
   const formData = new FormData();
   formData.append('locationId', locationId);
   return apiFetch<BookLocation>(`/api/books/${bookId}/locations`, { method: 'POST', body: formData });
+};
+
+export const deleteBookLocation = async (bookId: string, locationId: string) => {
+  await apiDelete(`/api/books/${bookId}/locations/${locationId}`);
 };
