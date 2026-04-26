@@ -1,0 +1,15 @@
+body {
+    padding: 12px 16px;
+}
+
+.admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
