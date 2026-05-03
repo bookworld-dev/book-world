@@ -39,9 +39,10 @@ const CreateBookForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!newBook.cover) return;
-    
-    createBook(newBook).then(book => {
+    const { cover } = newBook;
+    if (!cover) return;
+
+    createBook({ ...newBook, cover }).then(book => {
       redirect(`/admin/books/${book.id}`);
     });
   }

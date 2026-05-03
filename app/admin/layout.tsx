@@ -13,14 +13,16 @@ export default function AdminLayout({
         <div className="admin-nav-links">
           <Link href="/admin">Admin home</Link>
           <span> | </span>
+          <Link href="/admin/books/create">New book</Link>
+          <span> | </span>
           <Link href="/">Bookworld home</Link>
         </div>
-        <a className="admin-nav-sign-out" href="#" onClick={async () => {
+        <form action={async () => {
           "use server";
           await signOut({ redirectTo: "/" });
         }}>
-          Sign out
-        </a>
+          <button type="submit" className="admin-nav-sign-out">Sign out</button>
+        </form>
       </div>
       <main>
         {children}
