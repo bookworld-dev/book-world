@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/364750689185/locations/global/workloadIdentityPools/github/providers/github-actions
+          service_account: github-actions@bookworld-283512.iam.gserviceaccount.com
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker europe-west2-docker.pkg.dev --quiet
+
+      - name: Build and push image
+        run: |
+          docker build --platform linux/amd64 \
+            -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:${{ github.sha }} \
+            -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:latest \
+            .
+          docker push europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:${{ github.sha }}
+          docker push europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:latest
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy book-world \
+            --image europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:${{ github.sha }} \
+            --region europe-west2 \
+            --project bookworld-283512
