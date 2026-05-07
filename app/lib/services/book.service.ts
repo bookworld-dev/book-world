@@ -1,6 +1,7 @@
-import { Book, BookLocation, BookRequest } from "@/app/lib/types";
+import { Book, BookAPIRequest, BookLocation } from "@/app/lib/types";
 import * as bookRepo from '../repos/book.repo';
 import * as locationService from './location.service';
+import { uploadCover, deleteCover } from '../storage/cover';
 
 export const getRandomBookByLocationCode = async (locationCode: string): Promise<Book> => {
   const location = await locationService.getLocationByCode(locationCode);
@@ -11,8 +12,9 @@ export const getBooksByLocationId = async (locationId: string): Promise<Book[]> 
   return bookRepo.getBooksByLocationId(locationId);
 }
 
-export const createBook = async (bookReq: BookRequest): Promise<Book> => {
-  return bookRepo.createBook(bookReq);
+export const createBook = async ({ title, author, cover }: BookAPIRequest): Promise<Book> => {
+  const coverUrl = await uploadCover(cover);
+  return bookRepo.createBook({ title, author, coverUrl });
 }
 
 export const getBookById = async (id: string): Promise<Book> => {
@@ -20,6 +22,12 @@ export const getBookById = async (id: string): Promise<Book> => {
 }
 
 export const deleteBookById = async (id: string) => {
+  const book = await bookRepo.getBookById(id);
+
+  if (book.coverUrl) {
+    await deleteCover(book.coverUrl);
+  }
+
   return await bookRepo.deleteBookById(id);
 }
 

@@ -1,4 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+vi.mock('../../lib/storage/cover', () => ({
+  uploadCover: vi.fn().mockResolvedValue('https://storage.googleapis.com/test-bucket/test.jpg'),
+  deleteCover: vi.fn().mockResolvedValue(undefined),
+}));
 import { exampleBookReq, exampleBookReq2, exampleCountryReq, exampleStateReq } from '../../__tests__/fixtures';
 import { GET } from './random/route';
 import { insertBook, insertBookLocation, insertLocation } from '../../__tests__/helpers';
