@@ -10,6 +10,9 @@ RUN npm ci
 FROM base AS builder
 WORKDIR /app
 
+ARG NEXT_PUBLIC_MAPBOX_TOKEN
+ENV NEXT_PUBLIC_MAPBOX_TOKEN=$NEXT_PUBLIC_MAPBOX_TOKEN
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
