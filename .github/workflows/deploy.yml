@@ -31,6 +31,7 @@ jobs:
       - name: Build and push image
         run: |
           docker build --platform linux/amd64 \
+            --no-cache \
             --build-arg NEXT_PUBLIC_MAPBOX_TOKEN=$NEXT_PUBLIC_MAPBOX_TOKEN \
             -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:${{ github.sha }} \
             -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:latest \
