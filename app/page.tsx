@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import MapLoader from './components/MapLoader';
 import { getLocations } from '@/app/lib/services/location.service';
 
