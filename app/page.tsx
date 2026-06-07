@@ -1,25 +1,7 @@
-"use client";
-import { useEffect, useState } from "react";
-import { Location } from "./lib/types";
-import { getLocations } from "./lib/api/location.api";
+import MapLoader from './components/MapLoader';
+import { getLocations } from '@/app/lib/services/location.service';
 
-const BookWorld = () => {
-  const [populatedLocations, setPopulatedLocations] = useState<Location[]>([]);
-  const getPopulatedLocations = async () => {
-    const data = await getLocations(true);
-    setPopulatedLocations(data);
-  };
-
-  useEffect(() => {
-    getPopulatedLocations();
-  }, []);
-
-  return (
-    <>
-      <p>active location codes:</p>
-      <p>{populatedLocations.map(location => location.code).join(', ')}</p>
-    </>
-  );
-};
-
-export default BookWorld;
+export default async function Home() {
+  const locations = await getLocations(true);
+  return <MapLoader activeLocations={locations} />;
+}

@@ -1,7 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .book-title {
-    font-style: italic;
+  font-style: italic;
 }
 
 .book-author {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.book-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: white;
+  padding: 48px 24px 24px;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-panel-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.book-panel-cover {
+  width: 100%;
+  max-width: 200px;
+  display: block;
 }
