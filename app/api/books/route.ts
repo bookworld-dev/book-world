@@ -18,16 +18,14 @@ const validateParamTypes = (formData: FormData): BookAPIRequest => {
 
 export const POST = async (request: NextRequest) => {
   const formData = await request.formData();
+  let bookReq;
   try {
-    const bookReq = validateParamTypes(formData);
-    const book = await bookController.createBook(bookReq);
-    return NextResponse.json(book, { status: 201 });
+    bookReq = validateParamTypes(formData);
   } catch(e) {
-    return NextResponse.json(
-      { error: 'Invalid payload' },
-      { status: 400 }
-    );
+    return NextResponse.json({ message: e instanceof Error ? e.message : 'Invalid payload' }, { status: 400 });
   }
+  const book = await bookController.createBook(bookReq);
+  return NextResponse.json(book, { status: 201 });
 }
 
 export const GET = async (request: NextRequest) => {

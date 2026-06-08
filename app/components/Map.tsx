@@ -2,10 +2,10 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import ReactMap, { Source, Layer } from 'react-map-gl/mapbox';
-import type { FillLayerSpecification, MapMouseEvent, ExpressionSpecification, MapLayerMouseEvent } from 'mapbox-gl';
+import type { FillLayerSpecification, MapMouseEvent, ExpressionSpecification } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Location } from '@/app/lib/types';
-import BookPanel from './BookPanel';
+import BookDetails from './BookDetails';
 
 type Props = {
   activeLocations: Location[];
@@ -26,7 +26,7 @@ const codeToColor = (code: string): string => {
 const colorMatchExpression = (codes: string[], property: string): ExpressionSpecification => [
   'match',
   ['get', property],
-  ...codes.flatMap(code => [code, codeToColor(code)]),
+  ...(codes.length > 0 ? codes.flatMap(code => [code, codeToColor(code)]) : ['__none__', '#cccccc']),
   '#cccccc',
 ];
 
@@ -145,7 +145,10 @@ export default function Map({ activeLocations }: Props) {
       )}
 
       {selectedCode && (
-        <BookPanel locationCode={selectedCode} onClose={() => setSelectedCode(null)} />
+        <>
+          <div className="book-panel-backdrop" onClick={() => setSelectedCode(null)} />
+          <BookDetails locationCode={selectedCode} onClose={() => setSelectedCode(null)} />
+        </>
       )}
     </div>
   );

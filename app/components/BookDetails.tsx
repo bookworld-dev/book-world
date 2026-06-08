@@ -9,7 +9,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function BookPanel({ locationCode, onClose }: Props) {
+export default function BookDetails({ locationCode, onClose }: Props) {
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

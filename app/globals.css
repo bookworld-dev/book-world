@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html, body {
+  background: #d8eaf5;
+}
+
 .book-title {
   font-style: italic;
 }
@@ -12,20 +16,35 @@
   font-weight: bold;
 }
 
+.book-panel-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9;
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 .book-panel {
   position: absolute;
   top: 0;
   right: 0;
-  width: 280px;
+  width: 320px;
   height: 100%;
-  background: white;
+  background: #d8eaf5;
   padding: 48px 24px 24px;
-  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 24px rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   z-index: 10;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  animation: slideInFromRight 0.25s ease-out;
 }
 
 .book-panel-close {
