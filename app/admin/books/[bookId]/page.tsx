@@ -17,11 +17,11 @@ const BookPage = async ({ params }: BookPageProps) => {
   const allLocations = await getLocations(null);
 
   return (
-    <main>
+    <>
       <BookInfo book={book} />
       <BookLocations bookId={book.id} locations={bookLocations} />
       <CreateBookLocation book={book} locations={allLocations} />
-    </main>
+    </>
   );
 };
 

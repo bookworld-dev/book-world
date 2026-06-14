@@ -19,27 +19,32 @@ const BookSearch = () => {
 
   return (
     <>
-      <h3>Search for book:</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search by title or author"
-          value={query}
-          onChange={handleQueryChange}
-          aria-label="book-query"
-          required
-        />
-        <button type="submit">Search</button>
+      <h3>Search books</h3>
+      <form className="admin-form" onSubmit={handleSubmit}>
+        <div className="admin-field">
+          <input
+            className="admin-input"
+            type="text"
+            placeholder="Search by title or author"
+            value={query}
+            onChange={handleQueryChange}
+            aria-label="book-query"
+            required
+          />
+        </div>
+        <button className="admin-btn admin-btn-primary" type="submit">Search</button>
       </form>
-      {
-        bookResults.map(bookResult => 
-          <li key={bookResult.id}>
-            <Link href={`/admin/books/${bookResult.id}`}>
-              <span className="book-title">{bookResult.title}</span> by <span className="book-author">{bookResult.author}</span>
+      {bookResults.length > 0 && (
+        <div className="admin-results">
+          {bookResults.map(bookResult =>
+            <Link className="admin-result-item" key={bookResult.id} href={`/admin/books/${bookResult.id}`}>
+              <span className="book-title">{bookResult.title}</span>
+              {' '}by{' '}
+              <span className="book-author">{bookResult.author}</span>
             </Link>
-          </li>
-        )
-      }
+          )}
+        </div>
+      )}
     </>
   );
 };

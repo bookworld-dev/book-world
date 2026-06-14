@@ -8,14 +8,14 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <div className="admin-nav">
+    <div className="admin-container">
+      <nav className="admin-nav">
         <div className="admin-nav-links">
-          <Link href="/admin">Admin home</Link>
-          <span> | </span>
+          <Link href="/">Bookworld Map</Link>
+          <span>|</span>
+          <Link href="/admin">Admin Home</Link>
+          <span>|</span>
           <Link href="/admin/books/create">New book</Link>
-          <span> | </span>
-          <Link href="/">Bookworld home</Link>
         </div>
         <form action={async () => {
           "use server";
@@ -23,10 +23,8 @@ export default function AdminLayout({
         }}>
           <button type="submit" className="admin-nav-sign-out">Sign out</button>
         </form>
-      </div>
-      <main>
-        {children}
-      </main>
-    </>
+      </nav>
+      {children}
+    </div>
   );
 }

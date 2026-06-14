@@ -1,15 +1,249 @@
-body {
-    padding: 12px 16px;
+.admin-container {
+  padding: 24px 32px;
+  color: #1a1a1a;
 }
 
+/* Nav */
 .admin-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #c8dcea;
 }
 
 .admin-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.admin-nav-links a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.admin-nav-links a:hover {
+  background: rgba(37,99,235,0.08);
+}
+
+.admin-nav-links span {
+  color: #c8dcea;
+}
+
+.admin-nav-sign-out {
+  background: none;
+  border: 1px solid #c8dcea;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+}
+
+.admin-nav-sign-out:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+/* Sections */
+.admin-section {
+  background: #fffebb;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+
+.admin-section h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.admin-section h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.admin-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+/* Forms */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.admin-input,
+.admin-select {
+  padding: 9px 12px;
+  border: 1px solid #c8dcea;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+
+.admin-input:focus,
+.admin-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* Buttons */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s;
+  align-self: flex-start;
+}
+
+.admin-btn-primary {
+  background: #cdffbb;
+  color: black;
+}
+
+.admin-btn-primary:hover {
+  background: #72cd51;;
+}
+
+.admin-btn-primary:disabled {
+  background: #e8e8e8;
+  cursor: not-allowed;
+}
+
+.admin-btn-danger {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.admin-btn-danger:hover {
+  color: #991b1b;
+  text-decoration: underline;
+}
+
+/* Cover images */
+.admin-cover {
+  width: 100px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: block;
+  flex-shrink: 0;
+}
+
+.admin-cover-preview {
+  width: 100px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: block;
+}
+
+/* Book header on detail page */
+.admin-book-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.admin-book-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-book-meta h1 {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.admin-book-meta h2 {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Location list */
+.admin-location-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.admin-location-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f4f8fb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.admin-location-code {
+  font-size: 12px;
+  color: #888;
+  margin-left: 6px;
+}
+
+/* Search results */
+.admin-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.admin-result-item {
+  padding: 8px 12px;
+  background: #f4f8fb;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1a1a1a;
+  display: block;
+}
+
+.admin-result-item:hover {
+  background: #e8f0f8;
 }

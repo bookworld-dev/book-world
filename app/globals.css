@@ -6,14 +6,22 @@
 
 html, body {
   background: #d8eaf5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .book-title {
+  font-size: 17px;
+  font-weight: 600;
   font-style: italic;
+  line-height: 1.3;
+  color: #1a1a1a;
 }
 
 .book-author {
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 0.02em;
 }
 
 .book-panel-backdrop {
@@ -56,10 +64,25 @@ html, body {
   font-size: 24px;
   cursor: pointer;
   color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.book-panel-close:hover {
+  background: rgba(0, 0, 0, 0.14);
+  color: #1a1a1a;
 }
 
 .book-panel-cover {
   width: 100%;
-  max-width: 200px;
+  max-width: 160px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   display: block;
 }

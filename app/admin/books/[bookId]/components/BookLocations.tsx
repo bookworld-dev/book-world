@@ -15,19 +15,24 @@ const BookLocations = ({ bookId, locations }: BookLocationsProps) => {
       .then(() => router.refresh())
   }
 
-  const handleDeleteClick = (locationId: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleDeleteClick = (locationId: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     deleteLocation(locationId);
   }
 
   return (
-    <div>
-      <p>Locations:</p>
-      <ul>
+    <div className="admin-section">
+      <h3>Locations</h3>
+      <ul className="admin-location-list">
         {locations.map((location) => (
-          <li key={location.code}>
-            {location.name} ({location.code}) |
-            &nbsp;<a href="" onClick={handleDeleteClick(location.id)}>delete</a>
+          <li className="admin-location-item" key={location.code}>
+            <span>
+              {location.name}
+              <span className="admin-location-code">{location.code}</span>
+            </span>
+            <button className="admin-btn-danger" onClick={handleDeleteClick(location.id)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>

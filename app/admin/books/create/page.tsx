@@ -14,7 +14,7 @@ const CreateBookForm = () => {
     title: '',
     author: '',
   });
-  
+
   const previewUrl: string|undefined = newBook.cover ?
     URL.createObjectURL(newBook.cover) : undefined;
 
@@ -38,7 +38,7 @@ const CreateBookForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const { cover } = newBook;
     if (!cover) return;
 
@@ -48,42 +48,56 @@ const CreateBookForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={newBook.title}
-        onChange={handleChange('title')}
-        aria-label="book-title"
-        required
-      />
+    <div className="admin-section">
+      <h1>New book</h1>
+      <form className="admin-form" onSubmit={handleSubmit}>
+        <div className="admin-field">
+          <label>Title</label>
+          <input
+            className="admin-input"
+            type="text"
+            placeholder="e.g. Middlemarch"
+            value={newBook.title}
+            onChange={handleChange('title')}
+            aria-label="book-title"
+            required
+          />
+        </div>
 
-      <input
-        type="text"
-        placeholder="Author"
-        value={newBook.author}
-        onChange={handleChange('author')}
-        aria-label="book-author"
-        required
-      />
+        <div className="admin-field">
+          <label>Author</label>
+          <input
+            className="admin-input"
+            type="text"
+            placeholder="e.g. George Eliot"
+            value={newBook.author}
+            onChange={handleChange('author')}
+            aria-label="book-author"
+            required
+          />
+        </div>
 
-      <input
-        type="file"
-        accept="image/png, image/jpeg"
-        onChange={handleCoverUpload}
-        aria-label="book-cover"
-      />
-      
-      { previewUrl && 
-        <img
-          src={previewUrl}
-          alt="Cover preview"
-          style={{ width: 200 }}
-          onLoad={() => URL.revokeObjectURL(previewUrl)}
-        />
-      }
-      <button type="submit">Save</button>
-    </form>
+        <div className="admin-field">
+          <label>Cover image</label>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={handleCoverUpload}
+            aria-label="book-cover"
+          />
+          {previewUrl &&
+            <img
+              className="admin-cover-preview"
+              src={previewUrl}
+              alt="Cover preview"
+              onLoad={() => URL.revokeObjectURL(previewUrl)}
+            />
+          }
+        </div>
+
+        <button className="admin-btn admin-btn-primary" type="submit">Save</button>
+      </form>
+    </div>
   );
 };
 
