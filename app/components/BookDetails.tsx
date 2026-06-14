@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Book } from '@/app/lib/types';
 import { getRandomBookByLocation } from '@/app/lib/api/book.api';
+import { generateCoverUrl } from '@/app/lib/utils/cover';
 
 type Props = {
   locationCode: string;
@@ -31,7 +32,7 @@ export default function BookDetails({ locationCode, onClose }: Props) {
       {error && <p>No books found here.</p>}
       {book && (
         <>
-          {book.coverUrl && <img className="book-panel-cover" src={book.coverUrl} alt={book.title} />}
+          <img className="book-panel-cover" src={generateCoverUrl(book.id)} alt={book.title} />
           <p className="book-title">{book.title}</p>
           <p className="book-author">{book.author}</p>
         </>

@@ -3,7 +3,6 @@ type UUIDPrimaryKey = { id: string; }
 export type BookRequest = {
   title: string;
   author: string;
-  coverUrl: string;
 }
 
 export type BookAPIRequest = {

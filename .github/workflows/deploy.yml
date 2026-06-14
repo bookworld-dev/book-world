@@ -27,11 +27,13 @@ jobs:
       - name: Read build-time secrets
         run: |
           echo "NEXT_PUBLIC_MAPBOX_TOKEN=$(gcloud secrets versions access latest --secret=NEXT_PUBLIC_MAPBOX_TOKEN --project=bookworld-283512)" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_COVER_STORAGE_URL=https://storage.googleapis.com/bookworld-283512-covers" >> $GITHUB_ENV
 
       - name: Build and push image
         run: |
           docker build --platform linux/amd64 \
             --build-arg "NEXT_PUBLIC_MAPBOX_TOKEN=${NEXT_PUBLIC_MAPBOX_TOKEN}" \
+            --build-arg "NEXT_PUBLIC_COVER_STORAGE_URL=${NEXT_PUBLIC_COVER_STORAGE_URL}" \
             -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:${{ github.sha }} \
             -t europe-west2-docker.pkg.dev/bookworld-283512/book-world/app:latest \
             .

@@ -13,8 +13,9 @@ export const getBooksByLocationId = async (locationId: string): Promise<Book[]> 
 }
 
 export const createBook = async ({ title, author, cover }: BookAPIRequest): Promise<Book> => {
-  const coverUrl = await uploadCover(cover);
-  return bookRepo.createBook({ title, author, coverUrl });
+  const id = crypto.randomUUID();
+  await uploadCover(cover, id);
+  return bookRepo.createBook(id, { title, author });
 }
 
 export const getBookById = async (id: string): Promise<Book> => {
@@ -22,12 +23,7 @@ export const getBookById = async (id: string): Promise<Book> => {
 }
 
 export const deleteBookById = async (id: string) => {
-  const book = await bookRepo.getBookById(id);
-
-  if (book.coverUrl) {
-    await deleteCover(book.coverUrl);
-  }
-
+  await deleteCover(id);
   return await bookRepo.deleteBookById(id);
 }
 
