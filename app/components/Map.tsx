@@ -2,11 +2,8 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import ReactMap, { Source, Layer } from 'react-map-gl/mapbox';
-import mapboxgl from 'mapbox-gl';
 import type { FillLayerSpecification, MapMouseEvent, ExpressionSpecification } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-mapboxgl.config.EVENTS_URL = '';
 import { Location } from '@/app/lib/types';
 import BookDetails from './BookDetails';
 
