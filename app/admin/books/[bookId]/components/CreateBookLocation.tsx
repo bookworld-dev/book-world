@@ -12,8 +12,8 @@ type CreateBookLocationProps = {
 const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
   const router = useRouter();
   const [ level, setLevel ] = useState<LocationLevel>('country');
-  const [ parentId, setParentId ] = useState<string>();
-  const [ locationId, setLocationId ] = useState<string>();
+  const [ parentId, setParentId ] = useState<string>("");
+  const [ locationId, setLocationId ] = useState<string>("");
 
   const validLocation = () => {
     return (locationId && level === 'country') ||
@@ -22,8 +22,8 @@ const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
 
   const resetBookLocationForm = () => {
     setLevel('country');
-    setParentId(undefined);
-    setLocationId(undefined);
+    setParentId("");
+    setLocationId("");
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,12 +54,12 @@ const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
   }
 
   const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLocationId(undefined);
+    setLocationId("");
     setLevel(e.target.value as LocationLevel);
   }
 
   const handleParentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLocationId(undefined);
+    setLocationId("");
     setParentId(e.target.value);
   }
 
@@ -85,6 +85,7 @@ const CreateBookLocation = ({ locations, book }: CreateBookLocationProps) => {
         <div className="admin-field">
           <label htmlFor="location-select">Location</label>
           <select className="admin-select" id="location-select" value={locationId} onChange={(e) => setLocationId(e.target.value)}>
+            <option value="">-</option>
             {locationOptions()}
           </select>
         </div>
