@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import ReactMap, { Source, Layer } from 'react-map-gl/mapbox';
-import type { FillLayerSpecification, MapMouseEvent, ExpressionSpecification } from 'mapbox-gl';
+import type { FillLayerSpecification, MapMouseEvent } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Location } from '@/app/lib/types';
 import BookDetails from './BookDetails';
@@ -15,25 +15,17 @@ type HoverInfo = { x: number; y: number; name: string } | null;
 
 const ZOOM_THRESHOLD = 4;
 
-const codeToColor = (code: string): string => {
-  let hash = 0;
-  for (let i = 0; i < code.length; i++) {
-    hash = code.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  return `hsl(${Math.abs(hash) % 360}, 60%, 55%)`;
-};
-
-const colorMatchExpression = (codes: string[], property: string): ExpressionSpecification => [
-  'match',
-  ['get', property],
-  ...(codes.length > 0 ? codes.flatMap(code => [code, codeToColor(code)]) : ['__none__', '#cccccc']),
-  '#cccccc',
-];
+const OCEAN_COLOR  = '#b8d8e8';
+const LAND_COLOR   = '#e8f2e0';
+const COUNTRY_COLOR = '#c5ddb0';
+const STATE_COLOR   = '#9ec887';
+const HOVER_COLOR   = '#72a85a';
 
 export default function Map({ activeLocations }: Props) {
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const [cursor, setCursor] = useState('grab');
   const [hoverInfo, setHoverInfo] = useState<HoverInfo>(null);
+  const [hoveredCode, setHoveredCode] = useState<string | null>(null);
 
   const countryCodes = useMemo(
     () => activeLocations.filter(l => !l.code.includes('-')).map(l => l.code),
@@ -54,10 +46,12 @@ export default function Map({ activeLocations }: Props) {
     'source-layer': 'country_boundaries',
     filter: ['in', ['get', 'iso_3166_1'], ['literal', countryCodes]],
     paint: {
-      'fill-color': colorMatchExpression(countryCodes, 'iso_3166_1'),
+      'fill-color': hoveredCode
+        ? ['case', ['==', ['get', 'iso_3166_1'], hoveredCode], HOVER_COLOR, COUNTRY_COLOR]
+        : COUNTRY_COLOR,
       'fill-opacity': 1,
     },
-  }), [countryCodes]);
+  }), [countryCodes, hoveredCode]);
 
   const stateLayer: FillLayerSpecification = useMemo(() => ({
     id: 'states-fill',
@@ -67,22 +61,26 @@ export default function Map({ activeLocations }: Props) {
     minzoom: ZOOM_THRESHOLD,
     filter: ['in', ['get', 'iso_3166_2'], ['literal', stateCodes]],
     paint: {
-      'fill-color': colorMatchExpression(stateCodes, 'iso_3166_2'),
+      'fill-color': hoveredCode
+        ? ['case', ['==', ['get', 'iso_3166_2'], hoveredCode], HOVER_COLOR, STATE_COLOR]
+        : STATE_COLOR,
       'fill-opacity': 1,
     },
-  }), [stateCodes]);
+  }), [stateCodes, hoveredCode]);
 
   const onMouseMove = useCallback((e: MapMouseEvent) => {
     const feature = e.features?.[0];
     if (feature) {
       setCursor('pointer');
-      const name = feature.layer?.id === 'countries-fill'
-        ? feature.properties?.name_en
-        : feature.properties?.name;
+      const isCountry = feature.layer?.id === 'countries-fill';
+      const name = isCountry ? feature.properties?.name_en : feature.properties?.name;
+      const code = isCountry ? feature.properties?.iso_3166_1 : feature.properties?.iso_3166_2;
       setHoverInfo(name ? { x: e.point.x, y: e.point.y, name } : null);
+      setHoveredCode(code ?? null);
     } else {
       setCursor('grab');
       setHoverInfo(null);
+      setHoveredCode(null);
     }
   }, []);
 
@@ -98,9 +96,19 @@ export default function Map({ activeLocations }: Props) {
   }, [allCodes]);
 
   const onLoad = useCallback((e: { target: mapboxgl.Map }) => {
-    e.target.getStyle().layers.forEach(layer => {
+    const map = e.target;
+    map.getStyle().layers.forEach(layer => {
       if (layer.type === 'symbol') {
-        e.target.setLayoutProperty(layer.id, 'visibility', 'none');
+        map.setLayoutProperty(layer.id, 'visibility', 'none');
+      }
+      if (layer.type === 'background') {
+        map.setPaintProperty(layer.id, 'background-color', LAND_COLOR);
+      }
+      if (layer.type === 'fill' && layer.id === 'land') {
+        map.setPaintProperty(layer.id, 'fill-color', LAND_COLOR);
+      }
+      if (layer.type === 'fill' && (layer.id === 'water' || layer.id === 'water-shadow')) {
+        map.setPaintProperty(layer.id, 'fill-color', OCEAN_COLOR);
       }
     });
   }, []);
@@ -115,7 +123,7 @@ export default function Map({ activeLocations }: Props) {
         interactiveLayerIds={['countries-fill', 'states-fill']}
         onClick={onClick}
         onMouseMove={onMouseMove}
-        onMouseLeave={() => { setCursor('grab'); setHoverInfo(null); }}
+        onMouseLeave={() => { setCursor('grab'); setHoverInfo(null); setHoveredCode(null); }}
         cursor={cursor}
         onLoad={onLoad}
       >
