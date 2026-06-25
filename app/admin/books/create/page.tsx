@@ -14,6 +14,7 @@ const CreateBookForm = () => {
     title: '',
     author: '',
   });
+  const [saving, setSaving] = useState(false);
 
   const previewUrl: string|undefined = newBook.cover ?
     URL.createObjectURL(newBook.cover) : undefined;
@@ -42,9 +43,10 @@ const CreateBookForm = () => {
     const { cover } = newBook;
     if (!cover) return;
 
+    setSaving(true);
     createBook({ ...newBook, cover }).then(book => {
       redirect(`/admin/books/${book.id}`);
-    });
+    }).finally(() => setSaving(false));
   }
 
   return (
@@ -95,7 +97,7 @@ const CreateBookForm = () => {
           }
         </div>
 
-        <button className="admin-btn admin-btn-primary" type="submit">Save</button>
+        <button className="admin-btn admin-btn-primary" type="submit" disabled={saving}>Save</button>
       </form>
     </div>
   );
