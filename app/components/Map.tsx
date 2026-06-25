@@ -50,6 +50,7 @@ export default function Map({ activeLocations }: Props) {
         ? ['case', ['==', ['get', 'iso_3166_1'], hoveredCode], HOVER_COLOR, COUNTRY_COLOR]
         : COUNTRY_COLOR,
       'fill-opacity': 1,
+      'fill-outline-color': 'rgba(100, 140, 80, 0.2)',
     },
   }), [countryCodes, hoveredCode]);
 
@@ -65,6 +66,7 @@ export default function Map({ activeLocations }: Props) {
         ? ['case', ['==', ['get', 'iso_3166_2'], hoveredCode], HOVER_COLOR, STATE_COLOR]
         : STATE_COLOR,
       'fill-opacity': 1,
+      'fill-outline-color': 'rgba(100, 140, 80, 0.2)',
     },
   }), [stateCodes, hoveredCode]);
 
