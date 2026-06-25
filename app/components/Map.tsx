@@ -117,7 +117,7 @@ export default function Map({ activeLocations }: Props) {
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       <ReactMap
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-        initialViewState={{ longitude: 0, latitude: 20, zoom: 2.5 }}
+        initialViewState={{ longitude: 14.423, latitude: 50.086, zoom: 2.5 }}
         style={{ width: '100%', height: '100%' }}
         mapStyle="mapbox://styles/mapbox/light-v11"
         interactiveLayerIds={['countries-fill', 'states-fill']}
