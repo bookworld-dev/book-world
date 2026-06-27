@@ -45,7 +45,7 @@ const BookDescription = ({ bookId, initialDescription }: BookDescriptionProps) =
             rows={4}
             autoFocus
           />
-          <div className="admin-actions">
+          <div className="admin-actions" style={{ display: 'flex', gap: '0.5rem' }}>
             <button className="admin-btn admin-btn-primary" onClick={handleSave} disabled={saving}>
               Save
             </button>
