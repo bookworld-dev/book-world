@@ -35,6 +35,7 @@ export default function BookDetails({ locationCode, onClose }: Props) {
           <img className="book-panel-cover" src={generateCoverUrl(book.id)} alt={book.title} />
           <p className="book-title">{book.title}</p>
           <p className="book-author">{book.author}</p>
+          {book.description && <p className="book-description">{book.description}</p>}
         </>
       )}
     </div>

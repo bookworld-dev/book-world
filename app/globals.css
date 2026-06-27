@@ -18,10 +18,17 @@ html, body {
 }
 
 .book-author {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: #555;
   letter-spacing: 0.02em;
+}
+
+.book-description {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .book-panel-backdrop {
