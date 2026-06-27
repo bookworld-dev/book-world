@@ -39,6 +39,10 @@ export const deleteBookLocation = async (bookLocation: BookLocation) => {
   await bookRepo.deleteBookLocation(bookLocation);
 }
 
+export const getBooksWithoutDescription = async (): Promise<Book[]> => {
+  return bookRepo.getBooksWithoutDescription();
+}
+
 export const queryBooks = async (query: string): Promise<Book[]> => {
   return bookRepo.queryBooks(query);
 }

@@ -33,6 +33,10 @@ export const deleteBookLocation = async (bookId: string, locationId: string) => 
   await bookService.deleteBookLocation({ bookId, locationId });
 }
 
+export const getBooksWithoutDescription = async (): Promise<Book[]> => {
+  return await bookService.getBooksWithoutDescription();
+}
+
 export const queryBooks = async (query: string): Promise<Book[]> => {
   return await bookService.queryBooks(query);
 }

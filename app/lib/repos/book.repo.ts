@@ -110,6 +110,18 @@ export const deleteBookLocation = async (bookLocation: BookLocation) => {
   );
 }
 
+export const getBooksWithoutDescription = async (): Promise<Book[]> => {
+  const result = await getDb().query(
+    `
+    SELECT id, title, author, description
+    FROM books
+    WHERE description IS NULL OR TRIM(description) = ''
+    ORDER BY title;
+    `
+  );
+  return result.rows.map(toBook);
+}
+
 export const queryBooks = async (query: string): Promise<Book[]> => {
   const result = await getDb().query(
     `
