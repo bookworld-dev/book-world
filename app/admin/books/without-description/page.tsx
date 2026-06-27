@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getBooksWithoutDescription } from "@/app/api/books/book.controller";
 import Link from "next/link";
 
