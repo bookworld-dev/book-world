@@ -7,13 +7,14 @@ const validateParamTypes = (formData: FormData): BookAPIRequest => {
   const title = formData.get('title');
   const author = formData.get('author');
   const cover = formData.get('cover');
+  const description = formData.get('description');
 
   if (typeof title !== 'string') throw new InvalidParamsError('Invalid title');
   if (typeof author !== 'string') throw new InvalidParamsError('Invalid author');
-  if (!(cover instanceof File) || !cover.type.startsWith('image/')) 
+  if (!(cover instanceof File) || !cover.type.startsWith('image/'))
     throw new InvalidParamsError('Invalid cover');
 
-  return { title, author, cover };
+  return { title, author, cover, description: typeof description === 'string' ? description : undefined };
 }
 
 export const POST = async (request: NextRequest) => {

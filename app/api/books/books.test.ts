@@ -8,7 +8,7 @@ import { GET } from './random/route';
 import { insertBook, insertBookLocation, insertLocation } from '../../__tests__/helpers';
 import { NextRequest } from 'next/server';
 import { POST as POST_BOOK, GET as QUERY_BOOK } from './route';
-import { DELETE as DELETE_BOOK, GET as GET_BOOK } from './[bookId]/route';
+import { DELETE as DELETE_BOOK, GET as GET_BOOK, PATCH as PATCH_BOOK } from './[bookId]/route';
 import { GET as GET_BOOK_LOCATIONS, POST as POST_BOOK_LOCATION } from './[bookId]/locations/route';
 import { DELETE as DELETE_BOOK_LOCATION } from './[bookId]/locations/[locationId]/route';
 
@@ -48,7 +48,24 @@ describe('POST /api/books', async () => {
     expect(json.id).not.toEqual(undefined);
     expect(json.author).toEqual(exampleBookReq.author);
     expect(json.title).toEqual(exampleBookReq.title);
-    expect(json.coverUrl).not.toEqual(undefined);
+  });
+
+  it('creates a book with a description', async () => {
+    const coverImageFile = new File(['image bytes'], 'cover.jpg', { type: 'image/jpeg' });
+    const description = 'Book description'
+    const formData = new FormData();
+    formData.append('title', exampleBookReq.title);
+    formData.append('author', exampleBookReq.author);
+    formData.append('cover', coverImageFile);
+    formData.append('description', description);
+    const req = new NextRequest('http://localhost/api/books', {
+      method: 'POST',
+      body: formData,
+    });
+    const res = await POST_BOOK(req);
+
+    const json = await res.json();
+    expect(json.description).toEqual(description);
   });
 });
 
@@ -65,7 +82,25 @@ describe('GET /api/books/:bookId', async () => {
     expect(json.id).toEqual(exampleBook.id);
     expect(json.title).toEqual(exampleBook.title);
     expect(json.author).toEqual(exampleBook.author);
-    expect(json.coverUrl).toEqual(exampleBook.coverUrl);
+  });
+});
+
+describe('PATCH /api/books/:bookId', async () => {
+  it('updates the description of a book', async () => {
+    const exampleBook = await insertBook(exampleBookReq);
+    const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
+    const description = 'An updated description';
+    const req = new NextRequest(reqURL, {
+      method: 'PATCH',
+      body: JSON.stringify({ description }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const res = await PATCH_BOOK(req, reqParams);
+
+    expect(res.status).toEqual(200);
+    const json = await res.json();
+    expect(json.description).toEqual(description);
   });
 });
 
@@ -88,7 +123,7 @@ describe('GET /api/books/:bookId/locations', async () => {
     const exampleBook = await insertBook(exampleBookReq);
     const exampleCountry = await insertLocation(exampleCountryReq, null);
     await insertBookLocation(exampleBook, exampleCountry);
-  
+
     const reqURL = `http://localhost/api/books/${exampleBook.id}/locations`;
     const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
     const req = new NextRequest(reqURL);
@@ -163,4 +198,3 @@ describe('GET /api/books', async () => {
     expect(await res.json()).toEqual([exampleBook2]);
   });
 });
-

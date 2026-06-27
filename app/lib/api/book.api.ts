@@ -14,7 +14,16 @@ export const createBook = async (book: BookAPIRequest): Promise<Book> => {
   formData.append('title', book.title);
   formData.append('author', book.author);
   formData.append('cover', book.cover);
+  if (book.description) formData.append('description', book.description);
   return apiFetch<Book>('/api/books', { method: 'POST', body: formData });
+};
+
+export const updateBookDescription = async (bookId: string, description: string): Promise<Book> => {
+  return apiFetch<Book>(`/api/books/${bookId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ description }),
+  });
 };
 
 export const createBookLocation = async (bookLocation: BookLocation): Promise<BookLocation> => {

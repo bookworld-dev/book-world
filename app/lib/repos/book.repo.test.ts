@@ -42,12 +42,21 @@ describe('getBooksByLocationId', async () => {
 
 describe('createBook', async () => {
   it('creates a book in the database', async () => {
-    const createdBook = await bookRepo.createBook(exampleBookReq);
+    const id = crypto.randomUUID();
+    const createdBook = await bookRepo.createBook(id, exampleBookReq);
 
-    expect(createdBook.id).not.toEqual(undefined);
+    expect(createdBook.id).toEqual(id);
     expect(createdBook.title).toEqual(exampleBookReq.title);
     expect(createdBook.author).toEqual(exampleBookReq.author);
-    expect(createdBook.coverUrl).toEqual(exampleBookReq.coverUrl);
+    expect(createdBook.description).toEqual(exampleBookReq.description);
+  });
+
+  it('creates a book with a description', async () => {
+    const id = crypto.randomUUID();
+    const reqWithDescription = { ...exampleBookReq, description: 'A road trip novel' };
+    const createdBook = await bookRepo.createBook(id, reqWithDescription);
+
+    expect(createdBook.description).toEqual('A road trip novel');
   });
 });
 
@@ -55,6 +64,15 @@ describe('getBookById', async () => {
   it('gets a book from the database by ID', async () => {
     const book = await insertBook(exampleBookReq);
     expect(await bookRepo.getBookById(book.id)).toEqual(book);
+  });
+});
+
+describe('updateBookDescription', async () => {
+  it('updates the description of a book', async () => {
+    const id = crypto.randomUUID();
+    const book = await bookRepo.createBook(id, exampleBookReq);
+    const updated = await bookRepo.updateBookDescription(book.id, 'An updated description');
+    expect(updated.description).toEqual('An updated description');
   });
 });
 

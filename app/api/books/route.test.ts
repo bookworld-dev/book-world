@@ -37,7 +37,6 @@ describe('POST /api/books', async () => {
     expect(json.id).toEqual(exampleBook.id);
     expect(json.author).toEqual(exampleBook.author);
     expect(json.title).toEqual(exampleBook.title);
-    expect(json.coverUrl).toEqual(exampleBook.coverUrl);
   });
 });
 

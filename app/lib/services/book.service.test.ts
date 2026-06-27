@@ -7,7 +7,8 @@ vi.mock('../repos/book.repo', () => ({
   deleteBookById: vi.fn(),
   createBookLocation: vi.fn(),
   deleteBookLocation: vi.fn(),
-  queryBooks: vi.fn()
+  queryBooks: vi.fn(),
+  updateBookDescription: vi.fn(),
 }));
 vi.mock('./location.service', () => ({
   getLocationByCode: vi.fn()
@@ -18,7 +19,7 @@ vi.mock('../storage/cover', () => ({
 }));
 import * as bookService from '../services/book.service';
 import { exampleBook, exampleBookAPIReq, exampleBookReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation, queryBooks } from "../repos/book.repo";
+import { getRandomBookByLocation, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation, queryBooks, updateBookDescription } from "../repos/book.repo";
 import * as BookRepo from "../repos/book.repo";
 import { getLocationByCode } from "./location.service";
 import * as LocationService from "./location.service";
@@ -70,6 +71,11 @@ const mockedRepoQueryBooks =
     typeof BookRepo.queryBooks
   >;
 
+const mockedRepoUpdateBookDescription =
+  updateBookDescription as MockedFunction<
+    typeof BookRepo.updateBookDescription
+  >;
+
 const mockedUploadCover =
   uploadCover as MockedFunction<
     typeof CoverStorage.uploadCover
@@ -98,11 +104,13 @@ describe('getBooksByLocationId', async () => {
 
 describe('createBook', async () => {
   it('uploads the cover and creates a book with book repo', async () => {
-    mockedUploadCover.mockResolvedValue(exampleBookReq.coverUrl);
     mockedRepoCreateBook.mockResolvedValue(exampleBook);
     expect(await bookService.createBook(exampleBookAPIReq)).toEqual(exampleBook);
-    expect(mockedUploadCover).toHaveBeenCalledWith(exampleBookAPIReq.cover);
-    expect(mockedRepoCreateBook).toHaveBeenCalledWith(exampleBookReq);
+    expect(mockedUploadCover).toHaveBeenCalledWith(exampleBookAPIReq.cover, expect.any(String));
+    expect(mockedRepoCreateBook).toHaveBeenCalledWith(
+      expect.any(String),
+      { title: exampleBookReq.title, author: exampleBookReq.author, description: exampleBookReq.description }
+    );
   });
 });
 
@@ -115,10 +123,19 @@ describe('getBookById', async () => {
 
 describe('deleteBookById', async () => {
   it('deletes the cover and the book', async () => {
-    mockedRepoGetBookById.mockResolvedValue(exampleBook);
     await bookService.deleteBookById(exampleBook.id);
-    expect(mockedDeleteCover).toHaveBeenCalledWith(exampleBook.coverUrl);
+    expect(mockedDeleteCover).toHaveBeenCalledWith(exampleBook.id);
     expect(mockedRepoDeleteBookById).toHaveBeenCalledWith(exampleBook.id);
+  });
+});
+
+describe('updateBookDescription', async () => {
+  it('updates book description with book repo', async () => {
+    const description = 'A new description';
+    const updatedBook = { ...exampleBook, description };
+    mockedRepoUpdateBookDescription.mockResolvedValue(updatedBook);
+    expect(await bookService.updateBookDescription(exampleBook.id, description)).toEqual(updatedBook);
+    expect(mockedRepoUpdateBookDescription).toHaveBeenCalledWith(exampleBook.id, description);
   });
 });
 

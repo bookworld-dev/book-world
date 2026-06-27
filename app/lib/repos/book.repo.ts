@@ -6,18 +6,20 @@ type BookDBRow = {
   id: string;
   title: string;
   author: string;
+  description: string | null;
 };
 
 const toBook = (row: BookDBRow): Book => ({
   id: row.id,
   title: row.title,
   author: row.author,
+  description: row.description ?? undefined,
 });
 
 export const getRandomBookByLocation = async (location: Location): Promise<Book> => {
   const result = await getDb().query(
     `
-    SELECT b.id, b.title, b.author
+    SELECT b.id, b.title, b.author, b.description
     FROM books b
     JOIN book_locations bl ON bl.book_id = b.id
     WHERE bl.location_id = $1
@@ -33,7 +35,7 @@ export const getRandomBookByLocation = async (location: Location): Promise<Book>
 export const getBooksByLocationId = async (locationId: string): Promise<Book[]> => {
   const result = await getDb().query(
     `
-    SELECT b.id, b.title, b.author
+    SELECT b.id, b.title, b.author, b.description
     FROM books b
     JOIN book_locations bl ON bl.book_id = b.id
     WHERE bl.location_id = $1;
@@ -46,10 +48,21 @@ export const getBooksByLocationId = async (locationId: string): Promise<Book[]> 
 export const createBook = async (id: string, bookReq: BookRequest): Promise<Book> => {
   const result = await getDb().query(
     `
-    INSERT INTO books (id, title, author)
-    VALUES ($1, $2, $3)
+    INSERT INTO books (id, title, author, description)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
-    `, [id, bookReq.title, bookReq.author]
+    `, [id, bookReq.title, bookReq.author, bookReq.description ?? null]
+  );
+
+  return toBook(result.rows[0]);
+}
+
+export const updateBookDescription = async (id: string, description: string): Promise<Book> => {
+  const result = await getDb().query(
+    `
+    UPDATE books SET description = $2 WHERE id = $1
+    RETURNING *
+    `, [id, description]
   );
 
   return toBook(result.rows[0]);
@@ -59,7 +72,7 @@ export const getBookById = async (id: string): Promise<Book> => {
   try {
     const result = await getDb().query(
       `
-        SELECT id, title, author
+        SELECT id, title, author, description
         FROM books
         WHERE id = $1
         LIMIT 1;
@@ -100,7 +113,7 @@ export const deleteBookLocation = async (bookLocation: BookLocation) => {
 export const queryBooks = async (query: string): Promise<Book[]> => {
   const result = await getDb().query(
     `
-    SELECT id, title, author
+    SELECT id, title, author, description
     FROM books
     WHERE title ILIKE $1 OR author ILIKE $1
     ORDER BY title

@@ -3,12 +3,13 @@ import { Book, BookAPIRequest, BookRequest, Location, LocationRequest } from "..
 export const exampleBookReq: BookRequest = {
   author: 'Jack Kerouac',
   title: 'Big Sur',
-  coverUrl: 'coverArt_1.jpeg'
+  description: 'A semi-autobiographical novel set on the California coast.',
 }
 
 export const exampleBookAPIReq: BookAPIRequest = {
   author: exampleBookReq.author,
   title: exampleBookReq.title,
+  description: exampleBookReq.description,
   cover: new File(
     ['image bytes'],
     'cover.jpg',
@@ -24,7 +25,7 @@ export const exampleBook: Book = {
 export const exampleBookReq2: BookRequest = {
   author: 'Ernest Hemingway',
   title: 'The Sun Also Rises',
-  coverUrl: 'coverArt_2.jpeg'
+  description: 'A story of American and British expatriates in 1920s Europe.',
 }
 
 export const exampleCountryReq: LocationRequest = {

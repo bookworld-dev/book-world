@@ -21,6 +21,10 @@ export const deleteBookById = async (id: string) => {
   return await bookService.deleteBookById(id);
 }
 
+export const updateBookDescription = async (id: string, description: string): Promise<Book> => {
+  return await bookService.updateBookDescription(id, description);
+}
+
 export const createBookLocation = async (bookId: string, locationId: string) => {
   await bookService.createBookLocation({ bookId, locationId });
 }

@@ -25,12 +25,13 @@ export const startTestDb = async () => {
     connectionString: process.env.DATABASE_URL,
   });
 
-  const migration = fs.readFileSync(
-    path.resolve(__dirname, '../../../migrations/001_create_tables.sql'),
-    'utf-8'
-  );
-
-  await pool.query(migration);
+  for (const file of ['001_create_tables.sql', '002_drop_cover_url.sql', '003_add_description_to_books.sql']) {
+    const migration = fs.readFileSync(
+      path.resolve(__dirname, '../../../migrations', file),
+      'utf-8'
+    );
+    await pool.query(migration);
+  }
 
   return pool;
 };

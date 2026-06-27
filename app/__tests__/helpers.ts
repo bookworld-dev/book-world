@@ -6,18 +6,18 @@ export const insertBook = async (bookReq: BookRequest): Promise<Book> => {
 
   const result = await pool.query(
     `
-    INSERT INTO books (title, author, cover_url)
+    INSERT INTO books (title, author, description)
     VALUES ($1, $2, $3)
     RETURNING id
     `,
     [
       bookReq.title,
       bookReq.author,
-      bookReq.coverUrl,
+      bookReq.description ?? null,
     ]
   );
 
-  return { id: result.rows[0].id, ... bookReq }
+  return { id: result.rows[0].id, ...bookReq }
 };
 
 export const insertLocation = async (locationReq: LocationRequest, parentId: string | null): Promise<Location> => {

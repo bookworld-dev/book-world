@@ -1,12 +1,13 @@
 import { describe, expect, it, MockedFunction, vi } from "vitest";
 vi.mock('../book.controller', () => ({
   getBookById: vi.fn(),
-  deleteBookById: vi.fn()
+  deleteBookById: vi.fn(),
+  updateBookDescription: vi.fn(),
 }));
 import { exampleBook } from "@/app/__tests__/fixtures";
-import { getBookById, deleteBookById } from '../book.controller';
+import { getBookById, deleteBookById, updateBookDescription } from '../book.controller';
 import type * as BookController from '../book.controller';
-import { DELETE, GET } from "./route";
+import { DELETE, GET, PATCH } from "./route";
 import { NextRequest } from "next/server";
 
 const mockedBookControllerGetBookById =
@@ -17,6 +18,11 @@ const mockedBookControllerGetBookById =
 const mockedBookControllerDeleteBookById =
   deleteBookById as MockedFunction<
     typeof BookController.deleteBookById
+  >;
+
+const mockedBookControllerUpdateBookDescription =
+  updateBookDescription as MockedFunction<
+    typeof BookController.updateBookDescription
   >;
 
 describe('GET api/books/:bookId', async () => {
@@ -32,7 +38,37 @@ describe('GET api/books/:bookId', async () => {
     expect(json.id).toEqual(exampleBook.id);
     expect(json.title).toEqual(exampleBook.title);
     expect(json.author).toEqual(exampleBook.author);
-    expect(json.coverUrl).toEqual(exampleBook.coverUrl);
+  });
+});
+
+describe('PATCH api/books/:bookId', async () => {
+  it('updates description via the controller', async () => {
+    const updatedBook = { ...exampleBook, description: 'A new description' };
+    mockedBookControllerUpdateBookDescription.mockResolvedValue(updatedBook);
+    const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
+    const req = new NextRequest(reqURL, {
+      method: 'PATCH',
+      body: JSON.stringify({ description: 'A new description' }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const res = await PATCH(req, reqParams);
+
+    expect(res.status).toEqual(200);
+    expect(await res.json()).toEqual(updatedBook);
+    expect(mockedBookControllerUpdateBookDescription).toHaveBeenCalledWith(exampleBook.id, 'A new description');
+  });
+
+  it('returns 400 when description is missing', async () => {
+    const reqURL = `http://localhost/api/books/${exampleBook.id}`;
+    const reqParams = { params: Promise.resolve({ bookId: exampleBook.id }) };
+    const req = new NextRequest(reqURL, {
+      method: 'PATCH',
+      body: JSON.stringify({}),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const res = await PATCH(req, reqParams);
+    expect(res.status).toEqual(400);
   });
 });
 

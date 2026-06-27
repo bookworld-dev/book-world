@@ -7,14 +7,15 @@ vi.mock('../../lib/services/book.service', () => ({
   deleteBookById: vi.fn(),
   createBookLocation: vi.fn(),
   deleteBookLocation: vi.fn(),
-  queryBooks: vi.fn()
+  queryBooks: vi.fn(),
+  updateBookDescription: vi.fn(),
 }));
 vi.mock('../locations/location.controller', () => ({
   getLocationByCode: vi.fn(),
 }));
 import * as bookController from './book.controller';
 import { exampleBook, exampleBookAPIReq, exampleCountry } from "../../__tests__/fixtures";
-import { getRandomBookByLocationCode, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation, queryBooks } from "../../lib/services/book.service";
+import { getRandomBookByLocationCode, getBooksByLocationId, createBook, getBookById, deleteBookById, createBookLocation, deleteBookLocation, queryBooks, updateBookDescription } from "../../lib/services/book.service";
 import * as BookService from "../../lib/services/book.service";
 
 const mockedServiceGetRandomBookByLocationCode =
@@ -57,6 +58,11 @@ const mockedServiceQueryBooks =
     typeof BookService.queryBooks
   >;
 
+const mockedServiceUpdateBookDescription =
+  updateBookDescription as MockedFunction<
+    typeof BookService.updateBookDescription
+  >;
+
 describe('getRandomBookByLocationCode', async () => {
   it('gets random book from service', async () => {
     mockedServiceGetRandomBookByLocationCode.mockResolvedValue(exampleBook);
@@ -90,6 +96,15 @@ describe('deleteBookById', async () => {
   it('deletes the book with the service', async () => {
     await bookController.deleteBookById(exampleBook.id);
     expect(mockedServiceDeleteBookById).toHaveBeenCalledWith(exampleBook.id);
+  });
+});
+
+describe('updateBookDescription', async () => {
+  it('updates book description with the service', async () => {
+    const updatedBook = { ...exampleBook, description: 'A new description' };
+    mockedServiceUpdateBookDescription.mockResolvedValue(updatedBook);
+    expect(await bookController.updateBookDescription(exampleBook.id, 'A new description')).toEqual(updatedBook);
+    expect(mockedServiceUpdateBookDescription).toHaveBeenCalledWith(exampleBook.id, 'A new description');
   });
 });
 

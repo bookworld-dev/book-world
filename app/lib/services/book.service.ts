@@ -12,10 +12,14 @@ export const getBooksByLocationId = async (locationId: string): Promise<Book[]> 
   return bookRepo.getBooksByLocationId(locationId);
 }
 
-export const createBook = async ({ title, author, cover }: BookAPIRequest): Promise<Book> => {
+export const createBook = async ({ title, author, description, cover }: BookAPIRequest): Promise<Book> => {
   const id = crypto.randomUUID();
   await uploadCover(cover, id);
-  return bookRepo.createBook(id, { title, author });
+  return bookRepo.createBook(id, { title, author, description });
+}
+
+export const updateBookDescription = async (id: string, description: string): Promise<Book> => {
+  return bookRepo.updateBookDescription(id, description);
 }
 
 export const getBookById = async (id: string): Promise<Book> => {

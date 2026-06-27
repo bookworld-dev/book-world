@@ -6,6 +6,7 @@ import { useState } from "react";
 type NewBook = {
   title: string;
   author: string;
+  description: string;
   cover?: File;
 };
 
@@ -13,6 +14,7 @@ const CreateBookForm = () => {
   const [newBook, setNewBook] = useState<NewBook>({
     title: '',
     author: '',
+    description: '',
   });
   const [saving, setSaving] = useState(false);
 
@@ -20,7 +22,7 @@ const CreateBookForm = () => {
     URL.createObjectURL(newBook.cover) : undefined;
 
   const handleChange = (field: keyof NewBook) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setNewBook(b => ({
         ...b,
         [field]: e.target.value,
@@ -76,6 +78,18 @@ const CreateBookForm = () => {
             onChange={handleChange('author')}
             aria-label="book-author"
             required
+          />
+        </div>
+
+        <div className="admin-field">
+          <label>Description</label>
+          <textarea
+            className="admin-input"
+            placeholder="Book description"
+            value={newBook.description}
+            onChange={handleChange('description')}
+            aria-label="book-description"
+            rows={4}
           />
         </div>
 
