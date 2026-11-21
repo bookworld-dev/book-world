@@ -701,8 +701,18 @@
     },
     {
         "level": "country",
-        "code": "CN-TW",
+        "code": "TW",
         "name": "Taiwan"
+    },
+    {
+        "level": "country",
+        "code": "HK",
+        "name": "Hong Kong"
+    },
+    {
+        "level": "country",
+        "code": "MO",
+        "name": "Macau"
     },
     {
         "level": "country",
