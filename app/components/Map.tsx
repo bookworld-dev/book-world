@@ -14,6 +14,7 @@ type Props = {
 type HoverInfo = { x: number; y: number; name: string } | null;
 
 const ZOOM_THRESHOLD = 4;
+const REGIONS_TILESET = process.env.NEXT_PUBLIC_MAPBOX_REGIONS_TILESET ?? 'ewansheldon.regions';
 
 const OCEAN_COLOR  = '#b8d8e8';
 const LAND_COLOR   = '#e8f2e0';
@@ -62,7 +63,7 @@ export default function Map({ activeLocations }: Props) {
     id: 'states-fill',
     type: 'fill',
     source: 'states',
-    'source-layer': 'aeb401cde63422d9585e',
+    'source-layer': 'regions',
     minzoom: ZOOM_THRESHOLD,
     filter: ['in', ['get', 'iso_3166_2'], ['literal', stateCodes]],
     paint: {
@@ -139,7 +140,7 @@ export default function Map({ activeLocations }: Props) {
           <Layer {...countryLayer} />
         </Source>
 
-        <Source id="states" type="vector" url="mapbox://ewansheldon.9hicnkvmnwr3">
+        <Source id="states" type="vector" url={`mapbox://${REGIONS_TILESET}`}>
           <Layer {...stateLayer} />
         </Source>
       </ReactMap>

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest"
+    "test": "vitest",
+    "tiles:build": "npx tsx scripts/tiles/build.ts",
+    "tiles:publish": "npx tsx scripts/tiles/publish.ts"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.19.0",
@@ -29,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
+    "mapshaper": "^0.8.6",
     "tailwindcss": "^4",
     "testcontainers": "^11.10.0",
     "typescript": "^5",

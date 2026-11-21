@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "layers": {
+    "regions": {
+      "minzoom": 4,
+      "maxzoom": 5,
+      "tiles": {
+        "order": "draw_order"
+      }
+    }
+  }
+}
