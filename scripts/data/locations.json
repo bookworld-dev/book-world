@@ -57,7 +57,7 @@
     {
         "level": "country",
         "code": "EH",
-        "name": "W. Sahara"
+        "name": "Western Sahara"
     },
     {
         "level": "country",
@@ -97,7 +97,7 @@
     {
         "level": "country",
         "code": "CD",
-        "name": "Dem. Rep. Congo"
+        "name": "Democratic Republic of the Congo"
     },
     {
         "level": "country",
@@ -127,7 +127,7 @@
     {
         "level": "country",
         "code": "DO",
-        "name": "Dominican Rep."
+        "name": "Dominican Republic"
     },
     {
         "level": "country",
@@ -142,7 +142,7 @@
     {
         "level": "country",
         "code": "FK",
-        "name": "Falkland Is."
+        "name": "Falkland Islands"
     },
     {
         "level": "country",
@@ -157,7 +157,7 @@
     {
         "level": "country",
         "code": "TF",
-        "name": "Fr. S. Antarctic Lands"
+        "name": "French Southern and Antarctic Lands"
     },
     {
         "level": "country",
@@ -372,7 +372,7 @@
     {
         "level": "country",
         "code": "CF",
-        "name": "Central African Rep."
+        "name": "Central African Republic"
     },
     {
         "level": "country",
@@ -387,7 +387,7 @@
     {
         "level": "country",
         "code": "GQ",
-        "name": "Eq. Guinea"
+        "name": "Equatorial Guinea"
     },
     {
         "level": "country",
@@ -407,7 +407,7 @@
     {
         "level": "country",
         "code": "SZ",
-        "name": "eSwatini"
+        "name": "Eswatini"
     },
     {
         "level": "country",
@@ -677,7 +677,7 @@
     {
         "level": "country",
         "code": "SB",
-        "name": "Solomon Is."
+        "name": "Solomon Islands"
     },
     {
         "level": "country",
@@ -852,7 +852,7 @@
     {
         "level": "country",
         "code": "BA",
-        "name": "Bosnia and Herz."
+        "name": "Bosnia and Herzegovina"
     },
     {
         "level": "country",
@@ -882,7 +882,7 @@
     {
         "level": "country",
         "code": "SS",
-        "name": "S. Sudan"
+        "name": "South Sudan"
     },
     {
         "level": "state",
