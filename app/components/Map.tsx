@@ -40,6 +40,11 @@ export default function Map({ activeLocations }: Props) {
 
   const allCodes = useMemo(() => new Set([...countryCodes, ...stateCodes]), [countryCodes, stateCodes]);
 
+  const locationNames = useMemo(
+    () => Object.fromEntries(activeLocations.map(l => [l.code, l.name])),
+    [activeLocations]
+  );
+
   const countryLayer: FillLayerSpecification = useMemo(() => ({
     id: 'countries-fill',
     type: 'fill',
@@ -80,8 +85,8 @@ export default function Map({ activeLocations }: Props) {
     if (feature) {
       setCursor('pointer');
       const isCountry = feature.layer?.id === 'countries-fill';
-      const name = isCountry ? feature.properties?.name_en : feature.properties?.name;
       const code = isCountry ? feature.properties?.iso_3166_1 : feature.properties?.iso_3166_2;
+      const name = locationNames[code] ?? (isCountry ? feature.properties?.name_en : feature.properties?.name);
       setHoverInfo(name ? { x: e.point.x, y: e.point.y, name } : null);
       setHoveredCode(code ?? null);
     } else {
@@ -89,7 +94,7 @@ export default function Map({ activeLocations }: Props) {
       setHoverInfo(null);
       setHoveredCode(null);
     }
-  }, []);
+  }, [locationNames]);
 
   const onClick = useCallback((e: MapMouseEvent) => {
     const feature = e.features?.[0];
