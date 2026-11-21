@@ -44,7 +44,11 @@ export default function Map({ activeLocations }: Props) {
     type: 'fill',
     source: 'country-boundaries',
     'source-layer': 'country_boundaries',
-    filter: ['in', ['get', 'iso_3166_1'], ['literal', countryCodes]],
+    filter: [
+      'all',
+      ['in', ['get', 'iso_3166_1'], ['literal', countryCodes]],
+      ['any', ['==', ['get', 'worldview'], 'all'], ['in', 'US', ['get', 'worldview']]],
+    ],
     paint: {
       'fill-color': hoveredCode
         ? ['case', ['==', ['get', 'iso_3166_1'], hoveredCode], HOVER_COLOR, COUNTRY_COLOR]
