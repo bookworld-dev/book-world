@@ -27,6 +27,16 @@ describe('getPopulatedLocations', async () => {
     const locations = await locationRepo.getPopulatedLocations();
     expect(locations).toEqual([country]);
   });
+
+  it('sorts locations by name', async () => {
+    const usa = await insertLocation(exampleCountryReq, null);
+    const spain = await insertLocation(exampleCountryReq2, null);
+    const book = await insertBook(exampleBookReq);
+    await insertBookLocation(book, usa);
+    await insertBookLocation(book, spain);
+
+    expect(await locationRepo.getPopulatedLocations()).toEqual([spain, usa]);
+  });
 });
 
 describe('getLocationByCode', async () => {

@@ -43,7 +43,8 @@ export const getPopulatedLocations = async (): Promise<Location[]> => {
       SELECT 1
       FROM book_locations bl
       WHERE bl.location_id = l.id
-    );
+    )
+    ORDER BY l.level, l.name;
     `
   );
 
