@@ -67,7 +67,10 @@ const build = async () => {
 
   const simplified = await runMapshaper('-simplify interval=200 keep-shapes', naturalEarth);
 
-  const regions = simplified.features.map(f => toRegion(f, f.properties.iso_3166_2, f.properties.name, NATURAL_EARTH_ORDER));
+  const isReplaced = (f: Feature) => customRegions.some(c => c.replacesParts && c.includes(f.properties));
+  const regions = simplified.features
+    .filter(f => !isReplaced(f))
+    .map(f => toRegion(f, f.properties.iso_3166_2, f.properties.name, NATURAL_EARTH_ORDER));
 
   for (const custom of customRegions) {
     const parts = simplified.features.filter(f => custom.includes(f.properties));

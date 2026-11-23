@@ -1861,11 +1861,6 @@
     },
     {
         "level": "state",
-        "code": "FR-59",
-        "name": "Nord"
-    },
-    {
-        "level": "state",
         "code": "BE-VWV",
         "name": "West Flanders"
     },
@@ -1876,33 +1871,13 @@
     },
     {
         "level": "state",
-        "code": "FR-08",
-        "name": "Ardennes"
-    },
-    {
-        "level": "state",
         "code": "BE-WNA",
         "name": "Namur"
     },
     {
         "level": "state",
-        "code": "FR-02",
-        "name": "Aisne"
-    },
-    {
-        "level": "state",
         "code": "BE-WLX",
         "name": "Luxembourg"
-    },
-    {
-        "level": "state",
-        "code": "FR-55",
-        "name": "Meuse"
-    },
-    {
-        "level": "state",
-        "code": "FR-54",
-        "name": "Meurthe-et-Moselle"
     },
     {
         "level": "state",
@@ -2088,11 +2063,6 @@
         "level": "state",
         "code": "GE-AJ",
         "name": "Ajaria"
-    },
-    {
-        "level": "state",
-        "code": "FR-57",
-        "name": "Moselle"
     },
     {
         "level": "state",
@@ -2801,18 +2771,8 @@
     },
     {
         "level": "state",
-        "code": "IT-AO",
-        "name": "Aoste"
-    },
-    {
-        "level": "state",
         "code": "CH-VS",
         "name": "Valais"
-    },
-    {
-        "level": "state",
-        "code": "IT-VB",
-        "name": "Verbano-Cusio-Ossola"
     },
     {
         "level": "state",
@@ -2821,28 +2781,8 @@
     },
     {
         "level": "state",
-        "code": "IT-VA",
-        "name": "Varese"
-    },
-    {
-        "level": "state",
-        "code": "IT-CO",
-        "name": "Como"
-    },
-    {
-        "level": "state",
         "code": "CH-GR",
         "name": "Graubünden"
-    },
-    {
-        "level": "state",
-        "code": "IT-SO",
-        "name": "Sondrio"
-    },
-    {
-        "level": "state",
-        "code": "IT-BZ",
-        "name": "Bozen"
     },
     {
         "level": "state",
@@ -2963,46 +2903,6 @@
         "level": "state",
         "code": "GN-LO",
         "name": "Lola"
-    },
-    {
-        "level": "state",
-        "code": "IT-IM",
-        "name": "Imperia"
-    },
-    {
-        "level": "state",
-        "code": "FR-06",
-        "name": "Alpes-Maritimes"
-    },
-    {
-        "level": "state",
-        "code": "IT-CN",
-        "name": "Cuneo"
-    },
-    {
-        "level": "state",
-        "code": "FR-04",
-        "name": "Alpes-de-Haute-Provence"
-    },
-    {
-        "level": "state",
-        "code": "FR-05",
-        "name": "Hautes-Alpes"
-    },
-    {
-        "level": "state",
-        "code": "IT-TO",
-        "name": "Turin"
-    },
-    {
-        "level": "state",
-        "code": "FR-73",
-        "name": "Savoie"
-    },
-    {
-        "level": "state",
-        "code": "FR-74",
-        "name": "Haute-Savoie"
     },
     {
         "level": "state",
@@ -3576,16 +3476,6 @@
     },
     {
         "level": "state",
-        "code": "IT-RN",
-        "name": "Rimini"
-    },
-    {
-        "level": "state",
-        "code": "IT-PU",
-        "name": "Pesaro e Urbino"
-    },
-    {
-        "level": "state",
         "code": "HT-NE",
         "name": "Nord-Est"
     },
@@ -3716,18 +3606,8 @@
     },
     {
         "level": "state",
-        "code": "IT-BL",
-        "name": "Belluno"
-    },
-    {
-        "level": "state",
         "code": "AT-2",
         "name": "Kärnten"
-    },
-    {
-        "level": "state",
-        "code": "IT-UD",
-        "name": "Udine"
     },
     {
         "level": "state",
@@ -3771,11 +3651,6 @@
     },
     {
         "level": "state",
-        "code": "IT-GO",
-        "name": "Gorizia"
-    },
-    {
-        "level": "state",
         "code": "SI-084",
         "name": "Nova Goriška"
     },
@@ -3793,11 +3668,6 @@
         "level": "state",
         "code": "SI-049",
         "name": "Komen"
-    },
-    {
-        "level": "state",
-        "code": "IT-TS",
-        "name": "Trieste"
     },
     {
         "level": "state",
@@ -3878,56 +3748,6 @@
         "level": "state",
         "code": "MM-14",
         "name": "Chin"
-    },
-    {
-        "level": "state",
-        "code": "FR-64",
-        "name": "Pyrénées-Atlantiques"
-    },
-    {
-        "level": "state",
-        "code": "ES-NA",
-        "name": "Navarra"
-    },
-    {
-        "level": "state",
-        "code": "ES-SS",
-        "name": "Gipuzkoa"
-    },
-    {
-        "level": "state",
-        "code": "ES-HU",
-        "name": "Huesca"
-    },
-    {
-        "level": "state",
-        "code": "FR-31",
-        "name": "Haute-Garonne"
-    },
-    {
-        "level": "state",
-        "code": "ES-L",
-        "name": "Lérida"
-    },
-    {
-        "level": "state",
-        "code": "FR-65",
-        "name": "Hautes-Pyrénées"
-    },
-    {
-        "level": "state",
-        "code": "FR-09",
-        "name": "Ariège"
-    },
-    {
-        "level": "state",
-        "code": "FR-66",
-        "name": "Pyrénées-Orientales"
-    },
-    {
-        "level": "state",
-        "code": "ES-GI",
-        "name": "Gerona"
     },
     {
         "level": "state",
@@ -4586,16 +4406,6 @@
     },
     {
         "level": "state",
-        "code": "FR-67",
-        "name": "Bas-Rhin"
-    },
-    {
-        "level": "state",
-        "code": "FR-68",
-        "name": "Haute-Rhin"
-    },
-    {
-        "level": "state",
         "code": "CH-SG",
         "name": "Sankt Gallen"
     },
@@ -4611,23 +4421,8 @@
     },
     {
         "level": "state",
-        "code": "FR-90",
-        "name": "Territoire de Belfort"
-    },
-    {
-        "level": "state",
-        "code": "FR-25",
-        "name": "Doubs"
-    },
-    {
-        "level": "state",
         "code": "CH-GE",
         "name": "Genève"
-    },
-    {
-        "level": "state",
-        "code": "FR-01",
-        "name": "Ain"
     },
     {
         "level": "state",
@@ -4636,18 +4431,8 @@
     },
     {
         "level": "state",
-        "code": "FR-39",
-        "name": "Jura"
-    },
-    {
-        "level": "state",
         "code": "CH-NE",
         "name": "Neuchâtel"
-    },
-    {
-        "level": "state",
-        "code": "ES-BA",
-        "name": "Badajoz"
     },
     {
         "level": "state",
@@ -6866,11 +6651,6 @@
     },
     {
         "level": "state",
-        "code": "ES-CA",
-        "name": "Cádiz"
-    },
-    {
-        "level": "state",
         "code": "US-WA",
         "name": "Washington"
     },
@@ -9076,18 +8856,8 @@
     },
     {
         "level": "state",
-        "code": "ES-OR",
-        "name": "Orense"
-    },
-    {
-        "level": "state",
         "code": "PT-16",
         "name": "Viana do Castelo"
-    },
-    {
-        "level": "state",
-        "code": "ES-CC",
-        "name": "Cáceres"
     },
     {
         "level": "state",
@@ -9101,18 +8871,8 @@
     },
     {
         "level": "state",
-        "code": "ES-SA",
-        "name": "Salamanca"
-    },
-    {
-        "level": "state",
         "code": "PT-04",
         "name": "Bragança"
-    },
-    {
-        "level": "state",
-        "code": "ES-ZA",
-        "name": "Zamora"
     },
     {
         "level": "state",
@@ -9123,16 +8883,6 @@
         "level": "state",
         "code": "PT-03",
         "name": "Braga"
-    },
-    {
-        "level": "state",
-        "code": "ES-PO",
-        "name": "Pontevedra"
-    },
-    {
-        "level": "state",
-        "code": "ES-H",
-        "name": "Huelva"
     },
     {
         "level": "state",
@@ -12646,286 +12396,6 @@
     },
     {
         "level": "state",
-        "code": "IT-VE",
-        "name": "Venezia"
-    },
-    {
-        "level": "state",
-        "code": "IT-PD",
-        "name": "Padova"
-    },
-    {
-        "level": "state",
-        "code": "IT-RO",
-        "name": "Rovigo"
-    },
-    {
-        "level": "state",
-        "code": "IT-FE",
-        "name": "Ferrara"
-    },
-    {
-        "level": "state",
-        "code": "IT-RA",
-        "name": "Ravenna"
-    },
-    {
-        "level": "state",
-        "code": "IT-FC",
-        "name": "Forlì-Cesena"
-    },
-    {
-        "level": "state",
-        "code": "IT-AN",
-        "name": "Ancona"
-    },
-    {
-        "level": "state",
-        "code": "IT-MC",
-        "name": "Macerata"
-    },
-    {
-        "level": "state",
-        "code": "IT-FM",
-        "name": "Fermo"
-    },
-    {
-        "level": "state",
-        "code": "IT-AP",
-        "name": "Ascoli Piceno"
-    },
-    {
-        "level": "state",
-        "code": "IT-TE",
-        "name": "Teramo"
-    },
-    {
-        "level": "state",
-        "code": "IT-PE",
-        "name": "Pescara"
-    },
-    {
-        "level": "state",
-        "code": "IT-CH",
-        "name": "Chieti"
-    },
-    {
-        "level": "state",
-        "code": "IT-CB",
-        "name": "Campobasso"
-    },
-    {
-        "level": "state",
-        "code": "IT-FG",
-        "name": "Foggia"
-    },
-    {
-        "level": "state",
-        "code": "IT-BT",
-        "name": "Barletta-Andria Trani"
-    },
-    {
-        "level": "state",
-        "code": "IT-BA",
-        "name": "Bari"
-    },
-    {
-        "level": "state",
-        "code": "IT-BR",
-        "name": "Brindisi"
-    },
-    {
-        "level": "state",
-        "code": "IT-LE",
-        "name": "Lecce"
-    },
-    {
-        "level": "state",
-        "code": "IT-TA",
-        "name": "Taranto"
-    },
-    {
-        "level": "state",
-        "code": "IT-MT",
-        "name": "Matera"
-    },
-    {
-        "level": "state",
-        "code": "IT-CS",
-        "name": "Cosenza"
-    },
-    {
-        "level": "state",
-        "code": "IT-KR",
-        "name": "Crotene"
-    },
-    {
-        "level": "state",
-        "code": "IT-CZ",
-        "name": "Catanzaro"
-    },
-    {
-        "level": "state",
-        "code": "IT-RC",
-        "name": "Reggio Calabria"
-    },
-    {
-        "level": "state",
-        "code": "IT-VV",
-        "name": "Vibo Valentia"
-    },
-    {
-        "level": "state",
-        "code": "IT-PZ",
-        "name": "Potenza"
-    },
-    {
-        "level": "state",
-        "code": "IT-SA",
-        "name": "Salerno"
-    },
-    {
-        "level": "state",
-        "code": "IT-NA",
-        "name": "Napoli"
-    },
-    {
-        "level": "state",
-        "code": "IT-CE",
-        "name": "Caserta"
-    },
-    {
-        "level": "state",
-        "code": "IT-LT",
-        "name": "Latina"
-    },
-    {
-        "level": "state",
-        "code": "IT-RM",
-        "name": "Roma"
-    },
-    {
-        "level": "state",
-        "code": "IT-VT",
-        "name": "Viterbo"
-    },
-    {
-        "level": "state",
-        "code": "IT-GR",
-        "name": "Grosseto"
-    },
-    {
-        "level": "state",
-        "code": "IT-LI",
-        "name": "Livorno"
-    },
-    {
-        "level": "state",
-        "code": "IT-PI",
-        "name": "Pisa"
-    },
-    {
-        "level": "state",
-        "code": "IT-LU",
-        "name": "Lucca"
-    },
-    {
-        "level": "state",
-        "code": "IT-MS",
-        "name": "Massa-Carrara"
-    },
-    {
-        "level": "state",
-        "code": "IT-SP",
-        "name": "La Spezia"
-    },
-    {
-        "level": "state",
-        "code": "IT-GE",
-        "name": "Genova"
-    },
-    {
-        "level": "state",
-        "code": "IT-SV",
-        "name": "Savona"
-    },
-    {
-        "level": "state",
-        "code": "FR-83",
-        "name": "Var"
-    },
-    {
-        "level": "state",
-        "code": "FR-13",
-        "name": "Bouches-du-Rhône"
-    },
-    {
-        "level": "state",
-        "code": "FR-30",
-        "name": "Gard"
-    },
-    {
-        "level": "state",
-        "code": "FR-34",
-        "name": "Hérault"
-    },
-    {
-        "level": "state",
-        "code": "FR-11",
-        "name": "Aude"
-    },
-    {
-        "level": "state",
-        "code": "ES-B",
-        "name": "Barcelona"
-    },
-    {
-        "level": "state",
-        "code": "ES-T",
-        "name": "Tarragona"
-    },
-    {
-        "level": "state",
-        "code": "ES-CS",
-        "name": "Castellón"
-    },
-    {
-        "level": "state",
-        "code": "ES-V",
-        "name": "Valencia"
-    },
-    {
-        "level": "state",
-        "code": "ES-A",
-        "name": "Alicante"
-    },
-    {
-        "level": "state",
-        "code": "ES-MU",
-        "name": "Murcia"
-    },
-    {
-        "level": "state",
-        "code": "ES-AL",
-        "name": "Almería"
-    },
-    {
-        "level": "state",
-        "code": "ES-GR",
-        "name": "Granada"
-    },
-    {
-        "level": "state",
-        "code": "ES-MA",
-        "name": "Málaga"
-    },
-    {
-        "level": "state",
-        "code": "ES-SE",
-        "name": "Sevilla"
-    },
-    {
-        "level": "state",
         "code": "PT-15",
         "name": "Setúbal"
     },
@@ -12958,106 +12428,6 @@
         "level": "state",
         "code": "PT-13",
         "name": "Porto"
-    },
-    {
-        "level": "state",
-        "code": "ES-C",
-        "name": "La Coruña"
-    },
-    {
-        "level": "state",
-        "code": "ES-LU",
-        "name": "Lugo"
-    },
-    {
-        "level": "state",
-        "code": "ES-O",
-        "name": "Asturias"
-    },
-    {
-        "level": "state",
-        "code": "ES-S",
-        "name": "Cantabria"
-    },
-    {
-        "level": "state",
-        "code": "ES-BI",
-        "name": "Bizkaia"
-    },
-    {
-        "level": "state",
-        "code": "FR-40",
-        "name": "Landes"
-    },
-    {
-        "level": "state",
-        "code": "FR-33",
-        "name": "Gironde"
-    },
-    {
-        "level": "state",
-        "code": "FR-17",
-        "name": "Charente-Maritime"
-    },
-    {
-        "level": "state",
-        "code": "FR-85",
-        "name": "Vendée"
-    },
-    {
-        "level": "state",
-        "code": "FR-44",
-        "name": "Loire-Atlantique"
-    },
-    {
-        "level": "state",
-        "code": "FR-56",
-        "name": "Morbihan"
-    },
-    {
-        "level": "state",
-        "code": "FR-29",
-        "name": "Finistère"
-    },
-    {
-        "level": "state",
-        "code": "FR-22",
-        "name": "Côtes-d'Armor"
-    },
-    {
-        "level": "state",
-        "code": "FR-35",
-        "name": "Ille-et-Vilaine"
-    },
-    {
-        "level": "state",
-        "code": "FR-50",
-        "name": "Manche"
-    },
-    {
-        "level": "state",
-        "code": "FR-14",
-        "name": "Calvados"
-    },
-    {
-        "level": "state",
-        "code": "FR-27",
-        "name": "Eure"
-    },
-    {
-        "level": "state",
-        "code": "FR-76",
-        "name": "Seine-Maritime"
-    },
-    {
-        "level": "state",
-        "code": "FR-80",
-        "name": "Somme"
-    },
-    {
-        "level": "state",
-        "code": "FR-62",
-        "name": "Pas-de-Calais"
     },
     {
         "level": "state",
@@ -13676,16 +13046,6 @@
     },
     {
         "level": "state",
-        "code": "ES-TF",
-        "name": "Santa Cruz de Tenerife"
-    },
-    {
-        "level": "state",
-        "code": "ES-GC",
-        "name": "Las Palmas"
-    },
-    {
-        "level": "state",
         "code": "PT-30",
         "name": "Madeira"
     },
@@ -13706,11 +13066,6 @@
     },
     {
         "level": "state",
-        "code": "IT-TP",
-        "name": "Trapani"
-    },
-    {
-        "level": "state",
         "code": "PT-20",
         "name": "Azores"
     },
@@ -13723,96 +13078,6 @@
         "level": "state",
         "code": "GR-F",
         "name": "Ionioi Nisoi"
-    },
-    {
-        "level": "state",
-        "code": "IT-ME",
-        "name": "Messina"
-    },
-    {
-        "level": "state",
-        "code": "IT-PA",
-        "name": "Palermo"
-    },
-    {
-        "level": "state",
-        "code": "IT-AG",
-        "name": "Agrigento"
-    },
-    {
-        "level": "state",
-        "code": "IT-CL",
-        "name": "Caltanissetta"
-    },
-    {
-        "level": "state",
-        "code": "IT-RG",
-        "name": "Ragusa"
-    },
-    {
-        "level": "state",
-        "code": "IT-SR",
-        "name": "Siracusa"
-    },
-    {
-        "level": "state",
-        "code": "IT-CT",
-        "name": "Catania"
-    },
-    {
-        "level": "state",
-        "code": "ES-PM",
-        "name": "Baleares"
-    },
-    {
-        "level": "state",
-        "code": "IT-CI",
-        "name": "Carbonia-Iglesias"
-    },
-    {
-        "level": "state",
-        "code": "IT-SS",
-        "name": "Sassari"
-    },
-    {
-        "level": "state",
-        "code": "IT-NU",
-        "name": "Nuoro"
-    },
-    {
-        "level": "state",
-        "code": "IT-OT",
-        "name": "Olbia-Tempio"
-    },
-    {
-        "level": "state",
-        "code": "IT-OR",
-        "name": "Oristrano"
-    },
-    {
-        "level": "state",
-        "code": "IT-VS",
-        "name": "Medio Campidano"
-    },
-    {
-        "level": "state",
-        "code": "IT-CA",
-        "name": "Cagliari"
-    },
-    {
-        "level": "state",
-        "code": "IT-OG",
-        "name": "Ogliastra"
-    },
-    {
-        "level": "state",
-        "code": "FR-2B",
-        "name": "Haute-Corse"
-    },
-    {
-        "level": "state",
-        "code": "FR-2A",
-        "name": "Corse-du-Sud"
     },
     {
         "level": "state",
@@ -15553,61 +14818,6 @@
         "level": "state",
         "code": "SS-WR",
         "name": "Warrap"
-    },
-    {
-        "level": "state",
-        "code": "ES-Z",
-        "name": "Zaragoza"
-    },
-    {
-        "level": "state",
-        "code": "ES-LO",
-        "name": "La Rioja"
-    },
-    {
-        "level": "state",
-        "code": "ES-VI",
-        "name": "Álava"
-    },
-    {
-        "level": "state",
-        "code": "ES-AB",
-        "name": "Albacete"
-    },
-    {
-        "level": "state",
-        "code": "ES-TE",
-        "name": "Teruel"
-    },
-    {
-        "level": "state",
-        "code": "ES-CU",
-        "name": "Cuenca"
-    },
-    {
-        "level": "state",
-        "code": "ES-TO",
-        "name": "Toledo"
-    },
-    {
-        "level": "state",
-        "code": "ES-LE",
-        "name": "León"
-    },
-    {
-        "level": "state",
-        "code": "ES-SO",
-        "name": "Soria"
-    },
-    {
-        "level": "state",
-        "code": "ES-BU",
-        "name": "Burgos"
-    },
-    {
-        "level": "state",
-        "code": "ES-AV",
-        "name": "Ávila"
     },
     {
         "level": "state",
@@ -20276,456 +19486,6 @@
     },
     {
         "level": "state",
-        "code": "IT-EN",
-        "name": "Enna"
-    },
-    {
-        "level": "state",
-        "code": "IT-BN",
-        "name": "Benevento"
-    },
-    {
-        "level": "state",
-        "code": "IT-AT",
-        "name": "Asti"
-    },
-    {
-        "level": "state",
-        "code": "IT-BG",
-        "name": "Bergamo"
-    },
-    {
-        "level": "state",
-        "code": "IT-BS",
-        "name": "Brescia"
-    },
-    {
-        "level": "state",
-        "code": "IT-CR",
-        "name": "Cremona"
-    },
-    {
-        "level": "state",
-        "code": "IT-MN",
-        "name": "Mantova"
-    },
-    {
-        "level": "state",
-        "code": "IT-MI",
-        "name": "Milano"
-    },
-    {
-        "level": "state",
-        "code": "IT-LC",
-        "name": "Lecco"
-    },
-    {
-        "level": "state",
-        "code": "IT-MB",
-        "name": "Monza e Brianza"
-    },
-    {
-        "level": "state",
-        "code": "IT-LO",
-        "name": "Lodi"
-    },
-    {
-        "level": "state",
-        "code": "IT-SI",
-        "name": "Siena"
-    },
-    {
-        "level": "state",
-        "code": "IT-AR",
-        "name": "Arezzo"
-    },
-    {
-        "level": "state",
-        "code": "IT-FI",
-        "name": "Firenze"
-    },
-    {
-        "level": "state",
-        "code": "IT-VC",
-        "name": "Vercelli"
-    },
-    {
-        "level": "state",
-        "code": "IT-PV",
-        "name": "Pavia"
-    },
-    {
-        "level": "state",
-        "code": "IT-RI",
-        "name": "Rieti"
-    },
-    {
-        "level": "state",
-        "code": "IT-NO",
-        "name": "Novara"
-    },
-    {
-        "level": "state",
-        "code": "IT-AL",
-        "name": "Alessandria"
-    },
-    {
-        "level": "state",
-        "code": "IT-TN",
-        "name": "Trento"
-    },
-    {
-        "level": "state",
-        "code": "IT-VI",
-        "name": "Vicenza"
-    },
-    {
-        "level": "state",
-        "code": "IT-VR",
-        "name": "Verona"
-    },
-    {
-        "level": "state",
-        "code": "IT-TV",
-        "name": "Treviso"
-    },
-    {
-        "level": "state",
-        "code": "IT-PC",
-        "name": "Piacenza"
-    },
-    {
-        "level": "state",
-        "code": "IT-PR",
-        "name": "Parma"
-    },
-    {
-        "level": "state",
-        "code": "IT-RE",
-        "name": "Reggio Emilia"
-    },
-    {
-        "level": "state",
-        "code": "IT-MO",
-        "name": "Modena"
-    },
-    {
-        "level": "state",
-        "code": "IT-BO",
-        "name": "Bologna"
-    },
-    {
-        "level": "state",
-        "code": "IT-PT",
-        "name": "Pistoia"
-    },
-    {
-        "level": "state",
-        "code": "IT-TR",
-        "name": "Terni"
-    },
-    {
-        "level": "state",
-        "code": "IT-PG",
-        "name": "Perugia"
-    },
-    {
-        "level": "state",
-        "code": "IT-FR",
-        "name": "Frosinone"
-    },
-    {
-        "level": "state",
-        "code": "IT-AV",
-        "name": "Avellino"
-    },
-    {
-        "level": "state",
-        "code": "IT-AQ",
-        "name": "L'Aquila"
-    },
-    {
-        "level": "state",
-        "code": "IT-PN",
-        "name": "Pordenone"
-    },
-    {
-        "level": "state",
-        "code": "IT-IS",
-        "name": "Isernia"
-    },
-    {
-        "level": "state",
-        "code": "IT-BI",
-        "name": "Biella"
-    },
-    {
-        "level": "state",
-        "code": "IT-PO",
-        "name": "Prato"
-    },
-    {
-        "level": "state",
-        "code": "FR-32",
-        "name": "Gers"
-    },
-    {
-        "level": "state",
-        "code": "FR-87",
-        "name": "Haute-Vienne"
-    },
-    {
-        "level": "state",
-        "code": "FR-19",
-        "name": "Corrèze"
-    },
-    {
-        "level": "state",
-        "code": "FR-82",
-        "name": "Tarn-et-Garonne"
-    },
-    {
-        "level": "state",
-        "code": "FR-81",
-        "name": "Tarn"
-    },
-    {
-        "level": "state",
-        "code": "FR-38",
-        "name": "Isère"
-    },
-    {
-        "level": "state",
-        "code": "FR-26",
-        "name": "Drôme"
-    },
-    {
-        "level": "state",
-        "code": "FR-12",
-        "name": "Aveyron"
-    },
-    {
-        "level": "state",
-        "code": "FR-46",
-        "name": "Lot"
-    },
-    {
-        "level": "state",
-        "code": "FR-37",
-        "name": "Indre-et-Loire"
-    },
-    {
-        "level": "state",
-        "code": "FR-36",
-        "name": "Indre"
-    },
-    {
-        "level": "state",
-        "code": "FR-41",
-        "name": "Loir-et-Cher"
-    },
-    {
-        "level": "state",
-        "code": "FR-23",
-        "name": "Creuse"
-    },
-    {
-        "level": "state",
-        "code": "FR-53",
-        "name": "Mayenne"
-    },
-    {
-        "level": "state",
-        "code": "FR-72",
-        "name": "Sarthe"
-    },
-    {
-        "level": "state",
-        "code": "FR-84",
-        "name": "Vaucluse"
-    },
-    {
-        "level": "state",
-        "code": "FR-52",
-        "name": "Haute-Marne"
-    },
-    {
-        "level": "state",
-        "code": "FR-51",
-        "name": "Marne"
-    },
-    {
-        "level": "state",
-        "code": "FR-24",
-        "name": "Dordogne"
-    },
-    {
-        "level": "state",
-        "code": "FR-69",
-        "name": "Rhône"
-    },
-    {
-        "level": "state",
-        "code": "FR-88",
-        "name": "Vosges"
-    },
-    {
-        "level": "state",
-        "code": "FR-07",
-        "name": "Ardèche"
-    },
-    {
-        "level": "state",
-        "code": "FR-42",
-        "name": "Loire"
-    },
-    {
-        "level": "state",
-        "code": "FR-63",
-        "name": "Puy-de-Dôme"
-    },
-    {
-        "level": "state",
-        "code": "FR-03",
-        "name": "Allier"
-    },
-    {
-        "level": "state",
-        "code": "FR-45",
-        "name": "Loiret"
-    },
-    {
-        "level": "state",
-        "code": "FR-49",
-        "name": "Maine-et-Loire"
-    },
-    {
-        "level": "state",
-        "code": "FR-10",
-        "name": "Aube"
-    },
-    {
-        "level": "state",
-        "code": "FR-75",
-        "name": "Paris"
-    },
-    {
-        "level": "state",
-        "code": "FR-92",
-        "name": "Hauts-de-Seine"
-    },
-    {
-        "level": "state",
-        "code": "FR-93",
-        "name": "Seine-Saint-Denis"
-    },
-    {
-        "level": "state",
-        "code": "FR-95",
-        "name": "Val-d'Oise"
-    },
-    {
-        "level": "state",
-        "code": "FR-78",
-        "name": "Yvelines"
-    },
-    {
-        "level": "state",
-        "code": "FR-16",
-        "name": "Charente"
-    },
-    {
-        "level": "state",
-        "code": "FR-18",
-        "name": "Cher"
-    },
-    {
-        "level": "state",
-        "code": "FR-28",
-        "name": "Eure-et-Loir"
-    },
-    {
-        "level": "state",
-        "code": "FR-43",
-        "name": "Haute-Loire"
-    },
-    {
-        "level": "state",
-        "code": "FR-15",
-        "name": "Cantal"
-    },
-    {
-        "level": "state",
-        "code": "FR-47",
-        "name": "Lot-et-Garonne"
-    },
-    {
-        "level": "state",
-        "code": "FR-48",
-        "name": "Lozère"
-    },
-    {
-        "level": "state",
-        "code": "FR-58",
-        "name": "Nièvre"
-    },
-    {
-        "level": "state",
-        "code": "FR-21",
-        "name": "Côte-d'Or"
-    },
-    {
-        "level": "state",
-        "code": "FR-60",
-        "name": "Oise"
-    },
-    {
-        "level": "state",
-        "code": "FR-61",
-        "name": "Orne"
-    },
-    {
-        "level": "state",
-        "code": "FR-70",
-        "name": "Haute-Saône"
-    },
-    {
-        "level": "state",
-        "code": "FR-71",
-        "name": "Saône-et-Loire"
-    },
-    {
-        "level": "state",
-        "code": "FR-79",
-        "name": "Deux-Sèvres"
-    },
-    {
-        "level": "state",
-        "code": "FR-86",
-        "name": "Vienne"
-    },
-    {
-        "level": "state",
-        "code": "FR-89",
-        "name": "Yonne"
-    },
-    {
-        "level": "state",
-        "code": "FR-91",
-        "name": "Essonne"
-    },
-    {
-        "level": "state",
-        "code": "FR-77",
-        "name": "Seien-et-Marne"
-    },
-    {
-        "level": "state",
-        "code": "FR-94",
-        "name": "Val-de-Marne"
-    },
-    {
-        "level": "state",
         "code": "TJ-DU",
         "name": "Dushanbe"
     },
@@ -20886,46 +19646,6 @@
     },
     {
         "level": "state",
-        "code": "ES-P",
-        "name": "Palencia"
-    },
-    {
-        "level": "state",
-        "code": "ES-CR",
-        "name": "Ciudad Real"
-    },
-    {
-        "level": "state",
-        "code": "ES-CO",
-        "name": "Córdoba"
-    },
-    {
-        "level": "state",
-        "code": "ES-GU",
-        "name": "Guadalajara"
-    },
-    {
-        "level": "state",
-        "code": "ES-J",
-        "name": "Jaén"
-    },
-    {
-        "level": "state",
-        "code": "ES-M",
-        "name": "Madrid"
-    },
-    {
-        "level": "state",
-        "code": "ES-SG",
-        "name": "Segovia"
-    },
-    {
-        "level": "state",
-        "code": "ES-VA",
-        "name": "Valladolid"
-    },
-    {
-        "level": "state",
         "code": "XK-X25~",
         "name": "Suva Reka"
     },
@@ -20983,5 +19703,255 @@
         "level": "state",
         "code": "GB-NIR",
         "name": "Northern Ireland"
+    },
+    {
+        "level": "state",
+        "code": "FR-ARA",
+        "name": "Auvergne-Rhône-Alpes"
+    },
+    {
+        "level": "state",
+        "code": "FR-BFC",
+        "name": "Bourgogne-Franche-Comté"
+    },
+    {
+        "level": "state",
+        "code": "FR-BRE",
+        "name": "Bretagne"
+    },
+    {
+        "level": "state",
+        "code": "FR-CVL",
+        "name": "Centre-Val de Loire"
+    },
+    {
+        "level": "state",
+        "code": "FR-20R",
+        "name": "Corse"
+    },
+    {
+        "level": "state",
+        "code": "FR-GES",
+        "name": "Grand Est"
+    },
+    {
+        "level": "state",
+        "code": "FR-HDF",
+        "name": "Hauts-de-France"
+    },
+    {
+        "level": "state",
+        "code": "FR-IDF",
+        "name": "Île-de-France"
+    },
+    {
+        "level": "state",
+        "code": "FR-NOR",
+        "name": "Normandie"
+    },
+    {
+        "level": "state",
+        "code": "FR-NAQ",
+        "name": "Nouvelle-Aquitaine"
+    },
+    {
+        "level": "state",
+        "code": "FR-OCC",
+        "name": "Occitanie"
+    },
+    {
+        "level": "state",
+        "code": "FR-PDL",
+        "name": "Pays de la Loire"
+    },
+    {
+        "level": "state",
+        "code": "FR-PAC",
+        "name": "Provence-Alpes-Côte d'Azur"
+    },
+    {
+        "level": "state",
+        "code": "ES-AN",
+        "name": "Andalucía"
+    },
+    {
+        "level": "state",
+        "code": "ES-AR",
+        "name": "Aragón"
+    },
+    {
+        "level": "state",
+        "code": "ES-AS",
+        "name": "Asturias"
+    },
+    {
+        "level": "state",
+        "code": "ES-CN",
+        "name": "Canarias"
+    },
+    {
+        "level": "state",
+        "code": "ES-CB",
+        "name": "Cantabria"
+    },
+    {
+        "level": "state",
+        "code": "ES-CL",
+        "name": "Castilla y León"
+    },
+    {
+        "level": "state",
+        "code": "ES-CM",
+        "name": "Castilla-La Mancha"
+    },
+    {
+        "level": "state",
+        "code": "ES-CT",
+        "name": "Cataluña"
+    },
+    {
+        "level": "state",
+        "code": "ES-EX",
+        "name": "Extremadura"
+    },
+    {
+        "level": "state",
+        "code": "ES-GA",
+        "name": "Galicia"
+    },
+    {
+        "level": "state",
+        "code": "ES-IB",
+        "name": "Illes Balears"
+    },
+    {
+        "level": "state",
+        "code": "ES-RI",
+        "name": "La Rioja"
+    },
+    {
+        "level": "state",
+        "code": "ES-MD",
+        "name": "Madrid"
+    },
+    {
+        "level": "state",
+        "code": "ES-MC",
+        "name": "Murcia"
+    },
+    {
+        "level": "state",
+        "code": "ES-NC",
+        "name": "Navarra"
+    },
+    {
+        "level": "state",
+        "code": "ES-PV",
+        "name": "País Vasco"
+    },
+    {
+        "level": "state",
+        "code": "ES-VC",
+        "name": "Comunitat Valenciana"
+    },
+    {
+        "level": "state",
+        "code": "IT-65",
+        "name": "Abruzzo"
+    },
+    {
+        "level": "state",
+        "code": "IT-77",
+        "name": "Basilicata"
+    },
+    {
+        "level": "state",
+        "code": "IT-78",
+        "name": "Calabria"
+    },
+    {
+        "level": "state",
+        "code": "IT-72",
+        "name": "Campania"
+    },
+    {
+        "level": "state",
+        "code": "IT-45",
+        "name": "Emilia-Romagna"
+    },
+    {
+        "level": "state",
+        "code": "IT-36",
+        "name": "Friuli-Venezia Giulia"
+    },
+    {
+        "level": "state",
+        "code": "IT-62",
+        "name": "Lazio"
+    },
+    {
+        "level": "state",
+        "code": "IT-42",
+        "name": "Liguria"
+    },
+    {
+        "level": "state",
+        "code": "IT-25",
+        "name": "Lombardia"
+    },
+    {
+        "level": "state",
+        "code": "IT-57",
+        "name": "Marche"
+    },
+    {
+        "level": "state",
+        "code": "IT-67",
+        "name": "Molise"
+    },
+    {
+        "level": "state",
+        "code": "IT-21",
+        "name": "Piemonte"
+    },
+    {
+        "level": "state",
+        "code": "IT-75",
+        "name": "Puglia"
+    },
+    {
+        "level": "state",
+        "code": "IT-88",
+        "name": "Sardegna"
+    },
+    {
+        "level": "state",
+        "code": "IT-82",
+        "name": "Sicilia"
+    },
+    {
+        "level": "state",
+        "code": "IT-52",
+        "name": "Toscana"
+    },
+    {
+        "level": "state",
+        "code": "IT-32",
+        "name": "Trentino-Alto Adige"
+    },
+    {
+        "level": "state",
+        "code": "IT-55",
+        "name": "Umbria"
+    },
+    {
+        "level": "state",
+        "code": "IT-23",
+        "name": "Valle d'Aosta"
+    },
+    {
+        "level": "state",
+        "code": "IT-34",
+        "name": "Veneto"
     }
 ]
