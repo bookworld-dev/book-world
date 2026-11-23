@@ -1966,33 +1966,8 @@
     },
     {
         "level": "state",
-        "code": "MK-72",
-        "name": "Struga"
-    },
-    {
-        "level": "state",
         "code": "AL-09",
         "name": "Dibër"
-    },
-    {
-        "level": "state",
-        "code": "MK-78",
-        "name": "Centar župa"
-    },
-    {
-        "level": "state",
-        "code": "MK-21",
-        "name": "Debar"
-    },
-    {
-        "level": "state",
-        "code": "MK-50",
-        "name": "Mavrovo and Rostusa"
-    },
-    {
-        "level": "state",
-        "code": "MK-19",
-        "name": "Gostivar"
     },
     {
         "level": "state",
@@ -2008,26 +1983,6 @@
         "level": "state",
         "code": "AL-03",
         "name": "Elbasan"
-    },
-    {
-        "level": "state",
-        "code": "MK-12",
-        "name": "Vevčani"
-    },
-    {
-        "level": "state",
-        "code": "MK-58",
-        "name": "Ohrid"
-    },
-    {
-        "level": "state",
-        "code": "MK-22",
-        "name": "Debarca"
-    },
-    {
-        "level": "state",
-        "code": "MK-66",
-        "name": "Resen"
     },
     {
         "level": "state",
@@ -3771,63 +3726,8 @@
     },
     {
         "level": "state",
-        "code": "MK-56",
-        "name": "Novo Selo"
-    },
-    {
-        "level": "state",
-        "code": "MK-26",
-        "name": "Dojran"
-    },
-    {
-        "level": "state",
-        "code": "MK-10",
-        "name": "Valandovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-73",
-        "name": "Strumitsa"
-    },
-    {
-        "level": "state",
-        "code": "MK-05",
-        "name": "Bogdanci"
-    },
-    {
-        "level": "state",
-        "code": "MK-18",
-        "name": "Gevgelija"
-    },
-    {
-        "level": "state",
-        "code": "MK-36",
-        "name": "Kavadartsi"
-    },
-    {
-        "level": "state",
-        "code": "MK-55",
-        "name": "Novaci"
-    },
-    {
-        "level": "state",
-        "code": "MK-62",
-        "name": "Prilep"
-    },
-    {
-        "level": "state",
-        "code": "MK-04",
-        "name": "Bitola"
-    },
-    {
-        "level": "state",
         "code": "XK-X05~",
         "name": "Gnjilane"
-    },
-    {
-        "level": "state",
-        "code": "MK-48",
-        "name": "Lipkovo"
     },
     {
         "level": "state",
@@ -3836,28 +3736,8 @@
     },
     {
         "level": "state",
-        "code": "MK-82",
-        "name": "Čučer Sandevo"
-    },
-    {
-        "level": "state",
         "code": "XK-X07~",
         "name": "Kačanik"
-    },
-    {
-        "level": "state",
-        "code": "MK-29",
-        "name": "Gjorče Petrov"
-    },
-    {
-        "level": "state",
-        "code": "MK-68",
-        "name": "Saraj"
-    },
-    {
-        "level": "state",
-        "code": "MK-35",
-        "name": "Jegunovce"
     },
     {
         "level": "state",
@@ -3866,48 +3746,8 @@
     },
     {
         "level": "state",
-        "code": "MK-75",
-        "name": "Tearce"
-    },
-    {
-        "level": "state",
-        "code": "MK-76",
-        "name": "Tetovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-06",
-        "name": "Bogovinje"
-    },
-    {
-        "level": "state",
-        "code": "MK-16",
-        "name": "Vrapcište"
-    },
-    {
-        "level": "state",
         "code": "RS-24",
         "name": "Pcinjski"
-    },
-    {
-        "level": "state",
-        "code": "MK-44",
-        "name": "Kriva Palanka"
-    },
-    {
-        "level": "state",
-        "code": "MK-65",
-        "name": "Rankovce"
-    },
-    {
-        "level": "state",
-        "code": "MK-71",
-        "name": "Staro Nagoričane"
-    },
-    {
-        "level": "state",
-        "code": "MK-47",
-        "name": "Kumanovo"
     },
     {
         "level": "state",
@@ -3956,28 +3796,8 @@
     },
     {
         "level": "state",
-        "code": "MK-23",
-        "name": "Delčevo"
-    },
-    {
-        "level": "state",
-        "code": "MK-51",
-        "name": "Makedonska Kamenica"
-    },
-    {
-        "level": "state",
         "code": "BG-01",
         "name": "Blagoevgrad"
-    },
-    {
-        "level": "state",
-        "code": "MK-03",
-        "name": "Berovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-60",
-        "name": "Pehčevo"
     },
     {
         "level": "state",
@@ -18641,246 +18461,6 @@
     },
     {
         "level": "state",
-        "code": "MK-30",
-        "name": "Želino"
-    },
-    {
-        "level": "state",
-        "code": "MK-08",
-        "name": "Brvenica"
-    },
-    {
-        "level": "state",
-        "code": "MK-52",
-        "name": "Brod"
-    },
-    {
-        "level": "state",
-        "code": "MK-57",
-        "name": "Oslomej"
-    },
-    {
-        "level": "state",
-        "code": "MK-70",
-        "name": "Sopište"
-    },
-    {
-        "level": "state",
-        "code": "MK-38",
-        "name": "Karpoš"
-    },
-    {
-        "level": "state",
-        "code": "MK-84",
-        "name": "Šuto Orizari"
-    },
-    {
-        "level": "state",
-        "code": "MK-09",
-        "name": "Butel"
-    },
-    {
-        "level": "state",
-        "code": "MK-79",
-        "name": "Čair"
-    },
-    {
-        "level": "state",
-        "code": "MK-77",
-        "name": "Centar"
-    },
-    {
-        "level": "state",
-        "code": "MK-31",
-        "name": "Zajas"
-    },
-    {
-        "level": "state",
-        "code": "MK-27",
-        "name": "Dolneni"
-    },
-    {
-        "level": "state",
-        "code": "MK-45",
-        "name": "Krivogaštani"
-    },
-    {
-        "level": "state",
-        "code": "MK-53",
-        "name": "Mogila"
-    },
-    {
-        "level": "state",
-        "code": "MK-80",
-        "name": "Čaška"
-    },
-    {
-        "level": "state",
-        "code": "MK-67",
-        "name": "Rosoman"
-    },
-    {
-        "level": "state",
-        "code": "MK-54",
-        "name": "Negotino"
-    },
-    {
-        "level": "state",
-        "code": "MK-28",
-        "name": "Drugovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-17",
-        "name": "Gazi Baba"
-    },
-    {
-        "level": "state",
-        "code": "MK-46",
-        "name": "Kruševo"
-    },
-    {
-        "level": "state",
-        "code": "MK-25",
-        "name": "Demir Hisar"
-    },
-    {
-        "level": "state",
-        "code": "MK-01",
-        "name": "Aerodrom"
-    },
-    {
-        "level": "state",
-        "code": "MK-74",
-        "name": "Studeničani"
-    },
-    {
-        "level": "state",
-        "code": "MK-39",
-        "name": "Kisela Voda"
-    },
-    {
-        "level": "state",
-        "code": "MK-63",
-        "name": "Probištip"
-    },
-    {
-        "level": "state",
-        "code": "MK-81",
-        "name": "Češinovo-Obleševo"
-    },
-    {
-        "level": "state",
-        "code": "MK-02",
-        "name": "Aračinovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-32",
-        "name": "Zelenikovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-40",
-        "name": "Kičevo"
-    },
-    {
-        "level": "state",
-        "code": "MK-61",
-        "name": "Plasnica"
-    },
-    {
-        "level": "state",
-        "code": "MK-15",
-        "name": "Vraneštica"
-    },
-    {
-        "level": "state",
-        "code": "MK-85",
-        "name": "Skopje"
-    },
-    {
-        "level": "state",
-        "code": "MK-49",
-        "name": "Lozovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-69",
-        "name": "Sveti Nikole"
-    },
-    {
-        "level": "state",
-        "code": "MK-20",
-        "name": "Gradsko"
-    },
-    {
-        "level": "state",
-        "code": "MK-43",
-        "name": "Kratovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-34",
-        "name": "Ilinden"
-    },
-    {
-        "level": "state",
-        "code": "MK-37",
-        "name": "Karbinci"
-    },
-    {
-        "level": "state",
-        "code": "MK-83",
-        "name": "Štip"
-    },
-    {
-        "level": "state",
-        "code": "MK-42",
-        "name": "Kočani"
-    },
-    {
-        "level": "state",
-        "code": "MK-33",
-        "name": "Zrnovci"
-    },
-    {
-        "level": "state",
-        "code": "MK-13",
-        "name": "Veles"
-    },
-    {
-        "level": "state",
-        "code": "MK-24",
-        "name": "Demir Kapija"
-    },
-    {
-        "level": "state",
-        "code": "MK-14",
-        "name": "Vinica"
-    },
-    {
-        "level": "state",
-        "code": "MK-07",
-        "name": "Bosilovo"
-    },
-    {
-        "level": "state",
-        "code": "MK-64",
-        "name": "Radoviš"
-    },
-    {
-        "level": "state",
-        "code": "MK-11",
-        "name": "Vasilevo"
-    },
-    {
-        "level": "state",
-        "code": "MK-41",
-        "name": "Konče"
-    },
-    {
-        "level": "state",
         "code": "LY-JI",
         "name": "Al Jifarah"
     },
@@ -19963,5 +19543,45 @@
         "level": "state",
         "code": "IT-34",
         "name": "Veneto"
+    },
+    {
+        "level": "state",
+        "code": "MK-SK",
+        "name": "Skopje Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-PE",
+        "name": "Pelagonia Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-PO",
+        "name": "Polog Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-VA",
+        "name": "Vardar Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-EA",
+        "name": "Eastern Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-NE",
+        "name": "Northeastern Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-SE",
+        "name": "Southeastern Region"
+    },
+    {
+        "level": "state",
+        "code": "MK-SW",
+        "name": "Southwestern Region"
     }
 ]

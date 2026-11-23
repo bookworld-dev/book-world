@@ -23,6 +23,13 @@ const regionsOf = (country: string, rows: RegionRow[]): CustomRegion[] =>
     replacesParts: true,
   }));
 
+const macedonianRegion = (code: string, name: string, municipalities: string[]): CustomRegion => ({
+  code,
+  name,
+  includes: props => props.iso_a2 === 'MK' && municipalities.includes(String(props.iso_3166_2)),
+  replacesParts: true,
+});
+
 export const customRegions: CustomRegion[] = [
   ukNation('GB-ENG', 'England'),
   ukNation('GB-SCT', 'Scotland'),
@@ -88,5 +95,23 @@ export const customRegions: CustomRegion[] = [
     ['IT-55', 'Umbria'],
     ['IT-23', "Valle d'Aosta"],
     ['IT-34', 'Veneto'],
+  ]),
+
+  macedonianRegion('MK-SK', 'Skopje Region', [
+    'MK-01', 'MK-02', 'MK-09', 'MK-17', 'MK-29', 'MK-32', 'MK-34', 'MK-38', 'MK-39',
+    'MK-68', 'MK-70', 'MK-74', 'MK-77', 'MK-79', 'MK-82', 'MK-84', 'MK-85',
+  ]),
+  macedonianRegion('MK-PE', 'Pelagonia Region', ['MK-04', 'MK-25', 'MK-27', 'MK-45', 'MK-46', 'MK-53', 'MK-55', 'MK-62', 'MK-66']),
+  macedonianRegion('MK-PO', 'Polog Region', ['MK-06', 'MK-08', 'MK-16', 'MK-19', 'MK-30', 'MK-35', 'MK-50', 'MK-75', 'MK-76']),
+  macedonianRegion('MK-VA', 'Vardar Region', ['MK-13', 'MK-20', 'MK-24', 'MK-36', 'MK-49', 'MK-54', 'MK-67', 'MK-69', 'MK-80']),
+  macedonianRegion('MK-EA', 'Eastern Region', [
+    'MK-03', 'MK-14', 'MK-23', 'MK-33', 'MK-37', 'MK-42', 'MK-51', 'MK-60', 'MK-63', 'MK-81', 'MK-83',
+  ]),
+  macedonianRegion('MK-NE', 'Northeastern Region', ['MK-43', 'MK-44', 'MK-47', 'MK-48', 'MK-65', 'MK-71']),
+  macedonianRegion('MK-SE', 'Southeastern Region', [
+    'MK-05', 'MK-07', 'MK-10', 'MK-11', 'MK-18', 'MK-26', 'MK-41', 'MK-56', 'MK-64', 'MK-73',
+  ]),
+  macedonianRegion('MK-SW', 'Southwestern Region', [
+    'MK-12', 'MK-15', 'MK-21', 'MK-22', 'MK-28', 'MK-31', 'MK-40', 'MK-52', 'MK-57', 'MK-58', 'MK-61', 'MK-72', 'MK-78',
   ]),
 ];
